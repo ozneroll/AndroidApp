@@ -44,6 +44,7 @@
                 app:cardElevation="8dp"
                 app:cardCornerRadius="8dp"
                 app:cardBackgroundColor="#000"
+                android:id="@+id/cardview1"
                 >
 
                 <LinearLayout
@@ -54,7 +55,7 @@
                     android:layout_height="wrap_content">
 
                     <ImageButton
-                        android:id="@+id/imageButton2"
+                        android:id="@+id/imageButton1"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginEnd="0dp"
@@ -81,6 +82,7 @@
                 app:cardElevation="8dp"
                 app:cardCornerRadius="8dp"
                 app:cardBackgroundColor="#000"
+                android:id="@+id/cardview2"
                 >
 
                 <LinearLayout
@@ -91,7 +93,7 @@
                     android:layout_height="wrap_content">
 
                     <ImageButton
-                        android:id="@+id/imageButton3"
+                        android:id="@+id/imageButton2"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="0dp"
@@ -120,6 +122,7 @@
                 app:cardElevation="8dp"
                 app:cardCornerRadius="8dp"
                 app:cardBackgroundColor="#000"
+                android:id="@+id/cardview3"
                 >
 
                 <LinearLayout
@@ -130,7 +133,7 @@
                     android:layout_height="wrap_content">
 
                     <ImageButton
-                        android:id="@+id/imageButton4"
+                        android:id="@+id/imageButton3"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginEnd="0dp"
@@ -153,10 +156,11 @@
                 android:layout_marginBottom="16dp"
                 android:layout_marginLeft="16dp"
                 android:layout_marginRight="16dp"
-                app:cardElevation="8dp"
-                app:cardCornerRadius="8dp"
                 app:cardBackgroundColor="#000"
-                >
+                app:cardElevation="8dp"
+                android:id="@+id/cardview4"
+                 >
+
 
                 <LinearLayout
                     android:layout_gravity="center_horizontal|center_vertical"
@@ -166,7 +170,7 @@
                     android:layout_height="wrap_content">
 
                     <ImageButton
-                        android:id="@+id/imageButton5"
+                        android:id="@+id/imageButton4"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginEnd="0dp"
@@ -197,6 +201,7 @@
                 app:cardElevation="8dp"
                 app:cardCornerRadius="8dp"
                 app:cardBackgroundColor="#000"
+                android:id="@+id/cardview5"
                 >
 
                 <LinearLayout
@@ -207,7 +212,7 @@
                     android:layout_height="wrap_content">
 
                     <ImageButton
-                        android:id="@+id/imageButton"
+                        android:id="@+id/imageButton5"
                         android:layout_width="48dp"
                         android:layout_height="46dp"
                         android:layout_marginStart="0dp"

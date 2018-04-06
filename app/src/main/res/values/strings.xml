@@ -5,4 +5,12 @@
     <string name="title_activity_list_of_courses">ListOfCourses</string>
     <string name="title_activity_list_of_teachers">ListOfTeachers</string>
     <string name="title_activity_list_of_modules">ListOfModules</string>
+
+    <string name="Students">Students</string>
+    <string name="Teachers">Teachers</string>
+    <string name="Course">Course</string>
+    <string name="Modules">Modules</string>
+    <string name="Class">Class</string>
+
+
 </resources>

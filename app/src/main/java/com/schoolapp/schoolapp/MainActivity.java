@@ -1,14 +1,86 @@
 package com.schoolapp.schoolapp;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.ImageButton;
+import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
+    ImageButton ib1;
+    ImageButton ib2;
+    ImageButton ib3;
+    ImageButton ib4;
+    ImageButton ib5;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        // Get the view from activity_main.xml
         setContentView(R.layout.activity_main);
 
+        // Locate the button in activity_main.xml
+        ib1 = (ImageButton) findViewById(R.id.imageButton1);
+        ib2 = (ImageButton) findViewById(R.id.imageButton2);
+        ib3 = (ImageButton) findViewById(R.id.imageButton3);
+        ib4 = (ImageButton) findViewById(R.id.imageButton4);
+        ib5 = (ImageButton) findViewById(R.id.imageButton5);
+
+
+// Create an implementation of OnClickListener
+        View.OnClickListener myListener = new View.OnClickListener() {
+            public void onClick(View v) {
+                Intent myIntent;
+                switch (v.getId() /*to get clicked view id**/) {
+                    case R.id.imageButton1:
+                        myIntent= new Intent(MainActivity.this, ListOfStudents.class);
+                        startActivity(myIntent);
+                        break;
+                    case R.id.imageButton2:
+                        myIntent= new Intent(MainActivity.this, ListOfTeachers.class);
+                        startActivity(myIntent);
+                        break;
+                    case R.id.imageButton3:
+                        myIntent= new Intent(MainActivity.this, ListOfClasses.class);
+                        startActivity(myIntent);
+                        break;
+                    case R.id.imageButton4:
+                        myIntent= new Intent(MainActivity.this, ListOfCourses.class);
+                        startActivity(myIntent);
+                        break;
+                    case R.id.imageButton5:
+                        myIntent= new Intent(MainActivity.this, ListOfModules.class);
+                        startActivity(myIntent);
+                        break;
+                    default:
+                        break;
+                }
+            }
+        };
+        ib1.setOnClickListener(myListener);
+        ib2.setOnClickListener(myListener);
+        ib3.setOnClickListener(myListener);
+        ib4.setOnClickListener(myListener);
+        ib5.setOnClickListener(myListener);
+
+
+    /*    // Capture button clicks
+        ib1.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View arg0) {
+
+                // Start NewActivity.class
+                Intent myIntent = new Intent(MainActivity.this,
+                        ListOfStudents.class);
+                startActivity(myIntent);
+            }
+        }); */
     }
+
+
+
+
+
+
+
 }

@@ -64,6 +64,12 @@
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
 
+                    <TextView
+                        android:id="@+id/textView4"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/Students"
+                        android:textColor="@color/colorPrimary" />
 
 
                 </LinearLayout>
@@ -101,6 +107,12 @@
                         app:layout_constraintStart_toStartOf="parent"
                         tools:layout_editor_absoluteY="188dp" />
 
+                    <TextView
+                        android:id="@+id/textView5"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/Classes"
+                        android:textColor="@color/colorPrimary" />
 
 
                 </LinearLayout>
@@ -141,6 +153,12 @@
                         app:layout_constraintEnd_toEndOf="parent"
                         tools:layout_editor_absoluteY="188dp" />
 
+                    <TextView
+                        android:id="@+id/textView6"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/Course"
+                        android:textColor="@color/colorPrimary" />
 
 
                 </LinearLayout>
@@ -179,6 +197,13 @@
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         tools:layout_editor_absoluteY="371dp" />
+
+                    <TextView
+                        android:id="@+id/textView7"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/Modules"
+                        android:textColor="@color/colorPrimary" />
 
 
                 </LinearLayout>
@@ -221,6 +246,12 @@
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
 
+                    <TextView
+                        android:id="@+id/textView8"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/Teachers"
+                        android:textColor="@color/colorPrimary" />
 
 
                 </LinearLayout>

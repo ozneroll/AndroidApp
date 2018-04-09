@@ -1,16 +1,23 @@
 <resources>
     <string name="app_name">SchoolApp</string>
-    <string name="title_activity_list_of_students">ListOfStudents</string>
-    <string name="title_activity_list_of_classes">ListOfClasses</string>
-    <string name="title_activity_list_of_courses">ListOfCourses</string>
-    <string name="title_activity_list_of_teachers">ListOfTeachers</string>
-    <string name="title_activity_list_of_modules">ListOfModules</string>
+    <string name="title_activity_list_of_students">List of students</string>
+    <string name="title_activity_list_of_classes">List of classes</string>
+    <string name="title_activity_list_of_courses">List of courses</string>
+    <string name="title_activity_list_of_teachers">List of teachers</string>
+    <string name="title_activity_list_of_modules">List of modules</string>
+    <string name="title_activity_addNew">Add new</string>
 
     <string name="Students">Students</string>
     <string name="Teachers">Teachers</string>
-    <string name="Course">Course</string>
+    <string name="Course">Courses</string>
     <string name="Modules">Modules</string>
+    <string name="Classes">Classes</string>
     <string name="Class">Class</string>
+    <string name="Save">Save</string>
 
-
+    <string-array name="all_classes">
+        <item>601-F</item>
+        <item>602-F</item>
+        <item>603-F</item>
+    </string-array>
 </resources>

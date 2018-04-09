@@ -26,7 +26,22 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-        <TextView
+        <EditText
+            android:id="@+id/editText4"
+            android:layout_width="330dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="64dp"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:text="Alix"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="MissingConstraints" />
+
+        <EditText
             android:id="@+id/editText2"
             android:layout_width="330dp"
             android:layout_height="wrap_content"
@@ -34,26 +49,15 @@
             android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
             android:ems="10"
-            android:text="Alix"
+            android:hint="Falquet"
+            android:inputType="textPersonName"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/editText4" />
 
-        <TextView
-            android:id="@+id/editText4"
-            android:layout_width="330dp"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="16dp"
-            android:layout_marginStart="16dp"
-            android:ems="10"
-            android:inputType="textPersonName"
-            android:text="Falquet"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            tools:ignore="MissingConstraints"
-            tools:layout_editor_absoluteY="71dp" />
 
-        <TextView
+
+        <EditText
             android:id="@+id/editText3"
             android:layout_width="330dp"
             android:layout_height="wrap_content"
@@ -62,22 +66,22 @@
             android:layout_marginTop="16dp"
             android:ems="10"
             android:inputType="textPersonName"
-            android:text="Rive des Nombieux"
+            android:hint="Rive des nombieux"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/editText2" />
 
-        <TextView
-            android:id="@+id/editText5"
-            android:ems="10"
-            android:inputType="textPersonName"
-            android:text="604-F"
+        <Button
+            android:id="@+id/button2"
+            android:layout_width="330dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="44dp"
+            android:text="@string/Save"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/editText2"
-            android:layout_width="330dp"
-            android:layout_height="wrap_content" />
-
+            app:layout_constraintTop_toBottomOf="@+id/editText3" />
 
     </android.support.constraint.ConstraintLayout>
 

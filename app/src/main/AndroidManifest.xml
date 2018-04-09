@@ -38,9 +38,14 @@
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".AddStudent"
-            android:label="@string/title_activity_addNew"
-            android:theme="@style/AppTheme.NoActionBar"
-        />
+            android:label="@string/title_activity_addnew"
+            android:theme="@style/AppTheme.NoActionBar" />
+
+
+        <activity android:name=".DetailsStudents"
+            android:label="@string/title_activity_detailsStudents"
+            android:theme="@style/AppTheme.NoActionBar" />
+
     </application>
 
 </manifest>

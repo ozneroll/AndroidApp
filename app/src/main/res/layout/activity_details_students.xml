@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.schoolapp.schoolapp.AddStudent">
+    tools:context="com.schoolapp.schoolapp.DetailsStudents">
 
     <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"
@@ -26,22 +26,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-        <EditText
-            android:id="@+id/editText4"
-            android:layout_width="330dp"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="16dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="64dp"
-            android:ems="10"
-            android:inputType="textPersonName"
-            android:hint="Firstname"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:ignore="MissingConstraints" />
-
-        <EditText
+        <TextView
             android:id="@+id/editText2"
             android:layout_width="330dp"
             android:layout_height="wrap_content"
@@ -49,15 +34,26 @@
             android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
             android:ems="10"
-            android:hint="Name"
-            android:inputType="textPersonName"
+            android:text="Alix"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/editText4" />
 
+        <TextView
+            android:id="@+id/editText4"
+            android:layout_width="330dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:layout_marginStart="16dp"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:text="Falquet"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:ignore="MissingConstraints"
+            tools:layout_editor_absoluteY="71dp" />
 
-
-        <EditText
+        <TextView
             android:id="@+id/editText3"
             android:layout_width="330dp"
             android:layout_height="wrap_content"
@@ -66,33 +62,22 @@
             android:layout_marginTop="16dp"
             android:ems="10"
             android:inputType="textPersonName"
-            android:hint="Address"
+            android:text="Rive des Nombieux"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/editText2" />
 
-        <Spinner
-            android:id="@+id/all_classes"
-            android:layout_width="330dp"
-            android:layout_height="30dp"
-            android:layout_marginEnd="16dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="16dp"
+        <TextView
+            android:id="@+id/editText5"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:text="604-F"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/editText3" />
+            app:layout_constraintTop_toBottomOf="@+id/editText2"
+            android:layout_width="330dp"
+            android:layout_height="wrap_content" />
 
-        <Button
-            android:id="@+id/button2"
-            android:layout_width="330dp"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="16dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="44dp"
-            android:text="@string/Save"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/all_classes" />
 
     </android.support.constraint.ConstraintLayout>
 

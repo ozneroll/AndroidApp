@@ -28,6 +28,22 @@ public class ListOfStudents extends AppCompatActivity {
 
 
         });
+
+
+
+
     }
 
-}
+    public void onClick(View v) {
+        // Start NewActivity.class
+        Intent myIntent = new Intent(ListOfStudents.this,
+                DetailsStudents.class);
+        startActivity(myIntent);}
+
+
+
+    }
+
+
+
+

@@ -3,19 +3,11 @@ package com.schoolapp.schoolapp;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.CardView;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
-    CardView cv1;
-    CardView cv2;
-    CardView cv3;
-    CardView cv4;
-    CardView cv5;
-
-
     ImageButton ib1;
     ImageButton ib2;
     ImageButton ib3;
@@ -29,12 +21,6 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         // Locate the button in activity_main.xml
-        cv1 = (CardView) findViewById(R.id.cardview1);
-        cv2 = (CardView) findViewById(R.id.cardview2);
-        cv3=  (CardView)  findViewById(R.id.cardview3);
-        cv4 = (CardView) findViewById(R.id.cardview4);
-        cv5 = (CardView) findViewById(R.id.cardview5);
-
         ib1 = (ImageButton) findViewById(R.id.imageButton1);
         ib2 = (ImageButton) findViewById(R.id.imageButton2);
         ib3 = (ImageButton) findViewById(R.id.imageButton3);
@@ -47,29 +33,24 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent myIntent;
                 switch (v.getId() /*to get clicked view id**/) {
-                    case R.id.cardview1:
-                    case R.id.imageButton1 :
+                    case R.id.imageButton1:
                         myIntent= new Intent(MainActivity.this, ListOfStudents.class);
                         startActivity(myIntent);
                         break;
-                    case R.id.cardview2 :
                     case R.id.imageButton2:
+                        myIntent= new Intent(MainActivity.this, ListOfTeachers.class);
+                        startActivity(myIntent);
+                        break;
+                    case R.id.imageButton3:
                         myIntent= new Intent(MainActivity.this, ListOfClasses.class);
                         startActivity(myIntent);
                         break;
-                    case R.id.cardview3 :
-                    case R.id.imageButton3:
+                    case R.id.imageButton4:
                         myIntent= new Intent(MainActivity.this, ListOfCourses.class);
                         startActivity(myIntent);
                         break;
-                    case R.id.cardview4 :
-                    case R.id.imageButton4:
-                        myIntent= new Intent(MainActivity.this, ListOfModules.class);
-                        startActivity(myIntent);
-                        break;
-                    case R.id.cardview5 :
                     case R.id.imageButton5:
-                        myIntent= new Intent(MainActivity.this, ListOfTeachers.class);
+                        myIntent= new Intent(MainActivity.this, ListOfModules.class);
                         startActivity(myIntent);
                         break;
                     default:
@@ -82,12 +63,6 @@ public class MainActivity extends AppCompatActivity {
         ib3.setOnClickListener(myListener);
         ib4.setOnClickListener(myListener);
         ib5.setOnClickListener(myListener);
-
-        cv1.setOnClickListener(myListener);
-        cv2.setOnClickListener(myListener);
-        cv3.setOnClickListener(myListener);
-        cv4.setOnClickListener(myListener);
-        cv5.setOnClickListener(myListener);
 
 
     /*    // Capture button clicks

@@ -24,8 +24,6 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
-        
-
         super.onCreate(savedInstanceState);
         // Get the view from activity_main.xml
         setContentView(R.layout.activity_main);

@@ -9,7 +9,7 @@ import java.util.List;
 
 /**
  * Created by loren on 17.04.2018.
- */
+
 
 @Dao
 public interface StudentDAO {
@@ -31,3 +31,4 @@ public interface StudentDAO {
     void delete(Student student);
 
 }
+ */

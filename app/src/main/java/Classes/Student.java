@@ -6,7 +6,7 @@ import android.arch.persistence.room.PrimaryKey;
 
 /**
  * Created by loren on 17.04.2018.
- */
+
 
 @Entity
 public class Student {
@@ -59,3 +59,4 @@ public class Student {
 
 
 }
+ */

@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:orientation="vertical"
     android:layout_height="match_parent"
     tools:context="com.schoolapp.schoolapp.ListOfStudents">
 
@@ -19,44 +18,91 @@
             android:background="@color/colorAccent"
             app:popupTheme="@style/AppTheme.PopupOverlay" />
 
-        <com.miguelcatalan.materialsearchview.MaterialSearchView
-            android:id="@+id/search_view"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:searchBackground="@color/black"
-            app:searchSuggestionBackground="@color/black"
-            app:searchCloseIcon="@drawable/ic_action_navigation_close_inverted"
-            app:searchBackIcon="@drawable/ic_action_navigation_arrow_back_inverted"
-            app:searchSuggestionIcon="@drawable/ic_suggestion"
-            android:textColor="#FFFFFF"/>
-
     </android.support.design.widget.AppBarLayout>
 
-    <LinearLayout
+    <include layout="@layout/content_list_of_students" />
+
+    <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        tools:layout_margin="20dp"
         tools:context="com.schoolapp.schoolapp.StudentsActivity">
 
-        <ListView
-            android:id="@+id/listitem"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+        <EditText
+            android:id="@+id/editText"
+            android:layout_width="243dp"
+            android:layout_height="46dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="64dp"
+            android:ems="10"
+            android:inputType="text"
+            app:layout_constraintEnd_toStartOf="@+id/button"
+            app:layout_constraintHorizontal_bias="0.38"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-
-        <android.support.design.widget.FloatingActionButton
-            android:id="@+id/fab"
+        <Button
+            android:id="@+id/button"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="end|bottom"
-            android:layout_margin="@dimen/fab_margin"
-            android:tint="@android:color/black"
-            app:backgroundTint="@android:color/background_light"
-            app:rippleColor="@android:color/background_light"
-            app:srcCompat="@android:drawable/ic_input_add" />
-    </LinearLayout>
+            android:layout_height="44dp"
+            android:layout_marginEnd="16dp"
+            android:text="Search"
+            app:layout_constraintBaseline_toBaselineOf="@+id/editText"
+            app:layout_constraintEnd_toEndOf="parent" />
 
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="328dp"
+            android:layout_height="27dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="64dp"
+            android:text="Alix Falquet"
+            android:textSize="18sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/editText"
+            android:onClick="onClick"
+            android:clickable="true"
+            />
 
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="330dp"
+            android:layout_height="29dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="16dp"
+            android:text="Anna Louvert"
+            android:textSize="18sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView" />
 
-</LinearLayout>
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="330dp"
+            android:layout_height="29dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="16dp"
+            android:text="Anouck Maréchal"
+            android:textSize="18sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView2" />
+
+    </android.support.constraint.ConstraintLayout>
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/fab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end|bottom"
+        android:layout_margin="@dimen/fab_margin"
+        android:tint="@android:color/black"
+        app:backgroundTint="@android:color/background_light"
+        app:rippleColor="@android:color/background_light"
+        app:srcCompat="@android:drawable/ic_input_add" />
+
+</android.support.design.widget.CoordinatorLayout>

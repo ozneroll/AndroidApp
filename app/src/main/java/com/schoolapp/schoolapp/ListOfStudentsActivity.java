@@ -18,20 +18,47 @@ import com.miguelcatalan.materialsearchview.MaterialSearchView;
 import java.util.ArrayList;
 import java.util.List;
 
+import Classes.Student;
+import ObjectDB.Student.StudentDataSource;
+import ObjectDB.Student.StudentRepository;
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.disposables.CompositeDisposable;
+import io.reactivex.disposables.Disposable;
+import io.reactivex.functions.Consumer;
+import io.reactivex.schedulers.Schedulers;
+
 public class ListOfStudentsActivity extends AppCompatActivity{
-    private ListView mListView;
-    MaterialSearchView searchView;
-    String[] listItems = {"Android","IPhone","WindowsMobile","Blackberry",
-            "WebOS","Ubuntu","Windows7","Max OS X"};
+    private ListView listStudents;
+    private MaterialSearchView searchView;
+    private FloatingActionButton fab;
+    private List<Student> studentList = new ArrayList<>();
+    private ArrayAdapter<Student> adapter;
+    private CompositeDisposable compositeDisposable;
+    private StudentRepository studentRepository;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
+
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list_of_students);
 
+        compositeDisposable = new CompositeDisposable();
+
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
         getSupportActionBar().setTitle(getResources().getString(R.string.students));
+
+        listStudents = (ListView) findViewById(R.id.listitem);
+
+        adapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, studentList);
+        registerForContextMenu(listStudents);
+        listStudents.setAdapter(adapter);
+
+        studentRepository = StudentRepository.getInstance(StudentDataSource.getInstance(MainActivity.studentDB.sdtDao()));
+
+        loadData();
 
 
         searchView = (MaterialSearchView)findViewById(R.id.search_view);
@@ -44,10 +71,10 @@ public class ListOfStudentsActivity extends AppCompatActivity{
             @Override
             public void onSearchViewClosed() {
 
-                mListView = (ListView) findViewById(R.id.listitem);
+                listStudents = (ListView) findViewById(R.id.listitem);
 
-                ArrayAdapter adapter = new ArrayAdapter(ListOfStudentsActivity.this, android.R.layout.simple_list_item_1, listItems);
-                mListView.setAdapter(adapter);
+                ArrayAdapter adapter = new ArrayAdapter(ListOfStudentsActivity.this, android.R.layout.simple_list_item_1, studentList);
+                listStudents.setAdapter(adapter);
             }
         });
         searchView.setOnQueryTextListener(new MaterialSearchView.OnQueryTextListener() {
@@ -59,18 +86,18 @@ public class ListOfStudentsActivity extends AppCompatActivity{
             @Override
             public boolean onQueryTextChange(String newText) {
                 if(newText !=null && !newText.isEmpty()){
-                    List<String> lstFound = new ArrayList<String>();
-                    for(String item:listItems){
-                        if(item.contains(newText))
+                    List<Student> lstFound = new ArrayList<Student>();
+                    for(Student item:studentList){
+                        if(item.getLastName().contains(newText))
                                 lstFound.add(item);
                     }
                     ArrayAdapter adapter = new ArrayAdapter(ListOfStudentsActivity.this, android.R.layout.simple_list_item_1, lstFound);
-                    mListView.setAdapter(adapter);
+                    listStudents.setAdapter(adapter);
                 }
                 else{
 
-                    ArrayAdapter adapter = new ArrayAdapter(ListOfStudentsActivity.this, android.R.layout.simple_list_item_1, listItems);
-                    mListView.setAdapter(adapter);
+                    ArrayAdapter adapter = new ArrayAdapter(ListOfStudentsActivity.this, android.R.layout.simple_list_item_1, studentList);
+                    listStudents.setAdapter(adapter);
 
                 }
                 return true;
@@ -78,26 +105,30 @@ public class ListOfStudentsActivity extends AppCompatActivity{
 
         });
 
-        mListView = (ListView) findViewById(R.id.listitem);
 
-        ArrayAdapter adapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, listItems);
-        mListView.setAdapter(adapter);
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+        fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View arg0) {
+
+          /*  public void onClick(View view) {
+                MainActivity.studentDB.sdtDao().insertAll(new Student("Célia", "Ahmad", "Rive des Nombieux 33"));
+                MainActivity.studentDB.sdtDao().loadAllByIds(new int[1]);
+                loadData();
+*/
+         public void onClick(View arg0) {
 
                 // Start NewActivity.class
                 Intent myIntent = new Intent(ListOfStudentsActivity.this,
                         AddStudentActivity.class);
-                startActivity(myIntent);}
-
+                startActivity(myIntent)
+                ;}
 
         });
 
 
 
     }
+
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.menu_settings, menu);
@@ -131,11 +162,33 @@ public class ListOfStudentsActivity extends AppCompatActivity{
     public void onClick(View v) {
         // Start NewActivity.class
         Intent myIntent = new Intent(ListOfStudentsActivity.this,
-                DetailsStudentsActivity.class);
-        startActivity(myIntent);}
-
+                DetailStudentActivity.class);
+        startActivity(myIntent);
     }
 
+    private void loadData() {
+        Disposable disposable = studentRepository.getAll()
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribeOn(Schedulers.io())
+                .subscribe(new Consumer<List<Student>>() {
+                               @Override
+                               public void accept(List<Student> students) throws Exception {
+                                   onGetAllStudentsSuccess(students);
+                               }
+                           },
+                        new Consumer<Throwable>() {
+                            @Override
+                            public void accept(Throwable throwable) throws Exception {
+                                Toast.makeText(ListOfStudentsActivity.this,""+throwable.getMessage() , Toast.LENGTH_SHORT).show();
+                            }
+                        });
+        compositeDisposable.add(disposable);
+    }
 
+    private void onGetAllStudentsSuccess(List<Student> students) {
+        studentList.clear();
+        studentList.addAll(students);
+        adapter.notifyDataSetChanged();
+    }
 
-
+}

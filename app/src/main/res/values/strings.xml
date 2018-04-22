@@ -19,4 +19,7 @@
     <string name="firstName">Prénom</string>
     <string name="address">Adresse</string>
     <string name="lastName">Nom</string>
+    <string name="details">Détails</string>
+    <string name="errorEmptyField">Champs vides</string>
+    <string name="classe">classe</string>
 </resources>

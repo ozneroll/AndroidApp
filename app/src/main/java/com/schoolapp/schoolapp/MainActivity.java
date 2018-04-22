@@ -6,23 +6,25 @@ import android.os.Bundle;
 import android.support.v7.widget.CardView;
 import android.view.View;
 import android.widget.ImageButton;
+import ObjectDB.AppDatabase;
 
 public class MainActivity extends AppCompatActivity {
-    CardView cv1;
-    CardView cv2;
-    CardView cv3;
-    CardView cv4;
-    CardView cv5;
+    public static AppDatabase studentDB;
+    private CardView cv1;
+    private CardView cv2;
+    private CardView cv3;
+    private CardView cv4;
+    private CardView cv5;
 
-
-    ImageButton ib1;
-    ImageButton ib2;
-    ImageButton ib3;
-    ImageButton ib4;
-    ImageButton ib5;
+    private ImageButton ib1;
+    private ImageButton ib2;
+    private ImageButton ib3;
+    private ImageButton ib4;
+    private ImageButton ib5;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
+        studentDB = AppDatabase.getInstance(this);
         super.onCreate(savedInstanceState);
         // Get the view from activity_main.xml
         setContentView(R.layout.activity_main);

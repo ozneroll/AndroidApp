@@ -20,4 +20,7 @@
     <string name="firstName">Vorname</string>
     <string name="address">Adresse</string>
     <string name="lastName">Nachname</string>
+    <string name="details">Einzelheiten</string>
+    <string name="errorEmptyField">Leere Felder</string>
+    <string name="classe">Klasse</string>
 </resources>

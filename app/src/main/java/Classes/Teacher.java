@@ -2,7 +2,6 @@ package Classes;
 
 import android.arch.persistence.room.ColumnInfo;
 import android.arch.persistence.room.Entity;
-import android.arch.persistence.room.ForeignKey;
 import android.arch.persistence.room.Ignore;
 import android.arch.persistence.room.PrimaryKey;
 
@@ -12,8 +11,8 @@ import io.reactivex.annotations.NonNull;
  * Created by loren on 17.04.2018.
  */
 /*, foreignKeys = @ForeignKey(entity = Class.class, parentColumns = "id", childColumns = "class"*/
-@Entity(tableName = "Student")
-public class Student {
+@Entity(tableName = "Teacher")
+public class Teacher {
 
     @NonNull
     @PrimaryKey(autoGenerate = true)
@@ -39,12 +38,12 @@ public class Student {
 
 
 
-    public Student()
+    public Teacher()
     {
 
     }
     @Ignore
-    public Student(String lastName, String firstName, String address)
+    public Teacher(String lastName, String firstName, String address)
     {
         this.lastName = lastName;
         this.firstName = firstName;

@@ -6,7 +6,6 @@ import android.os.Bundle;
 import android.support.v7.widget.CardView;
 import android.view.View;
 import android.widget.ImageButton;
-import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
     CardView cv1;
@@ -49,27 +48,27 @@ public class MainActivity extends AppCompatActivity {
                 switch (v.getId() /*to get clicked view id**/) {
                     case R.id.cardview1:
                     case R.id.imageButton1 :
-                        myIntent= new Intent(MainActivity.this, ListOfStudents.class);
+                        myIntent= new Intent(MainActivity.this, ListOfStudentsActivity.class);
                         startActivity(myIntent);
                         break;
                     case R.id.cardview2 :
                     case R.id.imageButton2:
-                        myIntent= new Intent(MainActivity.this, ListOfClasses.class);
+                        myIntent= new Intent(MainActivity.this, ListOfClassesActivity.class);
                         startActivity(myIntent);
                         break;
                     case R.id.cardview3 :
                     case R.id.imageButton3:
-                        myIntent= new Intent(MainActivity.this, ListOfCourses.class);
+                        myIntent= new Intent(MainActivity.this, ListOfCoursesActivity.class);
                         startActivity(myIntent);
                         break;
                     case R.id.cardview4 :
                     case R.id.imageButton4:
-                        myIntent= new Intent(MainActivity.this, ListOfModules.class);
+                        myIntent= new Intent(MainActivity.this, ListOfModulesActivity.class);
                         startActivity(myIntent);
                         break;
                     case R.id.cardview5 :
                     case R.id.imageButton5:
-                        myIntent= new Intent(MainActivity.this, ListOfTeachers.class);
+                        myIntent= new Intent(MainActivity.this, ListOfTeachersActivity.class);
                         startActivity(myIntent);
                         break;
                     default:
@@ -96,7 +95,7 @@ public class MainActivity extends AppCompatActivity {
 
                 // Start NewActivity.class
                 Intent myIntent = new Intent(MainActivity.this,
-                        ListOfStudents.class);
+                        ListOfStudentsActivity.class);
                 startActivity(myIntent);
             }
         }); */

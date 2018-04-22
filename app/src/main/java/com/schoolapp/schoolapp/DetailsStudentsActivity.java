@@ -6,7 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 
-public class DetailsStudents extends AppCompatActivity {
+public class DetailsStudentsActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,8 +20,8 @@ public class DetailsStudents extends AppCompatActivity {
             public void onClick(View arg0) {
 
                 // Start NewActivity.class
-                Intent myIntent = new Intent(DetailsStudents.this,
-                        AddStudent.class);
+                Intent myIntent = new Intent(DetailsStudentsActivity.this,
+                        AddStudentActivity.class);
                 startActivity(myIntent);}
 
 

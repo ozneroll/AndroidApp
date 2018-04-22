@@ -17,35 +17,36 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".ListOfStudents"
-            android:label="@string/title_activity_list_of_students"
+            android:name=".ListOfStudentsActivity"
+            android:label="@string/students"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".ListOfClasses"
-            android:label="@string/title_activity_list_of_classes"
+            android:name=".ListOfClassesActivity"
+            android:label="@string/classes"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".ListOfCourses"
-            android:label="@string/title_activity_list_of_courses"
+            android:name=".ListOfCoursesActivity"
+            android:label="@string/course"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".ListOfTeachers"
-            android:label="@string/title_activity_list_of_teachers"
+            android:name=".ListOfTeachersActivity"
+            android:label="@string/teachers"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".ListOfModules"
-            android:label="@string/title_activity_list_of_modules"
+            android:name=".ListOfModulesActivity"
+            android:label="@string/modules"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".AddStudent"
-            android:label="@string/title_activity_addnew"
+            android:name=".AddStudentActivity"
             android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".DetailsStudentsActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".LanguageActivity"
+            android:label="@string/language"
+            android:theme="@style/AppTheme.NoActionBar">
 
-
-        <activity android:name=".DetailsStudents"
-            android:label="@string/title_activity_detailsStudents"
-            android:theme="@style/AppTheme.NoActionBar" />
-
+        </activity>
     </application>
 
 </manifest>

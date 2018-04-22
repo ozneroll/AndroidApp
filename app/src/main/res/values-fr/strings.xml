@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">SchoolApp</string>
     <string name="students">Etudiants</string>
@@ -5,9 +6,9 @@
     <string name="course">Cours</string>
     <string name="modules">Modules</string>
     <string name="classes">Classes</string>
+    <string name="francais">Francais</string>
+    <string name="english">Anglais</string>
+    <string name="german">Allemand</string>
     <string name="save">Enregistrer</string>
-    <string name="francais">FRANCAIS</string>
-    <string name="english">ANGLAIS</string>
-    <string name="german">ALLEMAND</string>
     <string name="language">Choisir une langue</string>
 </resources>

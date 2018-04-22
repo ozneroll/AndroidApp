@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">SchoolApp</string>
+    <string name="students">Studentent</string>
+    <string name="teachers">Professoren</string>
+    <string name="course">Kurs</string>
+    <string name="modules">Module</string>
+    <string name="classes">Klasses</string>
+    <string name="save">Registieren</string>
+    <string name="francais">Französisch</string>
+    <string name="english">English</string>
+    <string name="german">Deutsch</string>
+    <string name="language">Wähle eine Sprache</string>
+</resources>

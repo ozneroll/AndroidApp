@@ -68,7 +68,7 @@
                         android:id="@+id/textView4"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/Students"
+                        android:text="@string/students"
                         android:textColor="@color/colorPrimary" />
 
 
@@ -111,7 +111,7 @@
                         android:id="@+id/textView5"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/Classes"
+                        android:text="@string/classes"
                         android:textColor="@color/colorPrimary" />
 
 
@@ -157,7 +157,7 @@
                         android:id="@+id/textView6"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/Course"
+                        android:text="@string/course"
                         android:textColor="@color/colorPrimary" />
 
 
@@ -203,7 +203,7 @@
                         android:id="@+id/textView7"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/Modules"
+                        android:text="@string/modules"
                         android:textColor="@color/colorPrimary" />
 
 
@@ -251,7 +251,7 @@
                         android:id="@+id/textView8"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/Teachers"
+                        android:text="@string/teachers"
                         android:textColor="@color/colorPrimary" />
 
 

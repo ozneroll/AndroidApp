@@ -1,10 +1,8 @@
 package com.schoolapp.schoolapp;
 
 import android.content.Intent;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
@@ -13,13 +11,14 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.miguelcatalan.materialsearchview.MaterialSearchView;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class ListOfStudents extends AppCompatActivity{
+public class ListOfStudentsActivity extends AppCompatActivity{
     private ListView mListView;
     MaterialSearchView searchView;
     String[] listItems = {"Android","IPhone","WindowsMobile","Blackberry",
@@ -44,7 +43,7 @@ public class ListOfStudents extends AppCompatActivity{
 
                 mListView = (ListView) findViewById(R.id.listitem);
 
-                ArrayAdapter adapter = new ArrayAdapter(ListOfStudents.this, android.R.layout.simple_list_item_1, listItems);
+                ArrayAdapter adapter = new ArrayAdapter(ListOfStudentsActivity.this, android.R.layout.simple_list_item_1, listItems);
                 mListView.setAdapter(adapter);
             }
         });
@@ -62,12 +61,12 @@ public class ListOfStudents extends AppCompatActivity{
                         if(item.contains(newText))
                                 lstFound.add(item);
                     }
-                    ArrayAdapter adapter = new ArrayAdapter(ListOfStudents.this, android.R.layout.simple_list_item_1, lstFound);
+                    ArrayAdapter adapter = new ArrayAdapter(ListOfStudentsActivity.this, android.R.layout.simple_list_item_1, lstFound);
                     mListView.setAdapter(adapter);
                 }
                 else{
 
-                    ArrayAdapter adapter = new ArrayAdapter(ListOfStudents.this, android.R.layout.simple_list_item_1, listItems);
+                    ArrayAdapter adapter = new ArrayAdapter(ListOfStudentsActivity.this, android.R.layout.simple_list_item_1, listItems);
                     mListView.setAdapter(adapter);
 
                 }
@@ -86,8 +85,8 @@ public class ListOfStudents extends AppCompatActivity{
             public void onClick(View arg0) {
 
                 // Start NewActivity.class
-                Intent myIntent = new Intent(ListOfStudents.this,
-                        AddStudent.class);
+                Intent myIntent = new Intent(ListOfStudentsActivity.this,
+                        AddStudentActivity.class);
                 startActivity(myIntent);}
 
 
@@ -95,6 +94,25 @@ public class ListOfStudents extends AppCompatActivity{
 
 
 
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.action_settings:
+                Intent intent = new Intent(this, LanguageActivity.class);
+                startActivity(intent);
+                break;
+            case R.id.action_about:
+                Toast.makeText(this, "Menu item 2 selected", Toast.LENGTH_SHORT)
+                        .show();
+                break;
+
+            default:
+                break;
+        }
+
+        return true;
     }
 
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -107,8 +125,8 @@ public class ListOfStudents extends AppCompatActivity{
 
     public void onClick(View v) {
         // Start NewActivity.class
-        Intent myIntent = new Intent(ListOfStudents.this,
-                DetailsStudents.class);
+        Intent myIntent = new Intent(ListOfStudentsActivity.this,
+                DetailsStudentsActivity.class);
         startActivity(myIntent);}
 
     }

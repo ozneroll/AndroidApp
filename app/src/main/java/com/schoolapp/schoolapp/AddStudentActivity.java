@@ -5,9 +5,9 @@ import android.os.Bundle;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 
-public class AddStudent extends AppCompatActivity {
+public class AddStudentActivity extends AppCompatActivity {
 
-    @Override
+ /*   @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.add_student);
@@ -20,10 +20,10 @@ public class AddStudent extends AppCompatActivity {
         // Specify the layout to use when the list of choices appears
 
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-/* Apply the adapter to the spinner */
+*//* Apply the adapter to the spinner *//*
         spinner.setAdapter(adapter);
     }
-
+*/
 
 
 

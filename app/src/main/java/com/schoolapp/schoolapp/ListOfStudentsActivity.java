@@ -131,7 +131,7 @@ public class ListOfStudentsActivity extends AppCompatActivity{
     public void onClick(View v) {
         // Start NewActivity.class
         Intent myIntent = new Intent(ListOfStudentsActivity.this,
-                DetailStudentActivity.class);
+                DetailsStudentsActivity.class);
         startActivity(myIntent);}
 
     }

@@ -19,7 +19,4 @@
     <string name="firstName">Firstname</string>
     <string name="lastName">LastName</string>
     <string name="address">Address</string>
-    <string name="details">Details</string>
-    <string name="search">Search</string>
-    <string name="errorEmptyField">Empty Field</string>
 </resources>

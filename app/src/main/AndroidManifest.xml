@@ -40,6 +40,9 @@
             android:name=".AddStudentActivity"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
+            android:name=".DetailsStudentsActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
             android:name=".LanguageActivity"
             android:label="@string/lang"
             android:theme="@style/AppTheme.NoActionBar"></activity>

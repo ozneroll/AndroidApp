@@ -10,6 +10,7 @@ import android.view.MenuItem;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 public class AddStudentActivity extends AppCompatActivity {
 
@@ -56,6 +57,22 @@ public class AddStudentActivity extends AppCompatActivity {
                 Intent intent2 = new Intent(this, AboutActivity.class);
                 startActivity(intent2);
                 break;
+
+            case R.id.action_save:
+             /*   if(!txtFirstName.getText().toString().equals("") && !txtLastName.getText().toString().equals("") &&
+                        !txtAddress.getText().toString().equals("")) {
+                        personDB.insertPerson(txtFirstName.getText().toString(), txtLastName.getText().toString(),
+                                txtAddress.getText().toString());
+                        finish();
+                        overridePendingTransition(0, 0);
+                        Intent i = new Intent(getApplicationContext(), ProfileActivity.class);
+                        i.putExtra("idPerson", USER_CONNECTED.getId());
+                        startActivity(i);
+                        overridePendingTransition(0, 0);
+
+                } else
+                    Toast.makeText(getApplicationContext(), R.string.errorEmptyField, Toast.LENGTH_SHORT).show();
+*/
 
             default:
                 break;

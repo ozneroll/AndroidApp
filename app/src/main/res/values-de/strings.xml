@@ -11,4 +11,13 @@
     <string name="english">English</string>
     <string name="german">Deutsch</string>
     <string name="language">Wähle eine Sprache</string>
+    <string name="lang">Sprache</string>
+    <string name="about">Uber</string>
+    <string name="search">Suche</string>
+    <string name="delete">Entferner</string>
+    <string name="edit">Veränderung</string>
+    <string name="add">Hinzufügen</string>
+    <string name="firstName">Vorname</string>
+    <string name="address">Adresse</string>
+    <string name="lastName">Nachname</string>
 </resources>

@@ -11,4 +11,10 @@
     <string name="german">Allemand</string>
     <string name="save">Enregistrer</string>
     <string name="language">Choisir une langue</string>
+    <string name="delete">Supprimer</string>
+    <string name="edit">Modifier</string>
+    <string name="add">Ajouter</string>
+    <string name="lastName">Nom</string>
+    <string name="firstName">Prénom</string>
+    <string name="address">Adresse</string>
 </resources>

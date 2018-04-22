@@ -10,4 +10,13 @@
     <string name="english">ANGLAIS</string>
     <string name="german">ALLEMAND</string>
     <string name="language">Choisir une langue</string>
+    <string name="lang">Langue</string>
+    <string name="about">A propos</string>
+    <string name="search">Rechercher</string>
+    <string name="delete">Supprimer</string>
+    <string name="edit">Modifier</string>
+    <string name="add">ajouter</string>
+    <string name="firstName">Prénom</string>
+    <string name="address">Adresse</string>
+    <string name="lastName">Nom</string>
 </resources>

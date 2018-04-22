@@ -1,10 +1,7 @@
 package com.schoolapp.schoolapp;
 
-import android.app.AlertDialog;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.res.Configuration;
-import android.graphics.Color;
 import android.os.Build;
 import android.support.annotation.RequiresApi;
 import android.support.v7.app.AppCompatActivity;
@@ -15,7 +12,6 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
-import android.widget.Toolbar;
 
 import java.util.Locale;
 
@@ -29,6 +25,7 @@ public class LanguageActivity extends AppCompatActivity {
 
         android.support.v7.widget.Toolbar toolbar = (android.support.v7.widget.Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        getSupportActionBar().setTitle(getResources().getString(R.string.lang));
     }
 
 
@@ -87,7 +84,12 @@ public class LanguageActivity extends AppCompatActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.menu_items, menu);
+        inflater.inflate(R.menu.menu_settings, menu);
+        MenuItem itemSettings = menu.findItem(R.id.action_settings);
+        itemSettings.setVisible(false);
+        MenuItem itemSearch = menu.findItem(R.id.action_search);
+        itemSearch.setVisible(false);
+
         return true;
     }
 
@@ -99,8 +101,8 @@ public class LanguageActivity extends AppCompatActivity {
                 startActivity(intent);
                 break;
             case R.id.action_about:
-                Toast.makeText(this, "Menu item 2 selected", Toast.LENGTH_SHORT)
-                        .show();
+                Intent intent2 = new Intent(this, AboutActivity.class);
+                startActivity(intent2);
                 break;
 
             default:

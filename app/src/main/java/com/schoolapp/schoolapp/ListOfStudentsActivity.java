@@ -31,6 +31,9 @@ public class ListOfStudentsActivity extends AppCompatActivity{
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+        getSupportActionBar().setTitle(getResources().getString(R.string.students));
+
+
         searchView = (MaterialSearchView)findViewById(R.id.search_view);
         searchView.setOnSearchViewListener(new MaterialSearchView.SearchViewListener() {
             @Override
@@ -95,6 +98,14 @@ public class ListOfStudentsActivity extends AppCompatActivity{
 
 
     }
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.menu_settings, menu);
+        MenuItem item = menu.findItem(R.id.action_search);
+        searchView.setMenuItem(item);
+        return true;
+    }
+
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -104,8 +115,8 @@ public class ListOfStudentsActivity extends AppCompatActivity{
                 startActivity(intent);
                 break;
             case R.id.action_about:
-                Toast.makeText(this, "Menu item 2 selected", Toast.LENGTH_SHORT)
-                        .show();
+                Intent intent2 = new Intent(this, AboutActivity.class);
+                startActivity(intent2);
                 break;
 
             default:
@@ -115,13 +126,7 @@ public class ListOfStudentsActivity extends AppCompatActivity{
         return true;
     }
 
-    public boolean onCreateOptionsMenu(Menu menu) {
-        MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.menu_items, menu);
-        MenuItem item = menu.findItem(R.id.action_search);
-        searchView.setMenuItem(item);
-        return true;
-    }
+
 
     public void onClick(View v) {
         // Start NewActivity.class

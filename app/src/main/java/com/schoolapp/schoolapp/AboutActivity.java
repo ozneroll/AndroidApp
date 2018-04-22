@@ -7,38 +7,21 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.widget.ArrayAdapter;
-import android.widget.EditText;
-import android.widget.Spinner;
 
-public class AddStudentActivity extends AppCompatActivity {
+public class AboutActivity extends AppCompatActivity {
 
-    private EditText txtFirstName;
-    private EditText txtLastName;
-    private EditText txtAddress;
-
-   @Override
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
-       super.onCreate(savedInstanceState);
-       setContentView(R.layout.activity_add_student);
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_about);
 
-
-       Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-       setSupportActionBar(toolbar);
-
-       getSupportActionBar().setTitle(getResources().getString(R.string.add));
-
-       txtFirstName = (EditText) findViewById(R.id.txtaddFirstName);
-       txtLastName = (EditText) findViewById(R.id.txtaddLastName);
-       txtAddress = (EditText) findViewById(R.id.txtaddAddress);
-
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
     }
-
 
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.menu_settings, menu);
-        inflater.inflate(R.menu.menu_save, menu);
         MenuItem itemSearch = menu.findItem(R.id.action_search);
         itemSearch.setVisible(false);
         return true;
@@ -65,6 +48,10 @@ public class AddStudentActivity extends AppCompatActivity {
     }
 
 
-
-
+    @Override
+    public void onBackPressed() {
+        Intent i = new Intent(getApplicationContext(), ListOfStudentsActivity.class);
+        startActivity(i);
+        finishAffinity();
+    }
 }

@@ -74,9 +74,10 @@ public class ListOfStudentsActivity extends AppCompatActivity{
 
                 Intent myIntent = new Intent(ListOfStudentsActivity.this,
                         DetailStudentActivity.class);
-                myIntent.putExtra("Prenom", etudiant.get(0).getFirstName());
-                myIntent.putExtra("Nom", etudiant.get(0).getLastName());
-                myIntent.putExtra("Adresse", etudiant.get(0).getAddress());
+                myIntent.putExtra(getResources().getString(R.string.firstName), etudiant.get(0).getFirstName());
+                myIntent.putExtra(getResources().getString(R.string.lastName), etudiant.get(0).getLastName());
+                myIntent.putExtra(getResources().getString(R.string.address), etudiant.get(0).getAddress());
+                myIntent.putExtra("id",etudiant.get(0).getUid());
 
                 //ajouter le nom de la classe
 

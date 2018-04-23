@@ -43,11 +43,15 @@
             android:name=".LanguageActivity"
             android:label="@string/lang"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".AboutActivity"></activity>
+        <activity android:name=".AboutActivity" />
         <activity
             android:name=".DetailStudentActivity"
             android:label="@string/details"
             android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".EditStudentActivity"
+            android:label="@string/edit"
+            android:theme="@style/AppTheme.NoActionBar" />
+
     </application>
 
 </manifest>

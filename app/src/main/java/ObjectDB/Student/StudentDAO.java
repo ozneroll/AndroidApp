@@ -2,6 +2,7 @@ package ObjectDB.Student;
 
 import android.arch.persistence.room.Dao;
 import android.arch.persistence.room.Delete;
+import android.arch.persistence.room.Ignore;
 import android.arch.persistence.room.Insert;
 import android.arch.persistence.room.Query;
 import android.arch.persistence.room.Update;
@@ -17,14 +18,18 @@ import io.reactivex.Flowable;
 
 @Dao
 public interface StudentDAO {
-    @Query("SELECT * FROM Student")
+    @Query("SELECT * FROM Student ORDER BY FirstName")
     Flowable<List<Student>> getAll();
 
-    @Query("SELECT * FROM Student")
+    @Query("SELECT * FROM Student ORDER BY FirstName")
     List<Student> getAllAsList();
 
-    @Query("SELECT * FROM Student WHERE uid IN (:userIds)")
+    @Query("SELECT * FROM Student WHERE uid IN (:userIds) ")
     List<Student> loadAllByIds(int[] userIds);
+
+    @Ignore
+    @Query("SELECT uid FROM Student WHERE uid LIKE :uid")
+    Student loadStudentById(int uid);
 
     @Query("SELECT * FROM Student WHERE firstName LIKE :first AND "
             + "lastName LIKE :last LIMIT 1")

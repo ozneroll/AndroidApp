@@ -16,6 +16,7 @@ public class DetailStudentActivity extends AppCompatActivity {
     private TextView txtLastName;
     private TextView txtAddress;
     private TextView txtClass;
+    private int id;
 
    @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,11 +33,10 @@ public class DetailStudentActivity extends AppCompatActivity {
        txtAddress = (TextView) findViewById(R.id.txtAddress);
      //  txtClass = (TextView) findViewById(R.id.txtClass);
 
-       txtLastName.setText(getIntent().getStringExtra("Nom"));
-       txtFirstName.setText(getIntent().getStringExtra("Prenom"));
-       txtAddress.setText(getIntent().getStringExtra("Adresse"));
-
-
+       txtLastName.setText(getIntent().getStringExtra(getResources().getString(R.string.lastName)));
+       txtFirstName.setText(getIntent().getStringExtra(getResources().getString(R.string.firstName)));
+       txtAddress.setText(getIntent().getStringExtra(getResources().getString(R.string.address)));
+       id = getIntent().getIntExtra("id",1);
 
     }
 
@@ -64,7 +64,12 @@ public class DetailStudentActivity extends AppCompatActivity {
                 break;
 
             case R.id.btnEdit:
-                Intent intent3 = new Intent(this, EditText.class);
+
+                Intent intent3 = new Intent(this, EditStudentActivity.class);
+                intent3.putExtra(getResources().getString(R.string.lastName), txtLastName.getText());
+                intent3.putExtra(getResources().getString(R.string.firstName), txtFirstName.getText());
+                intent3.putExtra(getResources().getString(R.string.address),txtAddress.getText());
+                intent3.putExtra("id",id);
                 startActivity(intent3);
 
             default:

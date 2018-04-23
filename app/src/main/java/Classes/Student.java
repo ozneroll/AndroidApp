@@ -20,6 +20,7 @@ public class Student {
     @ColumnInfo(name = "uid")
     private int uid;
 
+
     @ColumnInfo(name = "lastName")
     private String lastName;
 
@@ -29,10 +30,6 @@ public class Student {
     @ColumnInfo(name = "address")
     private String address;
 
-
-    public void setClasse(String classe) {
-        this.classe = classe;
-    }
 
     @ColumnInfo(name = "class")
     private String classe;
@@ -49,6 +46,11 @@ public class Student {
         this.lastName = lastName;
         this.firstName = firstName;
         this.address = address;
+    }
+
+
+    public void setClasse(String classe) {
+        this.classe = classe;
     }
 
     public int getUid() {

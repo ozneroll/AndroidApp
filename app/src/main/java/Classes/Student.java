@@ -7,19 +7,19 @@ import android.arch.persistence.room.Ignore;
 import android.arch.persistence.room.PrimaryKey;
 
 import io.reactivex.annotations.NonNull;
+import io.reactivex.annotations.Nullable;
 
 /**
  * Created by loren on 17.04.2018.
  */
-/*, foreignKeys = @ForeignKey(entity = Class.class, parentColumns = "id", childColumns = "class"*/
-@Entity(tableName = "Student")
+
+@Entity(tableName = "Student", foreignKeys = @ForeignKey(entity = Class.class, parentColumns = "idclass", childColumns = "idclass"))
 public class Student {
 
     @NonNull
     @PrimaryKey(autoGenerate = true)
     @ColumnInfo(name = "uid")
     private int uid;
-
 
     @ColumnInfo(name = "lastName")
     private String lastName;
@@ -30,10 +30,8 @@ public class Student {
     @ColumnInfo(name = "address")
     private String address;
 
-
-    @ColumnInfo(name = "class")
-    private String classe;
-
+    @ColumnInfo(name = "idclass")
+    private int idclass;
 
 
     public Student()
@@ -41,16 +39,17 @@ public class Student {
 
     }
     @Ignore
-    public Student(String lastName, String firstName, String address)
+    public Student(String lastName, String firstName, String address, int idclass)
     {
         this.lastName = lastName;
         this.firstName = firstName;
         this.address = address;
+        this.idclass = idclass;
     }
 
 
-    public void setClasse(String classe) {
-        this.classe = classe;
+    public void setClasse(int idclasse) {
+        this.idclass = idclass;
     }
 
     public int getUid() {
@@ -85,10 +84,14 @@ public class Student {
         this.address = address;
     }
 
-    public String getClasse() {
-        return classe;
+
+    public int getIdclass() {
+        return idclass;
     }
 
+    public void setIdclass(int idclass) {
+        this.idclass = idclass;
+    }
     @Override
     public String toString()
     {

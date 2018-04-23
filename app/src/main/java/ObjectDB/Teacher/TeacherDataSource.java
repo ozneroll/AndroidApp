@@ -14,16 +14,16 @@ public class TeacherDataSource implements ITeacherDataSource {
     private TeacherDAO teacherDAO;
     private static TeacherDataSource mInstance;
 
-    public TeacherDataSource(TeacherDAO studentDAO)
+    public TeacherDataSource(TeacherDAO teacherDAO)
     {
-        this.teacherDAO = studentDAO;
+        this.teacherDAO = teacherDAO;
     }
 
-    public static TeacherDataSource getInstance(TeacherDAO studentDAO)
+    public static TeacherDataSource getInstance(TeacherDAO teacherDAO)
     {
         if(mInstance == null)
         {
-            mInstance = new TeacherDataSource(studentDAO);
+            mInstance = new TeacherDataSource(teacherDAO);
         }
         return mInstance;
     }
@@ -49,12 +49,12 @@ public class TeacherDataSource implements ITeacherDataSource {
     }
 
     @Override
-    public void update(Teacher... students) {
-        teacherDAO.update(students);
+    public void update(Teacher... teachers) {
+        teacherDAO.update(teachers);
     }
 
     @Override
-    public void insertAll(Teacher...students) {
+    public void insertAll(Teacher...teachers) {
         teacherDAO.insertAll();
     }
 

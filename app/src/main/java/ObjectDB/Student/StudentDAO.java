@@ -24,11 +24,15 @@ public interface StudentDAO {
     @Query("SELECT * FROM Student ORDER BY FirstName")
     List<Student> getAllAsList();
 
+
+    @Query("SELECT * FROM Student WHERE idclass LIKE :idclass ORDER BY FirstName")
+    List<Student> getAllListForOneClass(int idclass);
+
     @Query("SELECT * FROM Student WHERE uid IN (:userIds) ")
     List<Student> loadAllByIds(int[] userIds);
 
-    @Ignore
-    @Query("SELECT uid FROM Student WHERE uid LIKE :uid")
+
+    @Query("SELECT * FROM Student WHERE uid LIKE :uid")
     Student loadStudentById(int uid);
 
     @Query("SELECT * FROM Student WHERE firstName LIKE :first AND "

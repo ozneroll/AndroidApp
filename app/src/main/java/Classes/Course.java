@@ -6,58 +6,65 @@ import android.arch.persistence.room.ForeignKey;
 import android.arch.persistence.room.Ignore;
 import android.arch.persistence.room.PrimaryKey;
 
-import java.util.ArrayList;
-
 import io.reactivex.annotations.NonNull;
 
 /**
  * Created by loren on 17.04.2018.
  */
 
-@Entity(tableName = "Class")
-public class Class {
+@Entity(tableName = "Course", foreignKeys =
+@ForeignKey(entity = Module.class, parentColumns = "id",childColumns = "module"))
+public class Course {
 
     @NonNull
     @PrimaryKey(autoGenerate = true)
-    @ColumnInfo(name = "idclass")
-    private int idclass;
+    @ColumnInfo(name = "id")
+    private int id;
 
     @ColumnInfo(name = "name")
     private String name;
 
+    @ColumnInfo(name = "module")
+    private int id_module;
 
-    public Class(){
+    public Course(){
 
 
     }
-
 
     @Ignore
-    public Class( String name) {
+    public Course(String name, int id_module) {
         this.name = name;
+        this.id_module = id_module;
     }
 
-    public int getIdclass() {
-        return idclass;
+    public int getId() {
+        return id;
     }
 
     public String getName() {
         return name;
     }
 
-    public void setIdclass(int id) {
-        this.idclass = id;
+    public void setId(int id) {
+        this.id = id;
     }
 
     public void setName(String name) {
         this.name = name;
     }
 
+    public int getId_module() {
+        return id_module;
+    }
+
+    public void setId_module(int id_module) {
+        this.id_module = id_module;
+    }
+
     @Override
     public String toString()
     {
-        return this.getName();
+        return getName();
     }
-
-
 }

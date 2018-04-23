@@ -43,7 +43,7 @@ public class EditStudentActivity extends AppCompatActivity {
         txtAddress.setText(getIntent().getStringExtra(getResources().getString(R.string.address)));
         id = getIntent().getIntExtra("id",-1);
         etudiant = MainActivity.studentDB.sdtDao().loadStudentById(id);
-        System.out.println("----------------------------------------------------fdasioufpadfua "+id);
+
     }
 
 
@@ -72,6 +72,10 @@ public class EditStudentActivity extends AppCompatActivity {
                 break;
             case R.id.action_delete:
                 MainActivity.studentDB.sdtDao().delete(etudiant);
+                Intent intent3 = new Intent(EditStudentActivity.this,
+                        ListOfStudentsActivity.class);
+                startActivity(intent3);
+
                 break;
             case R.id.btnSave:
                 int error = 0;

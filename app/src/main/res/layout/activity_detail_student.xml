@@ -26,17 +26,14 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="20dp"
-        android:orientation="vertical"
-
-        >
+        android:orientation="vertical">
 
 
         <TextView
             android:id="@+id/txtFirstName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:ems="10"
-             />
+            android:ems="10" />
 
         <TextView
             android:id="@+id/txtLastName"
@@ -49,16 +46,14 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:text=""
-             />
+            android:text="" />
 
         <TextView
             android:id="@+id/txtClass"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:text=""
-            />
+            android:text="" />
 
 
     </LinearLayout>

@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:orientation="vertical"
     android:layout_height="match_parent"
     tools:context="com.schoolapp.schoolapp.ListOfClassesActivity">
 
@@ -13,91 +14,39 @@
 
         <android.support.v7.widget.Toolbar
             android:id="@+id/toolbar"
+            android:title="@string/classes"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             android:background="@color/colorAccent"
             app:popupTheme="@style/AppTheme.PopupOverlay" />
 
+        <com.miguelcatalan.materialsearchview.MaterialSearchView
+            android:id="@+id/search_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:searchBackground="@color/black"
+            app:searchSuggestionBackground="@color/black"
+            app:searchCloseIcon="@drawable/ic_action_navigation_close_inverted"
+            app:searchBackIcon="@drawable/ic_action_navigation_arrow_back_inverted"
+            app:searchSuggestionIcon="@drawable/ic_suggestion"
+            android:textColor="#FFFFFF"/>
+
     </android.support.design.widget.AppBarLayout>
 
-
-    <android.support.constraint.ConstraintLayout
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        tools:context="com.schoolapp.schoolapp.StudentsActivity">
+        android:orientation="vertical"
+        tools:context="com.schoolapp.schoolapp.ListOfTeachersActivity"
+        tools:layout_margin="20dp">
 
-        <EditText
-            android:id="@+id/editText"
-            android:layout_width="243dp"
-            android:layout_height="46dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="64dp"
-            android:ems="10"
-            android:inputType="text"
-            app:layout_constraintEnd_toStartOf="@+id/button"
-            app:layout_constraintHorizontal_bias="0.38"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+        <ListView
+            android:id="@+id/listitem"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
 
-        <Button
-            android:id="@+id/button"
-            android:layout_width="wrap_content"
-            android:layout_height="44dp"
-            android:layout_marginEnd="16dp"
-            android:text="Search"
-            app:layout_constraintBaseline_toBaselineOf="@+id/editText"
-            app:layout_constraintEnd_toEndOf="parent" />
+    </LinearLayout>
 
-        <TextView
-            android:id="@+id/textView"
-            android:layout_width="330dp"
-            android:layout_height="30dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="64dp"
-            android:text="601-F"
-            android:textSize="18sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/editText" />
 
-        <TextView
-            android:id="@+id/textView2"
-            android:layout_width="330dp"
-            android:layout_height="30dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="16dp"
-            android:text="601-D"
-            android:textSize="18sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView" />
 
-        <TextView
-            android:id="@+id/textView3"
-            android:layout_width="330dp"
-            android:layout_height="29dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="16dp"
-            android:text="602-F"
-            android:textSize="18sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView2" />
-
-    </android.support.constraint.ConstraintLayout>
-
-    <android.support.design.widget.FloatingActionButton
-        android:id="@+id/fab"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom|end"
-        android:layout_margin="@dimen/fab_margin"
-        android:tint="@android:color/black"
-        app:backgroundTint="@android:color/background_light"
-        app:srcCompat="@android:drawable/ic_input_add" />
-
-</android.support.design.widget.CoordinatorLayout>
+</LinearLayout>

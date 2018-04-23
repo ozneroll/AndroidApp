@@ -23,4 +23,5 @@
     <string name="search">Search</string>
     <string name="errorEmptyField">Empty Field</string>
     <string name="classe">Class</string>
+    <string name="name">Name</string>
 </resources>

@@ -25,9 +25,6 @@ public class Teacher {
     @ColumnInfo(name = "firstName")
     private String firstName;
 
-    @ColumnInfo(name = "address")
-    private String address;
-
 
     public void setClasse(String classe) {
         this.classe = classe;
@@ -43,11 +40,11 @@ public class Teacher {
 
     }
     @Ignore
-    public Teacher(String lastName, String firstName, String address)
+    public Teacher(String lastName, String firstName)
     {
         this.lastName = lastName;
         this.firstName = firstName;
-        this.address = address;
+
     }
 
     public int getUid() {
@@ -72,14 +69,6 @@ public class Teacher {
 
     public void setFirstName(String firstName) {
         this.firstName = firstName;
-    }
-
-    public String getAddress() {
-        return address;
-    }
-
-    public void setAddress(String address) {
-        this.address = address;
     }
 
     public String getClasse() {

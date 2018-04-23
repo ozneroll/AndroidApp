@@ -23,10 +23,10 @@ public interface ModuleDAO {
     @Query("SELECT * FROM Module")
     List<Module> getAllAsList();
 
-    @Query("SELECT * FROM Module WHERE uid IN (:userIds)")
-    List<Module> loadAllByIds(int[] userIds);
+    @Query("SELECT * FROM Module WHERE id IN (:Ids)")
+    List<Module> loadAllByIds(int[] Ids);
 
-    @Query("SELECT * FROM Module WHERE firstName LIKE :first LIMIT 1")
+    @Query("SELECT * FROM Module WHERE name LIKE :name LIMIT 1")
     Module findByName(String name);
 
     @Insert

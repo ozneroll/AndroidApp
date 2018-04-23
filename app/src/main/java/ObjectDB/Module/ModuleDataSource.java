@@ -17,16 +17,16 @@ public class ModuleDataSource implements IModuleDataSource {
     private ModuleDAO moduleDAO;
     private static ModuleDataSource mInstance;
 
-    public ModuleDataSource(ModuleDAO studentDAO)
+    public ModuleDataSource(ModuleDAO moduleDAO)
     {
-        this.moduleDAO = studentDAO;
+        this.moduleDAO = moduleDAO;
     }
 
-    public static ModuleDataSource getInstance(ModuleDAO studentDAO)
+    public static ModuleDataSource getInstance(ModuleDAO moduleDAO)
     {
         if(mInstance == null)
         {
-            mInstance = new ModuleDataSource(studentDAO);
+            mInstance = new ModuleDataSource(moduleDAO);
         }
         return mInstance;
     }

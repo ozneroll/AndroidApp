@@ -17,34 +17,47 @@ public class ClassRepository implements IClassDataSource {
 
     private static ClassRepository mInstance;
 
+    public ClassRepository(IClassDataSource mLocalDataSource) {
+        this.mLocalDataSource = mLocalDataSource;
+    }
+
+    public static ClassRepository getInstance(IClassDataSource mLocalDataSource)
+    {
+        if (mInstance == null)
+        {
+            mInstance = new ClassRepository(mLocalDataSource);
+        }
+        return mInstance;
+    }
+
 
     @Override
     public Flowable<List<Class>> getAll() {
-        return null;
+        return mLocalDataSource.getAll();
     }
 
     @Override
     public List<Class> getAllAsList() {
-        return null;
+        return mLocalDataSource.getAllAsList();
     }
 
     @Override
-    public List<Class> loadAllByIds(int[] userIds) {
-        return null;
+    public List<Class> loadAllByIds(int[] Ids) {
+        return mLocalDataSource.loadAllByIds(Ids);
     }
 
     @Override
-    public Class findByName(String first) {
-        return null;
+    public Class findByName(String name) {
+        return mLocalDataSource.findByName(name);
     }
 
     @Override
     public void insertAll(Class... classes) {
-
+        mLocalDataSource.insertAll(classes);
     }
 
     @Override
     public void delete(Class classe) {
-
+        mLocalDataSource.delete(classe);
     }
 }

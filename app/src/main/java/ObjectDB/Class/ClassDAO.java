@@ -18,24 +18,23 @@ import io.reactivex.Flowable;
 
 @Dao
 public interface ClassDAO {
+
     @Query("SELECT * FROM Class")
     Flowable<List<Class>> getAll();
 
     @Query("SELECT * FROM Class")
     List<Class> getAllAsList();
 
-    @Query("SELECT * FROM Class WHERE uid IN (:userIds)")
-    List<Class> loadAllByIds(int[] userIds);
+    @Query("SELECT * FROM Class WHERE idclass IN (:Ids)")
+    List<Class> loadAllByIds(int[] Ids);
 
-    @Query("SELECT * FROM Class WHERE firstName LIKE :first LIMIT 1")
-
-
+    @Query("SELECT * FROM Class WHERE name LIKE :name LIMIT 1")
     Class findByName(String name);
 
     @Insert
     void insertAll(Class... classes);
 
     @Delete
-    void delete(Class student);
+    void delete(Class classe);
 
 }

@@ -30,8 +30,7 @@ public class Module {
 
 
     @Ignore
-    public Module(int id, String name) {
-        this.id = id;
+    public Module( String name) {
         this.name = name;
     }
 
@@ -49,5 +48,11 @@ public class Module {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    @Override
+    public String toString()
+    {
+        return name ;
     }
 }

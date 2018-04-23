@@ -39,7 +39,8 @@
             android:layout_height="wrap_content"
             android:orientation="vertical"
             tools:context="com.schoolapp.schoolapp.StudentsActivity"
-            tools:layout_margin="20dp">
+            tools:layout_margin="20dp"
+            >
 
             <ListView
                 android:id="@+id/listitem"

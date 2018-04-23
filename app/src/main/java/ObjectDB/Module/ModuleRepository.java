@@ -17,25 +17,38 @@ public class ModuleRepository implements IModuleDataSource {
 
     private static ModuleRepository mInstance;
 
+    public ModuleRepository(IModuleDataSource mLocalDataSource) {
+        this.mLocalDataSource = mLocalDataSource;
+    }
+
+    public static ModuleRepository getInstance(IModuleDataSource mLocalDataSource)
+    {
+        if (mInstance == null)
+        {
+            mInstance = new ModuleRepository(mLocalDataSource);
+        }
+        return mInstance;
+    }
+
 
     @Override
     public Flowable<List<Module>> getAll() {
-        return null;
+        return mLocalDataSource.getAll();
     }
 
     @Override
     public List<Module> getAllAsList() {
-        return null;
+        return mLocalDataSource.getAllAsList();
     }
 
     @Override
-    public List<Module> loadAllByIds(int[] userIds) {
-        return null;
+    public List<Module> loadAllByIds(int[] Ids) {
+        return mLocalDataSource.loadAllByIds(Ids);
     }
 
     @Override
-    public Module findByName(String first) {
-        return null;
+    public Module findByName(String name) {
+        return mLocalDataSource.findByName(name);
     }
 
     @Override

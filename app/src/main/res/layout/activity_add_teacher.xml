@@ -20,44 +20,31 @@
             android:background="@color/colorAccent"
             app:popupTheme="@style/AppTheme.PopupOverlay" />
 
-        <com.miguelcatalan.materialsearchview.MaterialSearchView
-            android:id="@+id/search_view"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:searchBackground="@color/black"
-            app:searchSuggestionBackground="@color/black"
-            app:searchCloseIcon="@drawable/ic_action_navigation_close_inverted"
-            app:searchBackIcon="@drawable/ic_action_navigation_arrow_back_inverted"
-            app:searchSuggestionIcon="@drawable/ic_suggestion"
-            android:textColor="#FFFFFF"/>
 
     </android.support.design.widget.AppBarLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_margin="20dp"
         android:orientation="vertical"
-        tools:layout_margin="20dp"
-        tools:context="com.schoolapp.schoolapp.ListOfTeachersActivity">
+        >
 
-        <ListView
-            android:id="@+id/listitem"
+        <EditText
+            android:id="@+id/txtaddFirstName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            />
+            android:ems="10"
+            android:hint="@string/firstName"
+            android:inputType="textPostalAddress" />
 
-        <android.support.design.widget.FloatingActionButton
-            android:id="@+id/fab"
-            android:layout_width="wrap_content"
+        <EditText
+            android:id="@+id/txtaddLastName"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="end|bottom"
-            android:layout_margin="@dimen/fab_margin"
-            android:tint="@android:color/black"
-            app:backgroundTint="@android:color/background_light"
-            app:rippleColor="@android:color/background_light"
-            app:srcCompat="@android:drawable/ic_input_add" />
+            android:ems="10"
+            android:hint="@string/lastName"
+            android:inputType="textPostalAddress" />
+
     </LinearLayout>
-
-
-
 </LinearLayout>

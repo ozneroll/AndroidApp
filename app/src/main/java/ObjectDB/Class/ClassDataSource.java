@@ -43,8 +43,8 @@ public class ClassDataSource implements IClassDataSource {
     }
 
     @Override
-    public List<Class> loadAllByIds(int[] userIds) {
-        return classDAO.loadAllByIds(userIds);
+    public List<Class> loadAllByIds(int[] Ids) {
+        return classDAO.loadAllByIds(Ids);
     }
 
     @Override

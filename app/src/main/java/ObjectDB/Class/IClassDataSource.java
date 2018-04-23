@@ -14,7 +14,7 @@ public interface IClassDataSource {
 
     Flowable<List<Class>> getAll();
     List<Class> getAllAsList();
-    List<Class> loadAllByIds(int[] userIds);
+    List<Class> loadAllByIds(int[] Ids);
     Class findByName(String first);
     void insertAll(Class... classes);
     void delete(Class classe);

@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:orientation="vertical"
     android:layout_height="match_parent"
-    tools:context="com.schoolapp.schoolapp.ListOfModulesActivity">
+    tools:context="com.schoolapp.schoolapp.DetailCourseActivity">
 
     <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"
@@ -14,40 +14,38 @@
 
         <android.support.v7.widget.Toolbar
             android:id="@+id/toolbar"
-            android:title="@string/teachers"
+            android:title="@string/details"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             android:background="@color/colorAccent"
             app:popupTheme="@style/AppTheme.PopupOverlay" />
-
-        <com.miguelcatalan.materialsearchview.MaterialSearchView
-            android:id="@+id/search_view"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:searchBackground="@color/black"
-            app:searchSuggestionBackground="@color/black"
-            app:searchCloseIcon="@drawable/ic_action_navigation_close_inverted"
-            app:searchBackIcon="@drawable/ic_action_navigation_arrow_back_inverted"
-            app:searchSuggestionIcon="@drawable/ic_suggestion"
-            android:textColor="#FFFFFF"/>
 
     </android.support.design.widget.AppBarLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_margin="20dp"
         android:orientation="vertical"
-        tools:layout_margin="20dp"
-        tools:context="com.schoolapp.schoolapp.ListOfTeachersActivity">
 
-        <ListView
-            android:id="@+id/listitem"
+        >
+
+
+        <TextView
+            android:id="@+id/txtName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:ems="10"
             />
 
+        <TextView
+            android:id="@+id/txtModule"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10" />
+
+
+
     </LinearLayout>
-
-
 
 </LinearLayout>

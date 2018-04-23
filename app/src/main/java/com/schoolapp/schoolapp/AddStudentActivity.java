@@ -11,6 +11,10 @@ import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Spinner;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import Classes.Class;
 import Classes.Student;
 
 public class AddStudentActivity extends AppCompatActivity {
@@ -18,8 +22,11 @@ public class AddStudentActivity extends AppCompatActivity {
     private EditText txtFirstName;
     private EditText txtLastName;
     private EditText txtAddress;
+    private Spinner spinner;
+    private List<Class> classes;
+    private Class c;
 
-   @Override
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
        super.onCreate(savedInstanceState);
        setContentView(R.layout.activity_add_student);
@@ -30,11 +37,24 @@ public class AddStudentActivity extends AppCompatActivity {
 
        getSupportActionBar().setTitle(getResources().getString(R.string.add));
 
+       classes = MainActivity.studentDB.classDAO().getAllAsList();
+
        txtFirstName = (EditText) findViewById(R.id.txtaddFirstName);
        txtLastName = (EditText) findViewById(R.id.txtaddLastName);
        txtAddress = (EditText) findViewById(R.id.txtaddAddress);
 
+       spinner = (Spinner)findViewById(R.id.all_classes);
+       // Create an ArrayAdapter using the string array and a default spinner layout
+       ArrayAdapter<Class> adapter = new ArrayAdapter<Class>(this,android.R.layout.simple_spinner_item,classes);
+        // Specify the layout to use when the list of choices appears
+       adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        // Apply the adapter to the spinner
+       spinner.setAdapter(adapter);
+       c = (Class) spinner.getSelectedItem();
+
+
     }
+
 
 
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -74,7 +94,7 @@ public class AddStudentActivity extends AppCompatActivity {
                     error =1;
                 }
                 if (error == 0) {
-                    MainActivity.studentDB.sdtDao().insertAll(new Student(txtLastName.getText().toString(), txtFirstName.getText().toString(), txtAddress.getText().toString()));
+                    MainActivity.studentDB.sdtDao().insertAll(new Student(txtLastName.getText().toString(), txtFirstName.getText().toString(), txtAddress.getText().toString(),  c.getIdclass()));
                     Intent myIntent = new Intent(AddStudentActivity.this,
                             ListOfStudentsActivity.class);
                     startActivity(myIntent);

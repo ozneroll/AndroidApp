@@ -20,7 +20,7 @@ public class DetailStudentActivity extends AppCompatActivity {
    @Override
     protected void onCreate(Bundle savedInstanceState) {
        super.onCreate(savedInstanceState);
-       setContentView(R.layout.activity_add_student);
+       setContentView(R.layout.activity_detail_student);
 
        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
        setSupportActionBar(toolbar);
@@ -30,7 +30,12 @@ public class DetailStudentActivity extends AppCompatActivity {
        txtFirstName = (TextView) findViewById(R.id.txtFirstName);
        txtLastName = (TextView) findViewById(R.id.txtLastName);
        txtAddress = (TextView) findViewById(R.id.txtAddress);
-       txtClass = (TextView) findViewById(R.id.txtClass);
+     //  txtClass = (TextView) findViewById(R.id.txtClass);
+
+       txtLastName.setText(getIntent().getStringExtra("Nom"));
+       txtFirstName.setText(getIntent().getStringExtra("Prenom"));
+       txtAddress.setText(getIntent().getStringExtra("Adresse"));
+
 
 
     }

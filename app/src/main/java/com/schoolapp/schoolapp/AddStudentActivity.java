@@ -11,6 +11,8 @@ import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Spinner;
 
+import Classes.Student;
+
 public class AddStudentActivity extends AppCompatActivity {
 
     private EditText txtFirstName;
@@ -56,6 +58,29 @@ public class AddStudentActivity extends AppCompatActivity {
                 Intent intent2 = new Intent(this, AboutActivity.class);
                 startActivity(intent2);
                 break;
+            case R.id.btnSave:
+                int error = 0;
+                if( txtFirstName.getText().toString().length() == 0 ) {
+                    txtFirstName.setError("First name is required!");
+                    error =1;
+                }
+                if( txtLastName.getText().toString().length() == 0 ) {
+                    txtLastName.setError("Last name is required!");
+                    error =1;
+                }
+
+                if( txtAddress.getText().toString().length() == 0 ) {
+                    txtAddress.setError("Address is required!");
+                    error =1;
+                }
+                if (error == 0) {
+                    MainActivity.studentDB.sdtDao().insertAll(new Student(txtLastName.getText().toString(), txtFirstName.getText().toString(), txtAddress.getText().toString()));
+                    Intent myIntent = new Intent(AddStudentActivity.this,
+                            ListOfStudentsActivity.class);
+                    startActivity(myIntent);
+                }
+                break;
+
 
             default:
                 break;

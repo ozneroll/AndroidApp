@@ -9,6 +9,7 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
@@ -59,6 +60,30 @@ public class ListOfStudentsActivity extends AppCompatActivity{
         studentRepository = StudentRepository.getInstance(StudentDataSource.getInstance(MainActivity.studentDB.sdtDao()));
 
         loadData();
+
+
+        listStudents.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+
+                Student _temp = studentList.get(i);
+                int id = _temp.getUid();
+
+
+                List<Student> etudiant = MainActivity.studentDB.sdtDao().loadAllByIds(new int[] {id} );
+
+                Intent myIntent = new Intent(ListOfStudentsActivity.this,
+                        DetailStudentActivity.class);
+                myIntent.putExtra("Prenom", etudiant.get(0).getFirstName());
+                myIntent.putExtra("Nom", etudiant.get(0).getLastName());
+                myIntent.putExtra("Adresse", etudiant.get(0).getAddress());
+
+                //ajouter le nom de la classe
+
+                startActivity(myIntent);
+
+            }
+        });
 
 
         searchView = (MaterialSearchView)findViewById(R.id.search_view);
@@ -127,6 +152,8 @@ public class ListOfStudentsActivity extends AppCompatActivity{
 
 
 
+
+
     }
 
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -190,5 +217,8 @@ public class ListOfStudentsActivity extends AppCompatActivity{
         studentList.addAll(students);
         adapter.notifyDataSetChanged();
     }
+
+
+
 
 }

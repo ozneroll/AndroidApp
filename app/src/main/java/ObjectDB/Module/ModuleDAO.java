@@ -1,0 +1,38 @@
+package ObjectDB.Module;
+
+import android.arch.persistence.room.Dao;
+import android.arch.persistence.room.Delete;
+import android.arch.persistence.room.Insert;
+import android.arch.persistence.room.Query;
+
+import java.util.List;
+
+
+import Classes.Module;
+import io.reactivex.Flowable;
+
+/**
+ * Created by loren on 17.04.2018.
+ */
+
+@Dao
+public interface ModuleDAO {
+    @Query("SELECT * FROM Module")
+    Flowable<List<Module>> getAll();
+
+    @Query("SELECT * FROM Module")
+    List<Module> getAllAsList();
+
+    @Query("SELECT * FROM Module WHERE uid IN (:userIds)")
+    List<Module> loadAllByIds(int[] userIds);
+
+    @Query("SELECT * FROM Module WHERE firstName LIKE :first LIMIT 1")
+    Module findByName(String name);
+
+    @Insert
+    void insertAll(Module... modules);
+
+    @Delete
+    void delete(Module student);
+
+}

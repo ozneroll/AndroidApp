@@ -19,7 +19,7 @@ import ObjectDB.Student.StudentDAO;
  * Created by loren on 17.04.2018.
  */
 
-@Database(entities = {Student.class,  Class.class, Teacher.class, /* Course.class, Module.class */ }, version = 1)
+@Database(entities = {Student.class /*,  Class.class, Teacher.class, /* Course.class, Module.class */ }, version = 1)
 public abstract class AppDatabase extends RoomDatabase {
 
     public static final int DATABASE_VERSION = 1;

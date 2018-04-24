@@ -45,10 +45,9 @@ public class DetailStudentActivity extends AppCompatActivity {
        idClass = getIntent().getIntExtra("idClasse",-1);
        Class c = MainActivity.studentDB.classDAO().loadClassById(idClass);
        txtClass.setText(c.getName());
-
     }
 
-
+    //creating the menu
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.menu_settings, menu);
@@ -58,7 +57,7 @@ public class DetailStudentActivity extends AppCompatActivity {
         return true;
     }
 
-
+    //actions on the menu
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
@@ -83,16 +82,16 @@ public class DetailStudentActivity extends AppCompatActivity {
             default:
                 break;
         }
-
         return true;
     }
 
-
+    //back to the list, finish the activity
     @Override
     public void onBackPressed() {
         Intent myIntent = new Intent(DetailStudentActivity.this,
                 ListOfStudentsActivity.class);
         startActivity(myIntent);
+        finish();
     }
 
 }

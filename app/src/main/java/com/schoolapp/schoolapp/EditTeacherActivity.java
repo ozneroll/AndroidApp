@@ -17,7 +17,6 @@ public class EditTeacherActivity extends AppCompatActivity {
 
     private EditText txtFirstName;
     private EditText txtLastName;
-    private EditText txtAddress;
     private int id;
     public Teacher teacher = new Teacher() ;
 
@@ -33,7 +32,6 @@ public class EditTeacherActivity extends AppCompatActivity {
 
         txtFirstName = (EditText) findViewById(R.id.txtEditFirstName);
         txtLastName = (EditText) findViewById(R.id.txtEditLastName);
-        //  txtClass = (TextView) findViewById(R.id.txtClass);
 
         txtLastName.setText(getIntent().getStringExtra(getResources().getString(R.string.lastName)));
         txtFirstName.setText(getIntent().getStringExtra(getResources().getString(R.string.firstName)));
@@ -42,7 +40,7 @@ public class EditTeacherActivity extends AppCompatActivity {
 
     }
 
-
+    //creating the menu
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.menu_settings, menu);
@@ -53,7 +51,7 @@ public class EditTeacherActivity extends AppCompatActivity {
         return true;
     }
 
-
+    //actions on the menu
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
 
@@ -104,5 +102,13 @@ public class EditTeacherActivity extends AppCompatActivity {
         }
 
         return true;
+    }
+
+    //finish the activity
+    @Override
+    protected void onStop()
+    {
+        super.onStop();
+        finish();
     }
 }

@@ -8,14 +8,15 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import Classes.Class;
 import Classes.Teacher;
 
 public class AddClassActivity extends AppCompatActivity {
 
-    private EditText txtClassName;
 
+    private EditText txtClassName;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,7 +32,7 @@ public class AddClassActivity extends AppCompatActivity {
 
     }
 
-
+    //creating the menu
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.menu_settings, menu);
@@ -42,6 +43,7 @@ public class AddClassActivity extends AppCompatActivity {
     }
 
 
+    //settings and about
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
@@ -54,6 +56,7 @@ public class AddClassActivity extends AppCompatActivity {
                 startActivity(intent2);
                 break;
 
+            //check if values are filled, then validate and redirect to list
             case R.id.btnSave:
                 int error = 0;
                 if (txtClassName.getText().toString().length() == 0) {
@@ -63,6 +66,8 @@ public class AddClassActivity extends AppCompatActivity {
 
                 if (error == 0) {
                     MainActivity.studentDB.classDAO().insertAll(new Class(txtClassName.getText().toString()));
+                    //confirmation for the user
+                    Toast.makeText(getApplicationContext(), getResources().getString(R.string.ajout), Toast.LENGTH_LONG).show();
                     Intent myIntent = new Intent(AddClassActivity.this,
                             ListOfClassesActivity.class);
                     startActivity(myIntent);
@@ -75,6 +80,14 @@ public class AddClassActivity extends AppCompatActivity {
         }
 
         return true;
+    }
+
+    //finish the activity
+    @Override
+    protected void onStop()
+    {
+        super.onStop();
+        finish();
     }
 
 }

@@ -10,6 +10,7 @@ import android.view.MenuItem;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -24,6 +25,7 @@ public class AddStudentActivity extends AppCompatActivity {
     private EditText txtAddress;
     private Spinner spinner;
     private List<Class> classes;
+    private ArrayAdapter<Class> adapter;
     private Class c;
 
     @Override
@@ -44,14 +46,13 @@ public class AddStudentActivity extends AppCompatActivity {
        txtAddress = (EditText) findViewById(R.id.txtaddAddress);
 
        spinner = (Spinner)findViewById(R.id.all_classes);
+
        // Create an ArrayAdapter using the string array and a default spinner layout
-       ArrayAdapter<Class> adapter = new ArrayAdapter<Class>(this,android.R.layout.simple_spinner_item,classes);
+       adapter = new ArrayAdapter<Class>(this,android.R.layout.simple_spinner_item,classes);
         // Specify the layout to use when the list of choices appears
        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         // Apply the adapter to the spinner
-       spinner.setAdapter(adapter);
-       c = (Class) spinner.getSelectedItem();
-
+        spinner.setAdapter(adapter);
 
     }
 
@@ -78,6 +79,8 @@ public class AddStudentActivity extends AppCompatActivity {
                 Intent intent2 = new Intent(this, AboutActivity.class);
                 startActivity(intent2);
                 break;
+
+                //check the values, then save the entry
             case R.id.btnSave:
                 int error = 0;
                 if( txtFirstName.getText().toString().length() == 0 ) {
@@ -94,13 +97,17 @@ public class AddStudentActivity extends AppCompatActivity {
                     error =1;
                 }
                 if (error == 0) {
+                    //get selected class
+                    c = (Class) spinner.getSelectedItem();
+                    //insert
                     MainActivity.studentDB.sdtDao().insertAll(new Student(txtLastName.getText().toString(), txtFirstName.getText().toString(), txtAddress.getText().toString(),  c.getIdclass()));
+                    //confirmation for the user
+                    Toast.makeText(getApplicationContext(), getResources().getString(R.string.ajout), Toast.LENGTH_LONG).show();
                     Intent myIntent = new Intent(AddStudentActivity.this,
                             ListOfStudentsActivity.class);
                     startActivity(myIntent);
                 }
                 break;
-
 
             default:
                 break;
@@ -109,7 +116,12 @@ public class AddStudentActivity extends AppCompatActivity {
         return true;
     }
 
-
-
+    //finish the activity
+    @Override
+    protected void onStop()
+    {
+        super.onStop();
+        finish();
+    }
 
 }

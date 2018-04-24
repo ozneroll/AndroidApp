@@ -72,7 +72,7 @@ public class ListOfTeachersActivity extends AppCompatActivity {
                 int id = _temp.getUid();
 
 
-                List<Teacher> prof = MainActivity.studentDB.teacherDAO().loadAllByIds(new int[] {id} );
+                List<Teacher> prof = MainActivity.studentDB.teacherDAO().loadAllByIds(new int[]{id});
 
                 Intent myIntent = new Intent(ListOfTeachersActivity.this,
                         DetailTeacherActivity.class);
@@ -86,7 +86,7 @@ public class ListOfTeachersActivity extends AppCompatActivity {
         });
 
 
-        searchView = (MaterialSearchView)findViewById(R.id.search_view);
+        searchView = (MaterialSearchView) findViewById(R.id.search_view);
         searchView.setOnSearchViewListener(new MaterialSearchView.SearchViewListener() {
             @Override
             public void onSearchViewShown() {
@@ -110,16 +110,15 @@ public class ListOfTeachersActivity extends AppCompatActivity {
 
             @Override
             public boolean onQueryTextChange(String newText) {
-                if(newText !=null && !newText.isEmpty()){
+                if (newText != null && !newText.isEmpty()) {
                     List<Teacher> lstFound = new ArrayList<Teacher>();
-                    for(Teacher item:teacherList){
-                        if(item.getLastName().contains(newText))
+                    for (Teacher item : teacherList) {
+                        if (item.getLastName().contains(newText))
                             lstFound.add(item);
                     }
                     ArrayAdapter adapter = new ArrayAdapter(ListOfTeachersActivity.this, android.R.layout.simple_list_item_1, lstFound);
                     listTeachers.setAdapter(adapter);
-                }
-                else{
+                } else {
 
                     ArrayAdapter adapter = new ArrayAdapter(ListOfTeachersActivity.this, android.R.layout.simple_list_item_1, teacherList);
                     listTeachers.setAdapter(adapter);
@@ -131,27 +130,24 @@ public class ListOfTeachersActivity extends AppCompatActivity {
         });
 
 
-
         fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
 
 
             public void onClick(View arg0) {
 
-                // Start NewActivity.class
                 Intent myIntent = new Intent(ListOfTeachersActivity.this,
                         AddTeacherActivity.class);
                 startActivity(myIntent)
-                ;}
+                ;
+            }
 
         });
 
 
-
-
-
     }
 
+    //creating the menu
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.menu_settings, menu);
@@ -160,7 +156,7 @@ public class ListOfTeachersActivity extends AppCompatActivity {
         return true;
     }
 
-
+    //actions on the menu
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
@@ -181,9 +177,7 @@ public class ListOfTeachersActivity extends AppCompatActivity {
     }
 
 
-
     public void onClick(View v) {
-        // Start NewActivity.class
         Intent myIntent = new Intent(ListOfTeachersActivity.this,
                 DetailTeacherActivity.class);
         startActivity(myIntent);
@@ -202,7 +196,7 @@ public class ListOfTeachersActivity extends AppCompatActivity {
                         new Consumer<Throwable>() {
                             @Override
                             public void accept(Throwable throwable) throws Exception {
-                                Toast.makeText(ListOfTeachersActivity.this,""+throwable.getMessage() , Toast.LENGTH_SHORT).show();
+                                Toast.makeText(ListOfTeachersActivity.this, "" + throwable.getMessage(), Toast.LENGTH_SHORT).show();
                             }
                         });
         compositeDisposable.add(disposable);
@@ -214,6 +208,7 @@ public class ListOfTeachersActivity extends AppCompatActivity {
         adapter.notifyDataSetChanged();
     }
 
+    //redirect to MainActivity when back button is pressed
     @Override
     public void onBackPressed() {
         Intent myIntent = new Intent(ListOfTeachersActivity.this,

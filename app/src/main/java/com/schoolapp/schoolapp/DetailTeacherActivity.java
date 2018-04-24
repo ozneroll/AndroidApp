@@ -35,7 +35,7 @@ public class DetailTeacherActivity extends AppCompatActivity {
 
     }
 
-
+    //creating the menu
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.menu_settings, menu);
@@ -45,7 +45,7 @@ public class DetailTeacherActivity extends AppCompatActivity {
         return true;
     }
 
-
+    //actions on the menu
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
@@ -73,12 +73,13 @@ public class DetailTeacherActivity extends AppCompatActivity {
         return true;
     }
 
-
+    //back to the list, finish the activity
     @Override
     public void onBackPressed() {
         Intent myIntent = new Intent(DetailTeacherActivity.this,
                 ListOfTeachersActivity.class);
         startActivity(myIntent);
+        finish();
     }
 
 }

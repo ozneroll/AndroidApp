@@ -55,7 +55,6 @@ public class EditStudentActivity extends AppCompatActivity {
 
         classes = MainActivity.studentDB.classDAO().getAllAsList();
         spinner = (Spinner)findViewById(R.id.all_classes);
-      //  spinner.setSelection(((ArrayAdapter<Class>)spinner.getAdapter()).getPosition(c));
 
         // Create an ArrayAdapter using the string array and a default spinner layout
         ArrayAdapter<Class> adapter = new ArrayAdapter<Class>(this,android.R.layout.simple_spinner_item,classes);
@@ -67,7 +66,7 @@ public class EditStudentActivity extends AppCompatActivity {
 
     }
 
-
+    //creating the menu
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.menu_settings, menu);
@@ -78,7 +77,7 @@ public class EditStudentActivity extends AppCompatActivity {
         return true;
     }
 
-
+    //actions on the menu
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
 
@@ -138,5 +137,12 @@ public class EditStudentActivity extends AppCompatActivity {
         }
 
         return true;
+    }
+    //finish the activity
+    @Override
+    protected void onStop()
+    {
+        super.onStop();
+        finish();
     }
 }

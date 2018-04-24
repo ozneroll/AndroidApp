@@ -24,13 +24,13 @@ public class LanguageActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_language);
 
-        Toolbar toolbar = (android.support.v7.widget.Toolbar) findViewById(R.id.toolbar);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setTitle(getResources().getString(R.string.lang));
     }
 
 
-//Button pour passer en FR
+    //Button to pass in FR
 
     public void changeToFR(View v)
     {
@@ -48,7 +48,7 @@ public class LanguageActivity extends AppCompatActivity {
 
     }
 
-    //Button pour passer en ALL
+    //Button to pass in ALL
 
     public void changeToALL(View v)
     {
@@ -65,7 +65,7 @@ public class LanguageActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    //Button pour passer en ENG
+    //Button to pass in ENG
 
     public void changeToEN(View v)
     {
@@ -82,6 +82,7 @@ public class LanguageActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+    //creating the menu
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
@@ -94,6 +95,7 @@ public class LanguageActivity extends AppCompatActivity {
         return true;
     }
 
+    //actions the menu
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
@@ -113,6 +115,7 @@ public class LanguageActivity extends AppCompatActivity {
         return true;
     }
 
+    //redirect to MainActivity when back button is pressed
     @Override
     public void onBackPressed() {
         Intent i = new Intent(getApplicationContext(), MainActivity.class);

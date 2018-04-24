@@ -32,19 +32,15 @@ public class DetailCourseActivity extends AppCompatActivity {
 
         txtName = (TextView) findViewById(R.id.txtName);
         txtModule = (TextView) findViewById(R.id.txtModule);
-        
-        //  txtClass = (TextView) findViewById(R.id.txtClass);
 
         txtName.setText(getIntent().getStringExtra("Cours"));
         int id = getIntent().getIntExtra("IdModule", -1);
-        System.out.print("--------------------------------------------------------"+id);
         List<Module> m = MainActivity.studentDB.moduleDAO().loadAllByIds(new int[]{id});
-
         txtModule.setText(m.get(0).getName());
 
     }
 
-
+    //creating the menu
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.menu_settings, menu);
@@ -53,7 +49,7 @@ public class DetailCourseActivity extends AppCompatActivity {
         return true;
     }
 
-
+    //actions on the menu
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
@@ -72,10 +68,15 @@ public class DetailCourseActivity extends AppCompatActivity {
 
         return true;
     }
+
+    //back to the list, finish the activity
     @Override
     public void onBackPressed() {
         Intent myIntent = new Intent(DetailCourseActivity.this,
                 ListOfCoursesActivity.class);
         startActivity(myIntent);
+        finish();
     }
+
+
 }

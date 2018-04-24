@@ -38,7 +38,7 @@ public class EditClassActivity extends AppCompatActivity {
 
     }
 
-
+    //creating the menu
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.menu_settings, menu);
@@ -49,7 +49,7 @@ public class EditClassActivity extends AppCompatActivity {
         return true;
     }
 
-
+    //actions on the menu
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
 
@@ -94,5 +94,12 @@ public class EditClassActivity extends AppCompatActivity {
         }
 
         return true;
+    }
+    //finish the activity
+    @Override
+    protected void onStop()
+    {
+        super.onStop();
+        finish();
     }
 }

@@ -35,11 +35,9 @@ public class DetailModuleActivity extends AppCompatActivity {
 
         txtName = (TextView) findViewById(R.id.txtName);
         listCourses = (ListView)findViewById(R.id.listCourses);
-
-
         txtName.setText(getIntent().getStringExtra("nomModule"));
+        //get list of courses
         List<Course> courses = MainActivity.studentDB.courseDAO().getAllListForOneModule(id);
-
 
         ArrayAdapter<Course> adapter = new ArrayAdapter<Course>(DetailModuleActivity.this,
                 android.R.layout.simple_list_item_1, courses);
@@ -47,7 +45,7 @@ public class DetailModuleActivity extends AppCompatActivity {
 
     }
 
-
+    //creating the menu
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.menu_settings, menu);
@@ -56,7 +54,7 @@ public class DetailModuleActivity extends AppCompatActivity {
         return true;
     }
 
-
+    //actions on the menu
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
@@ -75,5 +73,14 @@ public class DetailModuleActivity extends AppCompatActivity {
         }
 
         return true;
+    }
+
+    //back to the list, finish the activity
+    @Override
+    public void onBackPressed() {
+        Intent myIntent = new Intent(DetailModuleActivity.this,
+                ListOfModulesActivity.class);
+        startActivity(myIntent);
+        finish();
     }
 }

@@ -42,7 +42,6 @@ public class ListOfModulesActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
 
 
-
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list_of_modules);
 
@@ -71,7 +70,7 @@ public class ListOfModulesActivity extends AppCompatActivity {
                 int id = _temp.getId();
 
 
-                List<Module> modules = MainActivity.studentDB.moduleDAO().loadAllByIds(new int[] {id} );
+                List<Module> modules = MainActivity.studentDB.moduleDAO().loadAllByIds(new int[]{id});
 
                 Intent myIntent = new Intent(ListOfModulesActivity.this,
                         DetailModuleActivity.class);
@@ -84,7 +83,7 @@ public class ListOfModulesActivity extends AppCompatActivity {
         });
 
 
-        searchView = (MaterialSearchView)findViewById(R.id.search_view);
+        searchView = (MaterialSearchView) findViewById(R.id.search_view);
         searchView.setOnSearchViewListener(new MaterialSearchView.SearchViewListener() {
             @Override
             public void onSearchViewShown() {
@@ -108,16 +107,15 @@ public class ListOfModulesActivity extends AppCompatActivity {
 
             @Override
             public boolean onQueryTextChange(String newText) {
-                if(newText !=null && !newText.isEmpty()){
+                if (newText != null && !newText.isEmpty()) {
                     List<Module> lstFound = new ArrayList<Module>();
-                    for(Module item:moduleList){
-                        if(item.getName().contains(newText))
+                    for (Module item : moduleList) {
+                        if (item.getName().contains(newText))
                             lstFound.add(item);
                     }
                     ArrayAdapter adapter = new ArrayAdapter(ListOfModulesActivity.this, android.R.layout.simple_list_item_1, lstFound);
                     listModules.setAdapter(adapter);
-                }
-                else{
+                } else {
 
                     ArrayAdapter adapter = new ArrayAdapter(ListOfModulesActivity.this, android.R.layout.simple_list_item_1, moduleList);
                     listModules.setAdapter(adapter);
@@ -129,15 +127,9 @@ public class ListOfModulesActivity extends AppCompatActivity {
         });
 
 
-
-
-
-
-
-
-
     }
 
+    //creating the menu
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.menu_settings, menu);
@@ -146,7 +138,7 @@ public class ListOfModulesActivity extends AppCompatActivity {
         return true;
     }
 
-
+    //actions on the menu
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
@@ -165,7 +157,6 @@ public class ListOfModulesActivity extends AppCompatActivity {
 
         return true;
     }
-
 
 
     public void onClick(View v) {
@@ -188,7 +179,7 @@ public class ListOfModulesActivity extends AppCompatActivity {
                         new Consumer<Throwable>() {
                             @Override
                             public void accept(Throwable throwable) throws Exception {
-                                Toast.makeText(ListOfModulesActivity.this,""+throwable.getMessage() , Toast.LENGTH_SHORT).show();
+                                Toast.makeText(ListOfModulesActivity.this, "" + throwable.getMessage(), Toast.LENGTH_SHORT).show();
                             }
                         });
         compositeDisposable.add(disposable);
@@ -199,6 +190,8 @@ public class ListOfModulesActivity extends AppCompatActivity {
         moduleList.addAll(teachers);
         adapter.notifyDataSetChanged();
     }
+
+    //redirect to MainActivity when back button is pressed
 
     @Override
     public void onBackPressed() {

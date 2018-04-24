@@ -30,4 +30,5 @@
     <string name="adresseRequise">Address is required</string>
     <string name="NomClasseRequis">Name of class is required</string>
     <string name="avril">April</string>
+    <string name="ajout">Added successfully</string>
 </resources>

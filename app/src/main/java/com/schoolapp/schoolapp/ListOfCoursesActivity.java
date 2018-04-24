@@ -135,15 +135,8 @@ public class ListOfCoursesActivity extends AppCompatActivity {
         });
 
 
-
-
-
-
-
-
-
     }
-
+    //creating the menu
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.menu_settings, menu);
@@ -152,7 +145,7 @@ public class ListOfCoursesActivity extends AppCompatActivity {
         return true;
     }
 
-
+    //actions on the menu
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
@@ -205,6 +198,8 @@ public class ListOfCoursesActivity extends AppCompatActivity {
         courseList.addAll(courses);
         adapter.notifyDataSetChanged();
     }
+
+    //redirect to MainActivity when back button is pressed
 
     @Override
     public void onBackPressed() {

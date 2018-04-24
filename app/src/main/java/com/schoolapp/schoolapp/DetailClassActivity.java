@@ -18,7 +18,6 @@ import Classes.Student;
 public class DetailClassActivity extends AppCompatActivity {
 
     private TextView txtName;
-    private TextView txtEt;
     private ListView listStudent;
     private int idClass;
 
@@ -36,17 +35,16 @@ public class DetailClassActivity extends AppCompatActivity {
        txtName = (TextView) findViewById(R.id.txtName);
        listStudent = (ListView)findViewById(R.id.listStudent);
 
-
        txtName.setText(getIntent().getStringExtra(getResources().getString(R.string.name)));
+
+       //list of students in the class
        List<Student> students = MainActivity.studentDB.sdtDao().getAllListForOneClass(idClass);
-
-
        ArrayAdapter<Student> adapter = new ArrayAdapter<Student>(DetailClassActivity.this,
                android.R.layout.simple_list_item_1, students);
        listStudent.setAdapter(adapter);
 
     }
-
+    //creating the menu
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.menu_settings, menu);
@@ -56,7 +54,7 @@ public class DetailClassActivity extends AppCompatActivity {
         return true;
     }
 
-
+    //actions on the menu
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
@@ -81,11 +79,13 @@ public class DetailClassActivity extends AppCompatActivity {
         return true;
     }
 
+    //back to the list, finish the activity
     @Override
     public void onBackPressed() {
         Intent myIntent = new Intent(DetailClassActivity.this,
                 ListOfClassesActivity.class);
         startActivity(myIntent);
+        finish();
     }
 
 

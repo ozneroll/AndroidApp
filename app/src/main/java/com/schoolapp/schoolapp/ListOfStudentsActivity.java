@@ -28,7 +28,7 @@ import io.reactivex.disposables.Disposable;
 import io.reactivex.functions.Consumer;
 import io.reactivex.schedulers.Schedulers;
 
-public class ListOfStudentsActivity extends AppCompatActivity{
+public class ListOfStudentsActivity extends AppCompatActivity {
     private ListView listStudents;
     private MaterialSearchView searchView;
     private FloatingActionButton fab;
@@ -39,7 +39,6 @@ public class ListOfStudentsActivity extends AppCompatActivity{
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-
 
 
         super.onCreate(savedInstanceState);
@@ -70,15 +69,15 @@ public class ListOfStudentsActivity extends AppCompatActivity{
                 int id = _temp.getUid();
 
 
-                List<Student> etudiant = MainActivity.studentDB.sdtDao().loadAllByIds(new int[] {id} );
+                List<Student> etudiant = MainActivity.studentDB.sdtDao().loadAllByIds(new int[]{id});
 
                 Intent myIntent = new Intent(ListOfStudentsActivity.this,
                         DetailStudentActivity.class);
                 myIntent.putExtra(getResources().getString(R.string.firstName), etudiant.get(0).getFirstName());
                 myIntent.putExtra(getResources().getString(R.string.lastName), etudiant.get(0).getLastName());
                 myIntent.putExtra(getResources().getString(R.string.address), etudiant.get(0).getAddress());
-                myIntent.putExtra("id",etudiant.get(0).getUid());
-                myIntent.putExtra("idClasse",etudiant.get(0).getIdclass());
+                myIntent.putExtra("id", etudiant.get(0).getUid());
+                myIntent.putExtra("idClasse", etudiant.get(0).getIdclass());
 
                 startActivity(myIntent);
 
@@ -86,7 +85,7 @@ public class ListOfStudentsActivity extends AppCompatActivity{
         });
 
 
-        searchView = (MaterialSearchView)findViewById(R.id.search_view);
+        searchView = (MaterialSearchView) findViewById(R.id.search_view);
         searchView.setOnSearchViewListener(new MaterialSearchView.SearchViewListener() {
             @Override
             public void onSearchViewShown() {
@@ -110,16 +109,15 @@ public class ListOfStudentsActivity extends AppCompatActivity{
 
             @Override
             public boolean onQueryTextChange(String newText) {
-                if(newText !=null && !newText.isEmpty()){
+                if (newText != null && !newText.isEmpty()) {
                     List<Student> lstFound = new ArrayList<Student>();
-                    for(Student item:studentList){
-                        if((item.getLastName().toLowerCase().contains(newText)||item.getFirstName().toLowerCase().contains(newText))||(item.getLastName().toUpperCase().contains(newText)||item.getFirstName().toUpperCase().contains(newText)))
-                                lstFound.add(item);
+                    for (Student item : studentList) {
+                        if ((item.getLastName().toLowerCase().contains(newText) || item.getFirstName().toLowerCase().contains(newText)) || (item.getLastName().toUpperCase().contains(newText) || item.getFirstName().toUpperCase().contains(newText)))
+                            lstFound.add(item);
                     }
                     ArrayAdapter adapter = new ArrayAdapter(ListOfStudentsActivity.this, android.R.layout.simple_list_item_1, lstFound);
                     listStudents.setAdapter(adapter);
-                }
-                else{
+                } else {
 
                     ArrayAdapter adapter = new ArrayAdapter(ListOfStudentsActivity.this, android.R.layout.simple_list_item_1, studentList);
                     listStudents.setAdapter(adapter);
@@ -131,31 +129,29 @@ public class ListOfStudentsActivity extends AppCompatActivity{
         });
 
 
-
         fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
 
-          /*  public void onClick(View view) {
-                MainActivity.studentDB.sdtDao().insertAll(new Student("Célia", "Ahmad", "Rive des Nombieux 33"));
-                MainActivity.studentDB.sdtDao().loadAllByIds(new int[1]);
-                loadData();
-*/
-         public void onClick(View arg0) {
+            /*  public void onClick(View view) {
+                  MainActivity.studentDB.sdtDao().insertAll(new Student("Célia", "Ahmad", "Rive des Nombieux 33"));
+                  MainActivity.studentDB.sdtDao().loadAllByIds(new int[1]);
+                  loadData();
+  */
+            public void onClick(View arg0) {
 
                 // Start NewActivity.class
                 Intent myIntent = new Intent(ListOfStudentsActivity.this,
                         AddStudentActivity.class);
                 startActivity(myIntent)
-                ;}
+                ;
+            }
 
         });
 
 
-
-
-
     }
 
+    //creating the menu
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.menu_settings, menu);
@@ -164,7 +160,7 @@ public class ListOfStudentsActivity extends AppCompatActivity{
         return true;
     }
 
-
+    //actions on the menu
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
@@ -183,7 +179,6 @@ public class ListOfStudentsActivity extends AppCompatActivity{
 
         return true;
     }
-
 
 
     public void onClick(View v) {
@@ -206,7 +201,7 @@ public class ListOfStudentsActivity extends AppCompatActivity{
                         new Consumer<Throwable>() {
                             @Override
                             public void accept(Throwable throwable) throws Exception {
-                                Toast.makeText(ListOfStudentsActivity.this,""+throwable.getMessage() , Toast.LENGTH_SHORT).show();
+                                Toast.makeText(ListOfStudentsActivity.this, "" + throwable.getMessage(), Toast.LENGTH_SHORT).show();
                             }
                         });
         compositeDisposable.add(disposable);
@@ -218,15 +213,13 @@ public class ListOfStudentsActivity extends AppCompatActivity{
         adapter.notifyDataSetChanged();
     }
 
-
-
+    //redirect to MainActivity when back button is pressed
     @Override
     public void onBackPressed() {
         Intent myIntent = new Intent(ListOfStudentsActivity.this,
                 MainActivity.class);
         startActivity(myIntent);
     }
-
 
 
 }

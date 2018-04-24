@@ -68,7 +68,6 @@ public class ListOfClassesActivity extends AppCompatActivity {
         loadData();
 
 
-
         listClasses.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
@@ -76,12 +75,11 @@ public class ListOfClassesActivity extends AppCompatActivity {
                 Class _temp = classList.get(i);
                 int id = _temp.getIdclass();
 
-                List<Class> classes = MainActivity.studentDB.classDAO().loadAllByIds(new int[] {id} );
+                List<Class> classes = MainActivity.studentDB.classDAO().loadAllByIds(new int[]{id});
                 Intent myIntent = new Intent(ListOfClassesActivity.this,
                         DetailClassActivity.class);
                 myIntent.putExtra((getResources().getString(R.string.name)), classes.get(0).getName());
-                myIntent.putExtra("id",classes.get(0).getIdclass());
-
+                myIntent.putExtra("id", classes.get(0).getIdclass());
 
                 startActivity(myIntent);
 
@@ -89,7 +87,7 @@ public class ListOfClassesActivity extends AppCompatActivity {
         });
 
 
-        searchView = (MaterialSearchView)findViewById(R.id.search_view);
+        searchView = (MaterialSearchView) findViewById(R.id.search_view);
         searchView.setOnSearchViewListener(new MaterialSearchView.SearchViewListener() {
             @Override
             public void onSearchViewShown() {
@@ -113,16 +111,15 @@ public class ListOfClassesActivity extends AppCompatActivity {
 
             @Override
             public boolean onQueryTextChange(String newText) {
-                if(newText !=null && !newText.isEmpty()){
+                if (newText != null && !newText.isEmpty()) {
                     List<Class> lstFound = new ArrayList<Class>();
-                    for(Class item:classList){
-                        if(item.getName().contains(newText))
+                    for (Class item : classList) {
+                        if (item.getName().contains(newText))
                             lstFound.add(item);
                     }
                     ArrayAdapter adapter = new ArrayAdapter(ListOfClassesActivity.this, android.R.layout.simple_list_item_1, lstFound);
                     listClasses.setAdapter(adapter);
-                }
-                else{
+                } else {
 
                     ArrayAdapter adapter = new ArrayAdapter(ListOfClassesActivity.this, android.R.layout.simple_list_item_1, classList);
                     listClasses.setAdapter(adapter);
@@ -148,12 +145,14 @@ public class ListOfClassesActivity extends AppCompatActivity {
                 Intent myIntent = new Intent(ListOfClassesActivity.this,
                         AddClassActivity.class);
                 startActivity(myIntent)
-                ;}
+                ;
+            }
 
         });
 
     }
 
+    //creating the menu
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.menu_settings, menu);
@@ -162,7 +161,7 @@ public class ListOfClassesActivity extends AppCompatActivity {
         return true;
     }
 
-
+    //actions on the menu
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
@@ -181,8 +180,6 @@ public class ListOfClassesActivity extends AppCompatActivity {
 
         return true;
     }
-
-
 
     public void onClick(View v) {
         // Start NewActivity.class
@@ -204,7 +201,7 @@ public class ListOfClassesActivity extends AppCompatActivity {
                         new Consumer<Throwable>() {
                             @Override
                             public void accept(Throwable throwable) throws Exception {
-                                Toast.makeText(ListOfClassesActivity.this,""+throwable.getMessage() , Toast.LENGTH_SHORT).show();
+                                Toast.makeText(ListOfClassesActivity.this, "" + throwable.getMessage(), Toast.LENGTH_SHORT).show();
                             }
                         });
         compositeDisposable.add(disposable);
@@ -216,6 +213,7 @@ public class ListOfClassesActivity extends AppCompatActivity {
         adapter.notifyDataSetChanged();
     }
 
+    //redirect to MainActivity when back button is pressed
 
     @Override
     public void onBackPressed() {

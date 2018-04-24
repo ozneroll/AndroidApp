@@ -8,6 +8,7 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.widget.EditText;
+import android.widget.Toast;
 
 
 import Classes.Teacher;
@@ -30,8 +31,6 @@ public class AddTeacherActivity extends AppCompatActivity {
 
         txtFirstName = (EditText) findViewById(R.id.txtaddFirstName);
         txtLastName = (EditText) findViewById(R.id.txtaddLastName);
-
-
     }
 
 
@@ -56,6 +55,8 @@ public class AddTeacherActivity extends AppCompatActivity {
                 Intent intent2 = new Intent(this, AboutActivity.class);
                 startActivity(intent2);
                 break;
+
+                //save the teacher, but checking the values first
             case R.id.btnSave:
                 int error = 0;
                 if( txtFirstName.getText().toString().length() == 0 ) {
@@ -69,6 +70,8 @@ public class AddTeacherActivity extends AppCompatActivity {
 
                 if (error == 0) {
                     MainActivity.studentDB.teacherDAO().insertAll(new Teacher(txtLastName.getText().toString(), txtFirstName.getText().toString()));
+                    //confirmation for the user
+                    Toast.makeText(getApplicationContext(), getResources().getString(R.string.ajout), Toast.LENGTH_LONG).show();
                     Intent myIntent = new Intent(AddTeacherActivity.this,
                             ListOfTeachersActivity.class);
                     startActivity(myIntent);
@@ -81,6 +84,14 @@ public class AddTeacherActivity extends AppCompatActivity {
         }
 
         return true;
+    }
+
+    //finish the activity
+    @Override
+    protected void onStop()
+    {
+        super.onStop();
+        finish();
     }
 
 }

@@ -40,7 +40,7 @@
             android:lines="4"
             android:maxLines="4"
             android:singleLine="false"
-            android:text="School App\nApril 2018\nLorenzo Lamberti\nCélia Ahmad"></TextView>
+            android:text="SchoolApp\n2018\nLorenzo Lamberti\nCélia Ahmad"></TextView>
 
 
     </LinearLayout>

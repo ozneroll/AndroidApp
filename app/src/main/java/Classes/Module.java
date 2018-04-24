@@ -8,7 +8,8 @@ import android.arch.persistence.room.PrimaryKey;
 import io.reactivex.annotations.NonNull;
 
 /**
- * Created by loren on 17.04.2018.
+ * Project : AndroidApp
+ * Created by Célia Ahmad & Lorenzo Lamberti on 17.04.2018.
  */
 
 @Entity(tableName = "Module")
@@ -24,12 +25,13 @@ public class Module {
 
 
     //Constructors
-    public Module(){
+    public Module() {
 
 
     }
+
     @Ignore
-    public Module( String name) {
+    public Module(String name) {
         this.name = name;
     }
 
@@ -52,8 +54,7 @@ public class Module {
     }
 
     @Override
-    public String toString()
-    {
-        return name ;
+    public String toString() {
+        return name;
     }
 }

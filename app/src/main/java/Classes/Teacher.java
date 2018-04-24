@@ -8,9 +8,10 @@ import android.arch.persistence.room.PrimaryKey;
 import io.reactivex.annotations.NonNull;
 
 /**
- * Created by loren on 17.04.2018.
+ * Project : AndroidApp
+ * Created by Célia Ahmad & Lorenzo Lamberti on 17.04.2018.
  */
-/*, foreignKeys = @ForeignKey(entity = Class.class, parentColumns = "id", childColumns = "class"*/
+
 @Entity(tableName = "Teacher")
 public class Teacher {
 
@@ -35,13 +36,12 @@ public class Teacher {
 
 
     //Constructors
-    public Teacher()
-    {
+    public Teacher() {
 
     }
+
     @Ignore
-    public Teacher(String lastName, String firstName)
-    {
+    public Teacher(String lastName, String firstName) {
         this.lastName = lastName;
         this.firstName = firstName;
 
@@ -77,8 +77,7 @@ public class Teacher {
     }
 
     @Override
-    public String toString()
-    {
+    public String toString() {
         return firstName + " " + lastName;
     }
 

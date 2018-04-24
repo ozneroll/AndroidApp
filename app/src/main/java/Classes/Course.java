@@ -9,11 +9,12 @@ import android.arch.persistence.room.PrimaryKey;
 import io.reactivex.annotations.NonNull;
 
 /**
- * Created by loren on 17.04.2018.
+ * Project : AndroidApp
+ * Created by Célia Ahmad & Lorenzo Lamberti on 17.04.2018.
  */
 
 @Entity(tableName = "Course", foreignKeys =
-@ForeignKey(entity = Module.class, parentColumns = "id",childColumns = "module"))
+@ForeignKey(entity = Module.class, parentColumns = "id", childColumns = "module"))
 public class Course {
 
     @NonNull
@@ -28,7 +29,7 @@ public class Course {
     private int id_module;
 
     //Constructors
-    public Course(){
+    public Course() {
 
 
     }
@@ -66,8 +67,7 @@ public class Course {
     }
 
     @Override
-    public String toString()
-    {
+    public String toString() {
         return getName();
     }
 }

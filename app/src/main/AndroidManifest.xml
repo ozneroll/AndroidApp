@@ -48,39 +48,48 @@
             android:name=".DetailStudentActivity"
             android:label="@string/details"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".EditStudentActivity"
+        <activity
+            android:name=".EditStudentActivity"
             android:label="@string/edit"
             android:theme="@style/AppTheme.NoActionBar" />
 
-        <activity android:name=".AddTeacherActivity"
+        <activity
+            android:name=".AddTeacherActivity"
             android:label="@string/teachers"
             android:theme="@style/AppTheme.NoActionBar" />
 
-        <activity android:name=".DetailClassActivity"
+        <activity
+            android:name=".DetailClassActivity"
             android:label="@string/details"
             android:theme="@style/AppTheme.NoActionBar" />
 
-        <activity android:name=".DetailCourseActivity"
+        <activity
+            android:name=".DetailCourseActivity"
             android:label="@string/details"
             android:theme="@style/AppTheme.NoActionBar" />
 
-        <activity android:name=".DetailTeacherActivity"
+        <activity
+            android:name=".DetailTeacherActivity"
             android:label="@string/details"
             android:theme="@style/AppTheme.NoActionBar" />
 
-        <activity android:name=".EditTeacherActivity"
+        <activity
+            android:name=".EditTeacherActivity"
             android:label="@string/details"
             android:theme="@style/AppTheme.NoActionBar" />
 
-        <activity android:name=".DetailModuleActivity"
+        <activity
+            android:name=".DetailModuleActivity"
             android:label="@string/details"
             android:theme="@style/AppTheme.NoActionBar" />
 
-        <activity android:name=".EditClassActivity"
+        <activity
+            android:name=".EditClassActivity"
             android:label="@string/details"
             android:theme="@style/AppTheme.NoActionBar" />
 
-        <activity android:name=".AddClassActivity"
+        <activity
+            android:name=".AddClassActivity"
             android:label="@string/add"
             android:theme="@style/AppTheme.NoActionBar" />
 

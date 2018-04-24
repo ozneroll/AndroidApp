@@ -12,7 +12,8 @@ import io.reactivex.annotations.Nullable;
 import static android.arch.persistence.room.ForeignKey.CASCADE;
 
 /**
- * Created by loren on 17.04.2018.
+ * Project : AndroidApp
+ * Created by Célia Ahmad & Lorenzo Lamberti on 17.04.2018.
  */
 
 @Entity(tableName = "Student", foreignKeys = @ForeignKey(entity = Class.class, parentColumns = "idclass", childColumns = "idclass", onDelete = CASCADE))
@@ -36,13 +37,12 @@ public class Student {
     private int idclass;
 
     //Constructors
-    public Student()
-    {
+    public Student() {
 
     }
+
     @Ignore
-    public Student(String lastName, String firstName, String address, int idclass)
-    {
+    public Student(String lastName, String firstName, String address, int idclass) {
         this.lastName = lastName;
         this.firstName = firstName;
         this.address = address;
@@ -92,8 +92,7 @@ public class Student {
 
 
     @Override
-    public String toString()
-    {
+    public String toString() {
         return firstName + " " + lastName;
     }
 

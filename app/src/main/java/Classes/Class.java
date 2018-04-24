@@ -7,6 +7,10 @@ import android.arch.persistence.room.PrimaryKey;
 
 import io.reactivex.annotations.NonNull;
 
+/**
+ * Project : AndroidApp
+ * Created by Célia Ahmad & Lorenzo Lamberti on 17.04.2018.
+ */
 
 @Entity(tableName = "Class")
 public class Class {

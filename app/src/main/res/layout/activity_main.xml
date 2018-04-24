@@ -34,31 +34,32 @@
 
             <!-- Column 1 -->
             <android.support.v7.widget.CardView
+                android:id="@+id/cardview1"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 android:layout_columnWeight="1"
-                android:layout_rowWeight="1"
                 android:layout_marginBottom="16dp"
                 android:layout_marginLeft="16dp"
                 android:layout_marginRight="16dp"
-                app:cardElevation="8dp"
+                android:layout_rowWeight="1"
+                app:cardBackgroundColor="@color/black"
                 app:cardCornerRadius="8dp"
-                app:cardBackgroundColor="#000"
-                android:id="@+id/cardview1"
-                >
+                app:cardElevation="8dp">
 
                 <LinearLayout
-                    android:layout_gravity="center_horizontal|center_vertical"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical|center_horizontal|center"
                     android:layout_margin="16dp"
                     android:orientation="vertical"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content">
+                    android:textAlignment="center">
 
                     <ImageButton
                         android:id="@+id/imageButton1"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginEnd="0dp"
+                        android:layout_marginStart="5dp"
                         android:layout_marginTop="0dp"
                         android:background="@mipmap/ic_person_white_24dp"
                         app:layout_constraintEnd_toEndOf="parent"
@@ -69,6 +70,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/students"
+                        android:textAlignment="center"
                         android:textColor="@color/colorPrimary" />
 
 
@@ -78,25 +80,25 @@
 
             <!-- Column 2 -->
             <android.support.v7.widget.CardView
+                android:id="@+id/cardview2"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 android:layout_columnWeight="1"
-                android:layout_rowWeight="1"
                 android:layout_marginBottom="16dp"
                 android:layout_marginLeft="16dp"
                 android:layout_marginRight="16dp"
-                app:cardElevation="8dp"
+                android:layout_rowWeight="1"
+                android:textAlignment="center"
+                app:cardBackgroundColor="@color/black"
                 app:cardCornerRadius="8dp"
-                app:cardBackgroundColor="#000"
-                android:id="@+id/cardview2"
-                >
+                app:cardElevation="8dp">
 
                 <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal|center_vertical"
                     android:layout_margin="16dp"
-                    android:orientation="vertical"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content">
+                    android:orientation="vertical">
 
                     <ImageButton
                         android:id="@+id/imageButton2"
@@ -112,6 +114,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/classes"
+                        android:textAlignment="center"
                         android:textColor="@color/colorPrimary" />
 
 
@@ -124,25 +127,24 @@
 
             <!-- Column 1 -->
             <android.support.v7.widget.CardView
+                android:id="@+id/cardview3"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 android:layout_columnWeight="1"
-                android:layout_rowWeight="1"
                 android:layout_marginBottom="16dp"
                 android:layout_marginLeft="16dp"
                 android:layout_marginRight="16dp"
-                app:cardElevation="8dp"
+                android:layout_rowWeight="1"
+                app:cardBackgroundColor="@color/black"
                 app:cardCornerRadius="8dp"
-                app:cardBackgroundColor="#000"
-                android:id="@+id/cardview3"
-                >
+                app:cardElevation="8dp">
 
                 <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal|center_vertical"
                     android:layout_margin="16dp"
-                    android:orientation="vertical"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content">
+                    android:orientation="vertical">
 
                     <ImageButton
                         android:id="@+id/imageButton3"
@@ -155,9 +157,10 @@
 
                     <TextView
                         android:id="@+id/textView6"
-                        android:layout_width="wrap_content"
+                        android:layout_width="65dp"
                         android:layout_height="wrap_content"
                         android:text="@string/course"
+                        android:textAlignment="center"
                         android:textColor="@color/colorPrimary" />
 
 
@@ -167,33 +170,33 @@
 
             <!-- Column 2 -->
             <android.support.v7.widget.CardView
+                android:id="@+id/cardview4"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 android:layout_columnWeight="1"
-                android:layout_rowWeight="1"
                 android:layout_marginBottom="16dp"
                 android:layout_marginLeft="16dp"
                 android:layout_marginRight="16dp"
-                app:cardBackgroundColor="#000"
+                android:layout_rowWeight="1"
+                android:textAlignment="center"
+                app:cardBackgroundColor="@color/black"
                 app:cardCornerRadius="8dp"
-                app:cardElevation="8dp"
-                android:id="@+id/cardview4"
-                 >
+                app:cardElevation="8dp">
 
 
                 <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal|center_vertical"
                     android:layout_margin="16dp"
-                    android:orientation="vertical"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content">
+                    android:orientation="vertical">
 
                     <ImageButton
                         android:id="@+id/imageButton4"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginEnd="0dp"
-                        android:layout_marginStart="0dp"
+                        android:layout_marginStart="3dp"
                         android:background="@mipmap/ic_extension_white_24dp"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
@@ -204,6 +207,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/modules"
+                        android:textAlignment="center"
                         android:textColor="@color/colorPrimary" />
 
 
@@ -217,31 +221,31 @@
             <!-- Column 1 -->
             <android.support.v7.widget.CardView
 
+                android:id="@+id/cardview5"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 android:layout_columnWeight="1"
-                android:layout_rowWeight="1"
                 android:layout_marginBottom="16dp"
                 android:layout_marginLeft="16dp"
                 android:layout_marginRight="16dp"
-                app:cardElevation="8dp"
+                android:layout_rowWeight="1"
+                app:cardBackgroundColor="@color/black"
                 app:cardCornerRadius="8dp"
-                app:cardBackgroundColor="#000"
-                android:id="@+id/cardview5"
-                >
+                app:cardElevation="8dp">
 
                 <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal|center_vertical"
                     android:layout_margin="16dp"
                     android:orientation="vertical"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content">
+                    android:textAlignment="center">
 
                     <ImageButton
                         android:id="@+id/imageButton5"
                         android:layout_width="48dp"
                         android:layout_height="46dp"
-                        android:layout_marginStart="0dp"
+                        android:layout_marginStart="13dp"
                         android:layout_marginTop="0dp"
                         android:background="@mipmap/ic_face_white_24dp"
                         app:layout_constraintStart_toStartOf="parent"
@@ -252,6 +256,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/teachers"
+                        android:textAlignment="center"
                         android:textColor="@color/colorPrimary" />
 
 

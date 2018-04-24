@@ -12,9 +12,6 @@ import Classes.Class;
 import Classes.Student;
 import io.reactivex.Flowable;
 
-/**
- * Created by loren on 17.04.2018.
- */
 
 @Dao
 public interface ClassDAO {

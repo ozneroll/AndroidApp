@@ -18,7 +18,6 @@ public interface IStudentDataSource {
     Flowable<List<Student>> getAll();
     List<Student> getAllAsList();
     List<Student> loadAllByIds(int[] userIds);
-    Student findByName(String first, String last);
     void update(Student...students);
     void insertAll(Student... students);
     void delete(Student student);

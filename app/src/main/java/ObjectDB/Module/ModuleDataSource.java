@@ -47,11 +47,6 @@ public class ModuleDataSource implements IModuleDataSource {
     }
 
     @Override
-    public Module findByName(String first) {
-        return moduleDAO.findByName(first);
-    }
-
-    @Override
     public void insertAll(Module...classes) {
         moduleDAO.insertAll();
     }

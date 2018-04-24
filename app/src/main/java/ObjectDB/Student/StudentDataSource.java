@@ -46,11 +46,6 @@ public class StudentDataSource implements IStudentDataSource {
     public Student loadStudentById(int uid ){return studentDAO.loadStudentById(uid); }
 
     @Override
-    public Student findByName(String first, String last) {
-        return studentDAO.findByName(first, last);
-    }
-
-    @Override
     public void update(Student... students) {
         studentDAO.update(students);
     }

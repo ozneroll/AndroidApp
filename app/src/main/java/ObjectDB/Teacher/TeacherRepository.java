@@ -44,10 +44,6 @@ public class TeacherRepository implements ITeacherDataSource {
         return mLocalDataSource.loadAllByIds(userIds);
     }
 
-    @Override
-    public Teacher findByName(String first, String last) {
-        return mLocalDataSource.findByName(first, last);
-    }
 
     @Override
     public void update(Teacher... teacher) {

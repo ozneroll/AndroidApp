@@ -17,17 +17,25 @@ import io.reactivex.Flowable;
 
 @Dao
 public interface ModuleDAO {
+
+    /** Gets a list of modules
+     * @return list of modules
+     */
     @Query("SELECT * FROM Module")
     Flowable<List<Module>> getAll();
 
+    /** Gets a list of modules
+     * @return list of modules
+     */
     @Query("SELECT * FROM Module")
     List<Module> getAllAsList();
 
+    /**Gets a list of modules with ids
+     * @param Ids
+     * @return List of modules
+     */
     @Query("SELECT * FROM Module WHERE id IN (:Ids)")
     List<Module> loadAllByIds(int[] Ids);
-
-    @Query("SELECT * FROM Module WHERE name LIKE :name LIMIT 1")
-    Module findByName(String name);
 
     @Insert
     void insertAll(Module... modules);

@@ -47,11 +47,6 @@ public class ModuleRepository implements IModuleDataSource {
     }
 
     @Override
-    public Module findByName(String name) {
-        return mLocalDataSource.findByName(name);
-    }
-
-    @Override
     public void insertAll(Module... modules) {
 
     }

@@ -50,11 +50,6 @@ public class CourseRepository implements ICourseDataSource {
     }
 
     @Override
-    public void update(Course... course) {
-        mLocalDataSource.update(course);
-    }
-
-    @Override
     public void insertAll(Course...courses) {
         mLocalDataSource.insertAll(courses);
     }

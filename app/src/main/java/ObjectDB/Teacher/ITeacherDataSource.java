@@ -15,7 +15,6 @@ public interface ITeacherDataSource {
     Flowable<List<Teacher>> getAll();
     List<Teacher> getAllAsList();
     List<Teacher> loadAllByIds(int[] userIds);
-    Teacher findByName(String first, String last);
     void update(Teacher... teachers);
     void insertAll(Teacher... teachers);
     void delete(Teacher teacher);

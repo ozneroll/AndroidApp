@@ -44,11 +44,6 @@ public class StudentRepository implements IStudentDataSource{
     }
 
     @Override
-    public Student findByName(String first, String last) {
-        return mLocalDataSource.findByName(first, last);
-    }
-
-    @Override
     public void update(Student... students) {
         mLocalDataSource.update(students);
     }

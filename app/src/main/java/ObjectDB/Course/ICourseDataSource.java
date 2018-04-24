@@ -15,7 +15,6 @@ public interface ICourseDataSource {
     List<Course> getAllAsList();
     List<Course> loadAllByIds(int[] Ids);
     List<Course> getAllListForOneModule(int id_module);
-    void update(Course... courses);
     void insertAll(Course... courses);
     void delete(Course course);
 }

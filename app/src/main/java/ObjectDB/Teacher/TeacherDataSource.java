@@ -44,11 +44,6 @@ public class TeacherDataSource implements ITeacherDataSource {
     }
 
     @Override
-    public Teacher findByName(String first, String last) {
-        return teacherDAO.findByName(first, last);
-    }
-
-    @Override
     public void update(Teacher... teachers) {
         teacherDAO.update(teachers);
     }

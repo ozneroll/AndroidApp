@@ -18,15 +18,25 @@ import io.reactivex.Flowable;
 
 @Dao
 public interface StudentDAO {
+    /**Gets a list of students
+     * @return List of students
+     */
     @Query("SELECT * FROM Student ORDER BY FirstName")
     Flowable<List<Student>> getAll();
 
+    /**Gets a list of students
+     * @return List of students
+     */
     @Query("SELECT * FROM Student ORDER BY FirstName")
     List<Student> getAllAsList();
 
-
+    /**Gets a list of students for one class
+     * @param idclass
+     * @return a list of students
+     */
     @Query("SELECT * FROM Student WHERE idclass LIKE :idclass ORDER BY FirstName")
     List<Student> getAllListForOneClass(int idclass);
+
 
     @Query("SELECT * FROM Student WHERE uid IN (:userIds) ")
     List<Student> loadAllByIds(int[] userIds);
@@ -35,10 +45,6 @@ public interface StudentDAO {
     @Query("SELECT * FROM Student WHERE uid LIKE :uid")
     Student loadStudentById(int uid);
 
-    @Query("SELECT * FROM Student WHERE firstName LIKE :first AND "
-            + "lastName LIKE :last LIMIT 1")
-
-    Student findByName(String first, String last);
 
     @Update
     void update(Student...students);

@@ -52,8 +52,6 @@ public class EditStudentActivity extends AppCompatActivity {
         etudiant = MainActivity.studentDB.sdtDao().loadStudentById(id);
 
         idClass = getIntent().getIntExtra("idClass", -1);
-     //   c = MainActivity.studentDB.classDAO().loadClassById(idClass);
-
 
         classes = MainActivity.studentDB.classDAO().getAllAsList();
         spinner = (Spinner)findViewById(R.id.all_classes);
@@ -63,8 +61,10 @@ public class EditStudentActivity extends AppCompatActivity {
         ArrayAdapter<Class> adapter = new ArrayAdapter<Class>(this,android.R.layout.simple_spinner_item,classes);
         // Specify the layout to use when the list of choices appears
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+
         // Apply the adapter to the spinner
         spinner.setAdapter(adapter);
+
     }
 
 

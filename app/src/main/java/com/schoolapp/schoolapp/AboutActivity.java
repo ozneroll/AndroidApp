@@ -7,18 +7,24 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.widget.TextView;
 
 public class AboutActivity extends AppCompatActivity {
+
+    private Toolbar toolbar;
+    private TextView textView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_about);
 
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        toolbar = (Toolbar) findViewById(R.id.toolbar);
+        textView = (TextView)findViewById(R.id.about);
         setSupportActionBar(toolbar);
     }
 
+    //creating the menu
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.menu_settings, menu);
@@ -28,6 +34,8 @@ public class AboutActivity extends AppCompatActivity {
     }
 
 
+
+    //settings and about
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
@@ -47,7 +55,15 @@ public class AboutActivity extends AppCompatActivity {
         return true;
     }
 
+    //finish this activity
+    @Override
+    public void onStop()
+    {
+        super.onStop();
+        finish();
+    }
 
+    //redirect to MainActivity when back button is pressed
     @Override
     public void onBackPressed() {
         Intent i = new Intent(getApplicationContext(), ListOfStudentsActivity.class);

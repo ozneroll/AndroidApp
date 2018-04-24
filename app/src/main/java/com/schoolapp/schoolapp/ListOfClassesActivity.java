@@ -133,6 +133,25 @@ public class ListOfClassesActivity extends AppCompatActivity {
 
         });
 
+
+        fab = (FloatingActionButton) findViewById(R.id.fab);
+        fab.setOnClickListener(new View.OnClickListener() {
+
+            /*  public void onClick(View view) {
+                  MainActivity.studentDB.sdtDao().insertAll(new Student("Célia", "Ahmad", "Rive des Nombieux 33"));
+                  MainActivity.studentDB.sdtDao().loadAllByIds(new int[1]);
+                  loadData();
+  */
+            public void onClick(View arg0) {
+
+                // Start NewActivity.class
+                Intent myIntent = new Intent(ListOfClassesActivity.this,
+                        AddClassActivity.class);
+                startActivity(myIntent)
+                ;}
+
+        });
+
     }
 
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -197,4 +216,11 @@ public class ListOfClassesActivity extends AppCompatActivity {
         adapter.notifyDataSetChanged();
     }
 
+
+    @Override
+    public void onBackPressed() {
+        Intent myIntent = new Intent(ListOfClassesActivity.this,
+                MainActivity.class);
+        startActivity(myIntent);
+    }
 }

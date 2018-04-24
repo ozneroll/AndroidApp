@@ -19,20 +19,39 @@ import io.reactivex.Flowable;
 @Dao
 public interface ClassDAO {
 
+    /**Gets a list of classes
+     * @return List of classes
+     */
     @Query("SELECT * FROM Class")
     Flowable<List<Class>> getAll();
 
+    /**Gets a list of classes
+     * @return List of classes
+     */
     @Query("SELECT * FROM Class")
     List<Class> getAllAsList();
 
+
+    /**Gets a list of classes with ids
+     * @param Ids
+     * @return List of classes
+     */
     @Query("SELECT * FROM Class WHERE idclass IN (:Ids)")
     List<Class> loadAllByIds(int[] Ids);
 
-    @Query("SELECT * FROM Class WHERE name LIKE :name LIMIT 1")
-    Class findByName(String name);
+
+    /**Get a class with specific id
+     * @param idclass
+     * @return a class
+     */
+    @Query("SELECT * FROM Class WHERE idclass LIKE :idclass")
+    Class loadClassById(int idclass);
 
     @Insert
     void insertAll(Class... classes);
+
+    @Update
+    void update(Class... classes);
 
     @Delete
     void delete(Class classe);

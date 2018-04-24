@@ -44,8 +44,9 @@ public class CourseRepository implements ICourseDataSource {
     }
 
     @Override
-    public Course findByName(String name) {
-        return mLocalDataSource.findByName(name);
+    public List<Course> getAllListForOneModule(int id_module)
+    {
+        return mLocalDataSource.getAllListForOneModule(id_module);
     }
 
     @Override

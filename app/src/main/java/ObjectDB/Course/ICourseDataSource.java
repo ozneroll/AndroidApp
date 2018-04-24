@@ -14,7 +14,7 @@ public interface ICourseDataSource {
     Flowable<List<Course>> getAll();
     List<Course> getAllAsList();
     List<Course> loadAllByIds(int[] Ids);
-    Course findByName(String name);
+    List<Course> getAllListForOneModule(int id_module);
     void update(Course... courses);
     void insertAll(Course... courses);
     void delete(Course course);

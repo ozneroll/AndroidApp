@@ -47,8 +47,8 @@ public class ClassRepository implements IClassDataSource {
     }
 
     @Override
-    public Class findByName(String name) {
-        return mLocalDataSource.findByName(name);
+    public Class loadClassById(int idclass) {
+        return null;
     }
 
     @Override

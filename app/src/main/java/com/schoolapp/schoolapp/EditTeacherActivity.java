@@ -1,38 +1,30 @@
 package com.schoolapp.schoolapp;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.widget.ArrayAdapter;
 import android.widget.EditText;
-import android.widget.Spinner;
-import android.widget.TextView;
 
-import java.util.List;
-
-import Classes.Class;
 import Classes.Student;
+import Classes.Teacher;
 
-public class EditStudentActivity extends AppCompatActivity {
+public class EditTeacherActivity extends AppCompatActivity {
+
 
     private EditText txtFirstName;
     private EditText txtLastName;
     private EditText txtAddress;
     private int id;
-    public Student etudiant = new Student() ;
-    private Spinner spinner;
-    private List<Class> classes;
-    private Class c = new Class();
-    private int idClass;
+    public Teacher teacher = new Teacher() ;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_edit_student);
+        setContentView(R.layout.activity_edit_teacher);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -41,30 +33,13 @@ public class EditStudentActivity extends AppCompatActivity {
 
         txtFirstName = (EditText) findViewById(R.id.txtEditFirstName);
         txtLastName = (EditText) findViewById(R.id.txtEditLastName);
-        txtAddress = (EditText) findViewById(R.id.txtEditAddress);
-
+        //  txtClass = (TextView) findViewById(R.id.txtClass);
 
         txtLastName.setText(getIntent().getStringExtra(getResources().getString(R.string.lastName)));
         txtFirstName.setText(getIntent().getStringExtra(getResources().getString(R.string.firstName)));
-        txtAddress.setText(getIntent().getStringExtra(getResources().getString(R.string.address)));
-
         id = getIntent().getIntExtra("id",-1);
-        etudiant = MainActivity.studentDB.sdtDao().loadStudentById(id);
+        teacher = MainActivity.studentDB.teacherDAO().loadTeacherById(id);
 
-        idClass = getIntent().getIntExtra("idClass", -1);
-     //   c = MainActivity.studentDB.classDAO().loadClassById(idClass);
-
-
-        classes = MainActivity.studentDB.classDAO().getAllAsList();
-        spinner = (Spinner)findViewById(R.id.all_classes);
-      //  spinner.setSelection(((ArrayAdapter<Class>)spinner.getAdapter()).getPosition(c));
-
-        // Create an ArrayAdapter using the string array and a default spinner layout
-        ArrayAdapter<Class> adapter = new ArrayAdapter<Class>(this,android.R.layout.simple_spinner_item,classes);
-        // Specify the layout to use when the list of choices appears
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        // Apply the adapter to the spinner
-        spinner.setAdapter(adapter);
     }
 
 
@@ -92,9 +67,9 @@ public class EditStudentActivity extends AppCompatActivity {
                 startActivity(intent2);
                 break;
             case R.id.action_delete:
-                MainActivity.studentDB.sdtDao().delete(etudiant);
-                Intent intent3 = new Intent(EditStudentActivity.this,
-                        ListOfStudentsActivity.class);
+                MainActivity.studentDB.teacherDAO().delete(teacher);
+                Intent intent3 = new Intent(EditTeacherActivity.this,
+                        ListOfTeachersActivity.class);
                 startActivity(intent3);
 
                 break;
@@ -109,25 +84,16 @@ public class EditStudentActivity extends AppCompatActivity {
                     error =1;
                 }
 
-                if( txtAddress.getText().toString().length() == 0 ) {
-                    txtAddress.setError(getResources().getString(R.string.adresseRequise));
-                    error =1;
-                }
                 if (error == 0) {
-                    c = (Class) spinner.getSelectedItem();
-                    etudiant.setLastName(txtLastName.getText().toString());
-                    etudiant.setFirstName(txtFirstName.getText().toString());
-                    etudiant.setAddress(txtAddress.getText().toString());
-                    etudiant.setIdclass(c.getIdclass());
-                    MainActivity.studentDB.sdtDao().update(etudiant);
+                    teacher.setLastName(txtLastName.getText().toString());
+                    teacher.setFirstName(txtFirstName.getText().toString());
+                    MainActivity.studentDB.teacherDAO().update(teacher);
 
-                    Intent myIntent = new Intent(EditStudentActivity.this,
-                            DetailStudentActivity.class);
+                    Intent myIntent = new Intent(EditTeacherActivity.this,
+                            DetailTeacherActivity.class);
                     myIntent.putExtra(getResources().getString(R.string.lastName), txtLastName.getText().toString());
                     myIntent.putExtra(getResources().getString(R.string.firstName), txtFirstName.getText().toString());
-                    myIntent.putExtra(getResources().getString(R.string.address),txtAddress.getText().toString());
-                    myIntent.putExtra("id", etudiant.getUid());
-                    myIntent.putExtra("idClasse",c.getIdclass());
+                    myIntent.putExtra("id", teacher.getUid());
                     startActivity(myIntent);
                 }
                 break;

@@ -2,17 +2,11 @@ package Classes;
 
 import android.arch.persistence.room.ColumnInfo;
 import android.arch.persistence.room.Entity;
-import android.arch.persistence.room.ForeignKey;
 import android.arch.persistence.room.Ignore;
 import android.arch.persistence.room.PrimaryKey;
 
-import java.util.ArrayList;
-
 import io.reactivex.annotations.NonNull;
 
-/**
- * Created by loren on 17.04.2018.
- */
 
 @Entity(tableName = "Class")
 public class Class {
@@ -25,18 +19,19 @@ public class Class {
     @ColumnInfo(name = "name")
     private String name;
 
-
-    public Class(){
+    //Constructors
+    public Class() {
 
 
     }
 
-
     @Ignore
-    public Class( String name) {
+    public Class(String name) {
         this.name = name;
     }
 
+
+    // Getters and setters
     public int getIdclass() {
         return idclass;
     }
@@ -54,8 +49,7 @@ public class Class {
     }
 
     @Override
-    public String toString()
-    {
+    public String toString() {
         return this.getName();
     }
 

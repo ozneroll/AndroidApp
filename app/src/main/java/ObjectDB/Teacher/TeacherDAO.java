@@ -26,6 +26,9 @@ public interface TeacherDAO {
     @Query("SELECT * FROM Teacher WHERE uid IN (:userIds)")
     List<Teacher> loadAllByIds(int[] userIds);
 
+    @Query("SELECT * FROM Teacher WHERE uid LIKE :uid")
+    Teacher loadTeacherById(int uid);
+
     @Query("SELECT * FROM Teacher WHERE firstName LIKE :first AND "
             + "lastName LIKE :last LIMIT 1")
 

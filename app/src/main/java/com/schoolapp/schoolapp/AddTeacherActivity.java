@@ -59,11 +59,11 @@ public class AddTeacherActivity extends AppCompatActivity {
             case R.id.btnSave:
                 int error = 0;
                 if( txtFirstName.getText().toString().length() == 0 ) {
-                    txtFirstName.setError("First name is required!");
+                    txtFirstName.setError(getResources().getString(R.string.prenomRequis));
                     error =1;
                 }
                 if( txtLastName.getText().toString().length() == 0 ) {
-                    txtLastName.setError("Last name is required!");
+                    txtLastName.setError(getResources().getString(R.string.nomRequis));
                     error =1;
                 }
 

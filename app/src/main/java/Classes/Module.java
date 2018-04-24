@@ -19,21 +19,22 @@ public class Module {
     @PrimaryKey(autoGenerate = true)
     @ColumnInfo(name = "id")
     private int id;
-
     @ColumnInfo(name = "name")
     private String name;
 
+
+    //Constructors
     public Module(){
 
 
     }
-
-
     @Ignore
     public Module( String name) {
         this.name = name;
     }
 
+
+    // Getters and setters
     public int getId() {
         return id;
     }

@@ -34,7 +34,7 @@ public class Teacher {
     private String classe;
 
 
-
+    //Constructors
     public Teacher()
     {
 
@@ -47,6 +47,7 @@ public class Teacher {
 
     }
 
+    // Getters and setters
     public int getUid() {
         return uid;
     }

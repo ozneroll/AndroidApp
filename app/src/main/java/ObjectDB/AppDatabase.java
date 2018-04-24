@@ -11,6 +11,8 @@ import android.arch.persistence.room.TypeConverters;
 import android.arch.persistence.room.migration.Migration;
 import android.content.Context;
 
+import java.util.concurrent.Executors;
+
 import Classes.Class;
 import Classes.Course;
 import Classes.Module;
@@ -22,6 +24,7 @@ import ObjectDB.Course.CourseDAO;
 import ObjectDB.Module.ModuleDAO;
 import ObjectDB.Student.StudentDAO;
 import ObjectDB.Teacher.TeacherDAO;
+import io.reactivex.annotations.NonNull;
 
 /**
  * Created by loren on 17.04.2018.
@@ -42,40 +45,104 @@ public abstract class AppDatabase extends RoomDatabase {
 
     public synchronized static AppDatabase getInstance(Context context)
     {
-       if (mInstance == null)
-       {
-           mInstance = Room.databaseBuilder(context, AppDatabase.class, DB_NAME).fallbackToDestructiveMigration().allowMainThreadQueries().build();
-           mInstance.classDAO().insertAll(
+        if (mInstance == null)
+        {
+            mInstance = buildDatabase(context);
 
-                   new Class("604-F"),
-                   new Class("605-F"),
-                   new Class("606-F"),
-                   new Class("607-F"),
-                   new Class("608-F")
+        }
 
-           );
-           mInstance.moduleDAO().insertAll(
-
-                   new Module("Module 624"),
-                   new Module("SAP"),
-                   new Module("Programmation")
-
-
-           );
-           mInstance.courseDAO().insertAll(
-
-                   new Course("Statistiques",1),
-                   new Course("Statistiques",2),
-                   new Course("Statistiques",3)
-
-
-
-           );
-       }
-
-       return mInstance;
+        return mInstance;
     }
 
+    private static AppDatabase buildDatabase(final Context context) {
+        return Room.databaseBuilder(context, AppDatabase.class, DB_NAME).fallbackToDestructiveMigration().addCallback(new Callback() {
+            @Override
+            public void onCreate(@NonNull SupportSQLiteDatabase db) {
+                super.onCreate(db);
+                Executors.newSingleThreadScheduledExecutor().execute(new Runnable() {
+                    @Override
+                    public void run() {
+                        getInstance(context).classDAO().insertAll(populateDataClasses());
+                        getInstance(context).moduleDAO().insertAll(populateDataModules());
+                        getInstance(context).sdtDao().insertAll(populateDataStudents());
+                        getInstance(context).courseDAO().insertAll(populateDataCourses());
+                        getInstance(context).teacherDAO().insertAll(populateDataTeachers());
+
+
+                    }
+                });
+            }
+        }).allowMainThreadQueries().build();
+
+    }
+    public static Student[] populateDataStudents() {
+        return new Student [] {
+                new Student("Célia", "Ahmad", "Rive des Nombieux 33", 3),
+                new Student("Lorenzo", "Lamberti", "Rue du Grand Clos 5", 3),
+
+                new Student("Vlado", "Mitrovic", "Avenue des Champs 8", 4),
+                new Student("Caroline", "Moreira", "Ruelle Sombre 39", 4),
+                new Student("Killian", "Duay", "Autoroute 65", 4)
+        };
+    }
+
+    public static Class[] populateDataClasses() {
+        return new Class [] {
+                new Class("601-F"),
+                new Class("602-F"),
+                new Class("603-F"),
+                new Class("604-F"),
+                new Class("605-F")
+        };
+    }
+
+    public static Module[] populateDataModules()
+    {
+        return new Module[] {
+                new Module("611-1 - L'entreprise"),
+                new Module("611-2 - Communication écrite"),
+                new Module("612-1 - Environnement économique"),
+                new Module("621-2 - Structuration des données"),
+                new Module("631-2 - Maîtrise de l'ordinateur"),
+                new Module("632-2 - Réseaux informatiques d'entreprise"),
+                new Module("633-1 - Algorithmes et structures de données")
+        };
+
+    }
+
+    public static Course[] populateDataCourses()
+    {
+        return new Course[] {
+                new Course("Entreprise",1),
+                new Course("Comptabilité",1),
+                new Course("Communication écrite",2),
+                new Course("Anglais",2),
+                new Course("Droit",3),
+                new Course("Environnement économique",3),
+                new Course("Marketing",3),
+                new Course("SQL",4),
+                new Course("XML",4),
+                new Course("Connaissances PC et OS",5),
+                new Course("Mathématiques",5),
+                new Course("Introduction aux réseaux",6),
+                new Course("Mathématiques",6),
+                new Course("Algorithmes",7),
+                new Course("Structuration de données",7)
+        };
+
+    }
+
+    public static Teacher[] populateDataTeachers() {
+        return new Teacher [] {
+                new Teacher("Widmer", "Antoine"),
+                new Teacher("Schumacher", "Michael"),
+                new Teacher("Grèzes", "Vincent"),
+                new Teacher("Schumann",  "René"),
+                new Teacher("Lamon","Anthony"),
+                new Teacher("Cotting","Alexandre")
+
+        };
+    }
 
 
 }

@@ -71,13 +71,12 @@ public class ListOfModulesActivity extends AppCompatActivity {
                 int id = _temp.getId();
 
 
-                List<Module> prof = MainActivity.studentDB.moduleDAO().loadAllByIds(new int[] {id} );
+                List<Module> modules = MainActivity.studentDB.moduleDAO().loadAllByIds(new int[] {id} );
 
                 Intent myIntent = new Intent(ListOfModulesActivity.this,
-                        DetailStudentActivity.class);
-                myIntent.putExtra("Prenom", prof.get(0).getName());
-
-                //ajouter le nom de la classe
+                        DetailModuleActivity.class);
+                myIntent.putExtra("nomModule", modules.get(0).getName());
+                myIntent.putExtra("idModule", modules.get(0).getId());
 
                 startActivity(myIntent);
 
@@ -199,6 +198,13 @@ public class ListOfModulesActivity extends AppCompatActivity {
         moduleList.clear();
         moduleList.addAll(teachers);
         adapter.notifyDataSetChanged();
+    }
+
+    @Override
+    public void onBackPressed() {
+        Intent myIntent = new Intent(ListOfModulesActivity.this,
+                MainActivity.class);
+        startActivity(myIntent);
     }
 
 }

@@ -27,6 +27,7 @@ public class Course {
     @ColumnInfo(name = "module")
     private int id_module;
 
+    //Constructors
     public Course(){
 
 
@@ -38,6 +39,8 @@ public class Course {
         this.id_module = id_module;
     }
 
+
+    // Getters and setters
     public int getId() {
         return id;
     }

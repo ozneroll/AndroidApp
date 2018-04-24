@@ -91,16 +91,6 @@ public class MainActivity extends AppCompatActivity {
         cv5.setOnClickListener(myListener);
 
 
-    /*    // Capture button clicks
-        ib1.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View arg0) {
-
-                // Start NewActivity.class
-                Intent myIntent = new Intent(MainActivity.this,
-                        ListOfStudentsActivity.class);
-                startActivity(myIntent);
-            }
-        }); */
     }
 
 

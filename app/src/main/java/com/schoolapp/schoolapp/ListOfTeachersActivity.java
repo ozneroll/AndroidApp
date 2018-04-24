@@ -44,8 +44,6 @@ public class ListOfTeachersActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
-
-
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list_of_teachers);
 
@@ -77,12 +75,10 @@ public class ListOfTeachersActivity extends AppCompatActivity {
                 List<Teacher> prof = MainActivity.studentDB.teacherDAO().loadAllByIds(new int[] {id} );
 
                 Intent myIntent = new Intent(ListOfTeachersActivity.this,
-                        DetailStudentActivity.class);
-                myIntent.putExtra("Prenom", prof.get(0).getFirstName());
+                        DetailTeacherActivity.class);
+                myIntent.putExtra("Prénom", prof.get(0).getFirstName());
                 myIntent.putExtra("Nom", prof.get(0).getLastName());
-
-
-                //ajouter le nom de la classe
+                myIntent.putExtra("id", prof.get(0).getUid());
 
                 startActivity(myIntent);
 
@@ -189,7 +185,7 @@ public class ListOfTeachersActivity extends AppCompatActivity {
     public void onClick(View v) {
         // Start NewActivity.class
         Intent myIntent = new Intent(ListOfTeachersActivity.this,
-                DetailStudentActivity.class);
+                DetailTeacherActivity.class);
         startActivity(myIntent);
     }
 
@@ -216,6 +212,13 @@ public class ListOfTeachersActivity extends AppCompatActivity {
         teacherList.clear();
         teacherList.addAll(teachers);
         adapter.notifyDataSetChanged();
+    }
+
+    @Override
+    public void onBackPressed() {
+        Intent myIntent = new Intent(ListOfTeachersActivity.this,
+                MainActivity.class);
+        startActivity(myIntent);
     }
 
 }

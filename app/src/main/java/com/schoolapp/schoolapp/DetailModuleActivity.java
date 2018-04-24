@@ -7,40 +7,43 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.widget.EditText;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
 import android.widget.TextView;
 
 import java.util.List;
 
-import Classes.Module;
+import Classes.Course;
 
-public class DetailCourseActivity extends AppCompatActivity {
+public class DetailModuleActivity extends AppCompatActivity {
 
     private TextView txtName;
-    private TextView txtModule;
 
+    private ListView listCourses;
+    private int id;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_detail_course);
+        setContentView(R.layout.activity_detail_module);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        getSupportActionBar().setTitle(getResources().getString(R.string.details));
+        getSupportActionBar().setTitle(getResources().getString(R.string.modules));
+        id  =getIntent().getIntExtra("idModule",1);
 
         txtName = (TextView) findViewById(R.id.txtName);
-        txtModule = (TextView) findViewById(R.id.txtModule);
-        
-        //  txtClass = (TextView) findViewById(R.id.txtClass);
+        listCourses = (ListView)findViewById(R.id.listCourses);
 
-        txtName.setText(getIntent().getStringExtra("Cours"));
-        int id = getIntent().getIntExtra("IdModule", -1);
-        System.out.print("--------------------------------------------------------"+id);
-        List<Module> m = MainActivity.studentDB.moduleDAO().loadAllByIds(new int[]{id});
 
-        txtModule.setText(m.get(0).getName());
+        txtName.setText(getIntent().getStringExtra("nomModule"));
+        List<Course> courses = MainActivity.studentDB.courseDAO().getAllListForOneModule(id);
+
+
+        ArrayAdapter<Course> adapter = new ArrayAdapter<Course>(DetailModuleActivity.this,
+                android.R.layout.simple_list_item_1, courses);
+        listCourses.setAdapter(adapter);
 
     }
 
@@ -66,16 +69,11 @@ public class DetailCourseActivity extends AppCompatActivity {
                 startActivity(intent2);
                 break;
 
+
             default:
                 break;
         }
 
         return true;
-    }
-    @Override
-    public void onBackPressed() {
-        Intent myIntent = new Intent(DetailCourseActivity.this,
-                ListOfCoursesActivity.class);
-        startActivity(myIntent);
     }
 }

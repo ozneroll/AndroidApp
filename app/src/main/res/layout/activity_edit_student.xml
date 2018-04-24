@@ -51,13 +51,13 @@
             android:text=""
             />
 
-        <EditText
-            android:id="@+id/txtEditClass"
+        <Spinner
+            android:id="@+id/all_classes"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:ems="10"
-            android:text=""
-            />
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/editText3" />
 
 
     </LinearLayout>

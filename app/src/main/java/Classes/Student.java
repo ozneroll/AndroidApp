@@ -9,11 +9,13 @@ import android.arch.persistence.room.PrimaryKey;
 import io.reactivex.annotations.NonNull;
 import io.reactivex.annotations.Nullable;
 
+import static android.arch.persistence.room.ForeignKey.CASCADE;
+
 /**
  * Created by loren on 17.04.2018.
  */
 
-@Entity(tableName = "Student", foreignKeys = @ForeignKey(entity = Class.class, parentColumns = "idclass", childColumns = "idclass"))
+@Entity(tableName = "Student", foreignKeys = @ForeignKey(entity = Class.class, parentColumns = "idclass", childColumns = "idclass", onDelete = CASCADE))
 public class Student {
 
     @NonNull
@@ -33,7 +35,7 @@ public class Student {
     @ColumnInfo(name = "idclass")
     private int idclass;
 
-
+    //Constructors
     public Student()
     {
 
@@ -47,11 +49,7 @@ public class Student {
         this.idclass = idclass;
     }
 
-
-    public void setClasse(int idclasse) {
-        this.idclass = idclass;
-    }
-
+    // Getters and setters
     public int getUid() {
         return uid;
     }
@@ -84,7 +82,6 @@ public class Student {
         this.address = address;
     }
 
-
     public int getIdclass() {
         return idclass;
     }
@@ -92,6 +89,8 @@ public class Student {
     public void setIdclass(int idclass) {
         this.idclass = idclass;
     }
+
+
     @Override
     public String toString()
     {

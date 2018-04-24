@@ -50,7 +50,7 @@ public class ListOfCoursesActivity extends AppCompatActivity {
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        getSupportActionBar().setTitle(getResources().getString(R.string.modules));
+        getSupportActionBar().setTitle(getResources().getString(R.string.course));
 
         /*
         A CREER UN NOUVEAU R.string je sais pas comment on fait
@@ -204,6 +204,13 @@ public class ListOfCoursesActivity extends AppCompatActivity {
         courseList.clear();
         courseList.addAll(courses);
         adapter.notifyDataSetChanged();
+    }
+
+    @Override
+    public void onBackPressed() {
+        Intent myIntent = new Intent(ListOfCoursesActivity.this,
+                MainActivity.class);
+        startActivity(myIntent);
     }
 
 }

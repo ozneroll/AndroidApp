@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:orientation="vertical"
     android:layout_height="match_parent"
-    tools:context="com.schoolapp.schoolapp.AddTeacherActivity">
+    tools:context="com.schoolapp.schoolapp.EditClassActivity">
 
     <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"
@@ -14,12 +14,11 @@
 
         <android.support.v7.widget.Toolbar
             android:id="@+id/toolbar"
-            android:title="@string/teachers"
+            android:title="@string/edit"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             android:background="@color/colorAccent"
             app:popupTheme="@style/AppTheme.PopupOverlay" />
-
 
     </android.support.design.widget.AppBarLayout>
 
@@ -28,23 +27,18 @@
         android:layout_height="wrap_content"
         android:layout_margin="20dp"
         android:orientation="vertical"
+
         >
 
         <EditText
-            android:id="@+id/txtaddFirstName"
+            android:id="@+id/txtEditClassName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:hint="@string/firstName"
-            android:inputType="textPostalAddress" />
+            android:text=""
+            />
 
-        <EditText
-            android:id="@+id/txtaddLastName"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:hint="@string/lastName"
-            android:inputType="textPostalAddress" />
 
     </LinearLayout>
+
 </LinearLayout>

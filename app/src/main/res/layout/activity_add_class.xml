@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:orientation="vertical"
     android:layout_height="match_parent"
-    tools:context="com.schoolapp.schoolapp.AddTeacherActivity">
+    tools:context="com.schoolapp.schoolapp.AddClassActivity">
 
     <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"
@@ -14,7 +14,6 @@
 
         <android.support.v7.widget.Toolbar
             android:id="@+id/toolbar"
-            android:title="@string/teachers"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             android:background="@color/colorAccent"
@@ -31,20 +30,14 @@
         >
 
         <EditText
-            android:id="@+id/txtaddFirstName"
+            android:id="@+id/txtaddName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:hint="@string/firstName"
+            android:hint="@string/NomClasse"
             android:inputType="textPostalAddress" />
 
-        <EditText
-            android:id="@+id/txtaddLastName"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:hint="@string/lastName"
-            android:inputType="textPostalAddress" />
+
 
     </LinearLayout>
 </LinearLayout>

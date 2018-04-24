@@ -7,45 +7,34 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.widget.ArrayAdapter;
-import android.widget.ListView;
 import android.widget.TextView;
 
-import java.util.List;
+public class DetailTeacherActivity extends AppCompatActivity {
 
-import Classes.Student;
-
-public class DetailClassActivity extends AppCompatActivity {
-
-    private TextView txtName;
-    private TextView txtEt;
-    private ListView listStudent;
-    private int idClass;
+    private TextView txtFirstName;
+    private TextView txtLastName;
+    private TextView txtAddress;
+    private int id;
 
    @Override
     protected void onCreate(Bundle savedInstanceState) {
        super.onCreate(savedInstanceState);
-       setContentView(R.layout.activity_detail_class);
+       setContentView(R.layout.activity_detail_teacher);
 
        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
        setSupportActionBar(toolbar);
 
        getSupportActionBar().setTitle(getResources().getString(R.string.details));
-       idClass  =getIntent().getIntExtra("id",1);
 
-       txtName = (TextView) findViewById(R.id.txtName);
-       listStudent = (ListView)findViewById(R.id.listStudent);
+       txtFirstName = (TextView) findViewById(R.id.txtFirstName);
+       txtLastName = (TextView) findViewById(R.id.txtLastName);
 
-
-       txtName.setText(getIntent().getStringExtra(getResources().getString(R.string.name)));
-       List<Student> students = MainActivity.studentDB.sdtDao().getAllListForOneClass(idClass);
-
-
-       ArrayAdapter<Student> adapter = new ArrayAdapter<Student>(DetailClassActivity.this,
-               android.R.layout.simple_list_item_1, students);
-       listStudent.setAdapter(adapter);
+       txtFirstName.setText(getIntent().getStringExtra(getResources().getString(R.string.firstName)));
+       txtLastName.setText(getIntent().getStringExtra(getResources().getString(R.string.lastName)));
+       id = getIntent().getIntExtra("id",1);
 
     }
+
 
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
@@ -68,10 +57,13 @@ public class DetailClassActivity extends AppCompatActivity {
                 Intent intent2 = new Intent(this, AboutActivity.class);
                 startActivity(intent2);
                 break;
+
             case R.id.btnEdit:
-                Intent intent3 = new Intent(this, EditClassActivity.class);
-                intent3.putExtra(getResources().getString(R.string.lastName), txtName.getText());
-                intent3.putExtra("idClass", idClass);
+
+                Intent intent3 = new Intent(this, EditTeacherActivity.class);
+                intent3.putExtra(getResources().getString(R.string.lastName), txtLastName.getText());
+                intent3.putExtra(getResources().getString(R.string.firstName), txtFirstName.getText());
+                intent3.putExtra("id",id);
                 startActivity(intent3);
 
             default:
@@ -81,12 +73,12 @@ public class DetailClassActivity extends AppCompatActivity {
         return true;
     }
 
+
     @Override
     public void onBackPressed() {
-        Intent myIntent = new Intent(DetailClassActivity.this,
-                ListOfClassesActivity.class);
+        Intent myIntent = new Intent(DetailTeacherActivity.this,
+                ListOfTeachersActivity.class);
         startActivity(myIntent);
     }
-
 
 }

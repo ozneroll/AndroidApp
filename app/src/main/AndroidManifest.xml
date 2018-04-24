@@ -55,11 +55,33 @@
         <activity android:name=".AddTeacherActivity"
             android:label="@string/teachers"
             android:theme="@style/AppTheme.NoActionBar" />
+
         <activity android:name=".DetailClassActivity"
             android:label="@string/details"
             android:theme="@style/AppTheme.NoActionBar" />
+
         <activity android:name=".DetailCourseActivity"
             android:label="@string/details"
+            android:theme="@style/AppTheme.NoActionBar" />
+
+        <activity android:name=".DetailTeacherActivity"
+            android:label="@string/details"
+            android:theme="@style/AppTheme.NoActionBar" />
+
+        <activity android:name=".EditTeacherActivity"
+            android:label="@string/details"
+            android:theme="@style/AppTheme.NoActionBar" />
+
+        <activity android:name=".DetailModuleActivity"
+            android:label="@string/details"
+            android:theme="@style/AppTheme.NoActionBar" />
+
+        <activity android:name=".EditClassActivity"
+            android:label="@string/details"
+            android:theme="@style/AppTheme.NoActionBar" />
+
+        <activity android:name=".AddClassActivity"
+            android:label="@string/add"
             android:theme="@style/AppTheme.NoActionBar" />
 
     </application>

@@ -24,4 +24,9 @@
     <string name="errorEmptyField">Leere Felder</string>
     <string name="classe">Klasse</string>
     <string name="name">Name</string>
+    <string name="NomClasse">Name von Klasse</string>
+    <string name="prenomRequis">Vorname ist erforderlich</string>
+    <string name="nomRequis">Name ist erforderlich</string>
+    <string name="adresseRequise">Addresse ist erforderlich</string>
+    <string name="NomClasseRequis">Name von Klasse ist erforderlich</string>
 </resources>

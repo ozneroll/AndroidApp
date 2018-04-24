@@ -78,8 +78,7 @@ public class ListOfStudentsActivity extends AppCompatActivity{
                 myIntent.putExtra(getResources().getString(R.string.lastName), etudiant.get(0).getLastName());
                 myIntent.putExtra(getResources().getString(R.string.address), etudiant.get(0).getAddress());
                 myIntent.putExtra("id",etudiant.get(0).getUid());
-
-                //ajouter le nom de la classe
+                myIntent.putExtra("idClasse",etudiant.get(0).getIdclass());
 
                 startActivity(myIntent);
 
@@ -114,7 +113,7 @@ public class ListOfStudentsActivity extends AppCompatActivity{
                 if(newText !=null && !newText.isEmpty()){
                     List<Student> lstFound = new ArrayList<Student>();
                     for(Student item:studentList){
-                        if(item.getLastName().contains(newText))
+                        if((item.getLastName().toLowerCase().contains(newText)||item.getFirstName().toLowerCase().contains(newText))||(item.getLastName().toUpperCase().contains(newText)||item.getFirstName().toUpperCase().contains(newText)))
                                 lstFound.add(item);
                     }
                     ArrayAdapter adapter = new ArrayAdapter(ListOfStudentsActivity.this, android.R.layout.simple_list_item_1, lstFound);
@@ -219,6 +218,14 @@ public class ListOfStudentsActivity extends AppCompatActivity{
         adapter.notifyDataSetChanged();
     }
 
+
+
+    @Override
+    public void onBackPressed() {
+        Intent myIntent = new Intent(ListOfStudentsActivity.this,
+                MainActivity.class);
+        startActivity(myIntent);
+    }
 
 
 

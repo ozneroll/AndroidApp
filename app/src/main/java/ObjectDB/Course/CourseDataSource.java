@@ -44,13 +44,14 @@ public class CourseDataSource implements ICourseDataSource {
     }
 
     @Override
-    public Course findByName(String name) {
-        return courseDAO.findByName(name);
+    public void update(Course... courses) {
+        courseDAO.update(courses);
     }
 
     @Override
-    public void update(Course... courses) {
-        courseDAO.update(courses);
+    public List<Course> getAllListForOneModule(int id_module)
+    {
+        return courseDAO.getAllListForOneModule(id_module);
     }
 
     @Override

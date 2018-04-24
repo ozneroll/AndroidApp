@@ -26,8 +26,8 @@ public interface CourseDAO {
     @Query("SELECT * FROM Course WHERE id IN (:Ids)")
     List<Course> loadAllByIds(int[] Ids);
 
-    @Query("SELECT * FROM Course WHERE name LIKE :name LIMIT 1")
-    Course findByName(String name);
+    @Query("SELECT * FROM Course WHERE module LIKE :id_module ORDER BY name")
+    List<Course> getAllListForOneModule(int id_module);
 
     @Update
     void update(Course... courses);

@@ -23,4 +23,9 @@
     <string name="errorEmptyField">Champs vides</string>
     <string name="classe">classe</string>
     <string name="name">Nom</string>
+    <string name="NomClasse">Nom de la classe</string>
+    <string name="prenomRequis">Prénom requis</string>
+    <string name="nomRequis">Nom requis</string>
+    <string name="adresseRequise">Adresse requise</string>
+    <string name="NomClasseRequis">Nom de classe requis</string>
 </resources>

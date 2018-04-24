@@ -48,10 +48,9 @@ public class ClassDataSource implements IClassDataSource {
     }
 
     @Override
-    public Class findByName(String first) {
-        return classDAO.findByName(first);
+    public Class loadClassById(int idclass) {
+        return classDAO.loadClassById(idclass);
     }
-
     @Override
     public void insertAll(Class...classes) {
         classDAO.insertAll();

@@ -13,9 +13,14 @@ import io.reactivex.Flowable;
 public interface ITeacherDataSource {
 
     Flowable<List<Teacher>> getAll();
+
     List<Teacher> getAllAsList();
+
     List<Teacher> loadAllByIds(int[] userIds);
+
     void update(Teacher... teachers);
+
     void insertAll(Teacher... teachers);
+
     void delete(Teacher teacher);
 }

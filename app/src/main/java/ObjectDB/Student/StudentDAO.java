@@ -18,36 +18,52 @@ import io.reactivex.Flowable;
 
 @Dao
 public interface StudentDAO {
-    /**Gets a list of students
+    /**
+     * Gets a list of students
+     *
      * @return List of students
      */
     @Query("SELECT * FROM Student ORDER BY FirstName")
     Flowable<List<Student>> getAll();
 
-    /**Gets a list of students
+    /**
+     * Gets a list of students
+     *
      * @return List of students
      */
     @Query("SELECT * FROM Student ORDER BY FirstName")
     List<Student> getAllAsList();
 
-    /**Gets a list of students for one class
+    /**
+     * Gets a list of students for one class
+     *
      * @param idclass
      * @return a list of students
      */
     @Query("SELECT * FROM Student WHERE idclass LIKE :idclass ORDER BY FirstName")
     List<Student> getAllListForOneClass(int idclass);
 
-
+    /**
+     * Gets a list of students with ids
+     *
+     * @param userIds
+     * @return List of students
+     */
     @Query("SELECT * FROM Student WHERE uid IN (:userIds) ")
     List<Student> loadAllByIds(int[] userIds);
 
-
+    /**
+     * Get a student with specific id
+     *
+     * @param uid
+     * @return a student
+     */
     @Query("SELECT * FROM Student WHERE uid LIKE :uid")
     Student loadStudentById(int uid);
 
 
     @Update
-    void update(Student...students);
+    void update(Student... students);
 
     @Insert
     void insertAll(Student... students);

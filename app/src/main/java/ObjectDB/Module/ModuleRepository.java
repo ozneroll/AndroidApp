@@ -21,10 +21,8 @@ public class ModuleRepository implements IModuleDataSource {
         this.mLocalDataSource = mLocalDataSource;
     }
 
-    public static ModuleRepository getInstance(IModuleDataSource mLocalDataSource)
-    {
-        if (mInstance == null)
-        {
+    public static ModuleRepository getInstance(IModuleDataSource mLocalDataSource) {
+        if (mInstance == null) {
             mInstance = new ModuleRepository(mLocalDataSource);
         }
         return mInstance;

@@ -18,19 +18,25 @@ import io.reactivex.Flowable;
 @Dao
 public interface ModuleDAO {
 
-    /** Gets a list of modules
+    /**
+     * Gets a list of modules
+     *
      * @return list of modules
      */
     @Query("SELECT * FROM Module")
     Flowable<List<Module>> getAll();
 
-    /** Gets a list of modules
+    /**
+     * Gets a list of modules
+     *
      * @return list of modules
      */
     @Query("SELECT * FROM Module")
     List<Module> getAllAsList();
 
-    /**Gets a list of modules with ids
+    /**
+     * Gets a list of modules with ids
+     *
      * @param Ids
      * @return List of modules
      */

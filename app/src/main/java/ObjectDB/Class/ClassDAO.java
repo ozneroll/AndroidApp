@@ -19,20 +19,26 @@ import io.reactivex.Flowable;
 @Dao
 public interface ClassDAO {
 
-    /**Gets a list of classes
+    /**
+     * Gets a list of classes
+     *
      * @return List of classes
      */
     @Query("SELECT * FROM Class")
     Flowable<List<Class>> getAll();
 
-    /**Gets a list of classes
+    /**
+     * Gets a list of classes
+     *
      * @return List of classes
      */
     @Query("SELECT * FROM Class")
     List<Class> getAllAsList();
 
 
-    /**Gets a list of classes with ids
+    /**
+     * Gets a list of classes with ids
+     *
      * @param Ids
      * @return List of classes
      */
@@ -40,7 +46,9 @@ public interface ClassDAO {
     List<Class> loadAllByIds(int[] Ids);
 
 
-    /**Get a class with specific id
+    /**
+     * Get a class with specific id
+     *
      * @param idclass
      * @return a class
      */

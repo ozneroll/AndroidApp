@@ -13,8 +13,12 @@ import io.reactivex.Flowable;
 public interface IModuleDataSource {
 
     Flowable<List<Module>> getAll();
+
     List<Module> getAllAsList();
+
     List<Module> loadAllByIds(int[] Ids);
+
     void insertAll(Module... modules);
+
     void delete(Module modules);
 }

@@ -17,15 +17,12 @@ public class ModuleDataSource implements IModuleDataSource {
     private ModuleDAO moduleDAO;
     private static ModuleDataSource mInstance;
 
-    public ModuleDataSource(ModuleDAO moduleDAO)
-    {
+    public ModuleDataSource(ModuleDAO moduleDAO) {
         this.moduleDAO = moduleDAO;
     }
 
-    public static ModuleDataSource getInstance(ModuleDAO moduleDAO)
-    {
-        if(mInstance == null)
-        {
+    public static ModuleDataSource getInstance(ModuleDAO moduleDAO) {
+        if (mInstance == null) {
             mInstance = new ModuleDataSource(moduleDAO);
         }
         return mInstance;
@@ -47,7 +44,7 @@ public class ModuleDataSource implements IModuleDataSource {
     }
 
     @Override
-    public void insertAll(Module...classes) {
+    public void insertAll(Module... classes) {
         moduleDAO.insertAll();
     }
 

@@ -18,15 +18,12 @@ public class ClassDataSource implements IClassDataSource {
     private ClassDAO classDAO;
     private static ClassDataSource mInstance;
 
-    public ClassDataSource(ClassDAO studentDAO)
-    {
+    public ClassDataSource(ClassDAO studentDAO) {
         this.classDAO = studentDAO;
     }
 
-    public static ClassDataSource getInstance(ClassDAO studentDAO)
-    {
-        if(mInstance == null)
-        {
+    public static ClassDataSource getInstance(ClassDAO studentDAO) {
+        if (mInstance == null) {
             mInstance = new ClassDataSource(studentDAO);
         }
         return mInstance;
@@ -51,8 +48,9 @@ public class ClassDataSource implements IClassDataSource {
     public Class loadClassById(int idclass) {
         return classDAO.loadClassById(idclass);
     }
+
     @Override
-    public void insertAll(Class...classes) {
+    public void insertAll(Class... classes) {
         classDAO.insertAll();
     }
 

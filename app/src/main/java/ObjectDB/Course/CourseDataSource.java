@@ -14,15 +14,12 @@ public class CourseDataSource implements ICourseDataSource {
     private CourseDAO courseDAO;
     private static CourseDataSource mInstance;
 
-    public CourseDataSource(CourseDAO courseDAO)
-    {
+    public CourseDataSource(CourseDAO courseDAO) {
         this.courseDAO = courseDAO;
     }
 
-    public static CourseDataSource getInstance(CourseDAO courseDAO)
-    {
-        if(mInstance == null)
-        {
+    public static CourseDataSource getInstance(CourseDAO courseDAO) {
+        if (mInstance == null) {
             mInstance = new CourseDataSource(courseDAO);
         }
         return mInstance;
@@ -44,13 +41,12 @@ public class CourseDataSource implements ICourseDataSource {
     }
 
     @Override
-    public List<Course> getAllListForOneModule(int id_module)
-    {
+    public List<Course> getAllListForOneModule(int id_module) {
         return courseDAO.getAllListForOneModule(id_module);
     }
 
     @Override
-    public void insertAll(Course...courses) {
+    public void insertAll(Course... courses) {
         courseDAO.insertAll();
     }
 

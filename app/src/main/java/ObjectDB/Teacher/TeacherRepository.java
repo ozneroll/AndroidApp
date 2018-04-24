@@ -20,10 +20,8 @@ public class TeacherRepository implements ITeacherDataSource {
         this.mLocalDataSource = mLocalDataSource;
     }
 
-    public static TeacherRepository getInstance(ITeacherDataSource mLocalDataSource)
-    {
-        if (mInstance == null)
-        {
+    public static TeacherRepository getInstance(ITeacherDataSource mLocalDataSource) {
+        if (mInstance == null) {
             mInstance = new TeacherRepository(mLocalDataSource);
         }
         return mInstance;
@@ -44,14 +42,13 @@ public class TeacherRepository implements ITeacherDataSource {
         return mLocalDataSource.loadAllByIds(userIds);
     }
 
-
     @Override
     public void update(Teacher... teacher) {
         mLocalDataSource.update(teacher);
     }
 
     @Override
-    public void insertAll(Teacher...teachers) {
+    public void insertAll(Teacher... teachers) {
         mLocalDataSource.insertAll(teachers);
     }
 

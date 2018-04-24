@@ -19,10 +19,8 @@ public class CourseRepository implements ICourseDataSource {
         this.mLocalDataSource = mLocalDataSource;
     }
 
-    public static CourseRepository getInstance(ICourseDataSource mLocalDataSource)
-    {
-        if (mInstance == null)
-        {
+    public static CourseRepository getInstance(ICourseDataSource mLocalDataSource) {
+        if (mInstance == null) {
             mInstance = new CourseRepository(mLocalDataSource);
         }
         return mInstance;
@@ -44,13 +42,12 @@ public class CourseRepository implements ICourseDataSource {
     }
 
     @Override
-    public List<Course> getAllListForOneModule(int id_module)
-    {
+    public List<Course> getAllListForOneModule(int id_module) {
         return mLocalDataSource.getAllListForOneModule(id_module);
     }
 
     @Override
-    public void insertAll(Course...courses) {
+    public void insertAll(Course... courses) {
         mLocalDataSource.insertAll(courses);
     }
 

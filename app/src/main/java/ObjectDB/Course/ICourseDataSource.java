@@ -12,9 +12,14 @@ import io.reactivex.Flowable;
 public interface ICourseDataSource {
 
     Flowable<List<Course>> getAll();
+
     List<Course> getAllAsList();
+
     List<Course> loadAllByIds(int[] Ids);
+
     List<Course> getAllListForOneModule(int id_module);
+
     void insertAll(Course... courses);
+
     void delete(Course course);
 }

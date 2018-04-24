@@ -21,10 +21,8 @@ public class ClassRepository implements IClassDataSource {
         this.mLocalDataSource = mLocalDataSource;
     }
 
-    public static ClassRepository getInstance(IClassDataSource mLocalDataSource)
-    {
-        if (mInstance == null)
-        {
+    public static ClassRepository getInstance(IClassDataSource mLocalDataSource) {
+        if (mInstance == null) {
             mInstance = new ClassRepository(mLocalDataSource);
         }
         return mInstance;

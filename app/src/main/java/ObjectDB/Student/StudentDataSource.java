@@ -14,15 +14,12 @@ public class StudentDataSource implements IStudentDataSource {
     private StudentDAO studentDAO;
     private static StudentDataSource mInstance;
 
-    public StudentDataSource(StudentDAO studentDAO)
-    {
+    public StudentDataSource(StudentDAO studentDAO) {
         this.studentDAO = studentDAO;
     }
 
-    public static StudentDataSource getInstance(StudentDAO studentDAO)
-    {
-        if(mInstance == null)
-        {
+    public static StudentDataSource getInstance(StudentDAO studentDAO) {
+        if (mInstance == null) {
             mInstance = new StudentDataSource(studentDAO);
         }
         return mInstance;
@@ -43,7 +40,9 @@ public class StudentDataSource implements IStudentDataSource {
         return studentDAO.loadAllByIds(userIds);
     }
 
-    public Student loadStudentById(int uid ){return studentDAO.loadStudentById(uid); }
+    public Student loadStudentById(int uid) {
+        return studentDAO.loadStudentById(uid);
+    }
 
     @Override
     public void update(Student... students) {
@@ -51,7 +50,7 @@ public class StudentDataSource implements IStudentDataSource {
     }
 
     @Override
-    public void insertAll(Student...students) {
+    public void insertAll(Student... students) {
         studentDAO.insertAll();
     }
 

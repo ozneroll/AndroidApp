@@ -17,22 +17,39 @@ import io.reactivex.Flowable;
 
 @Dao
 public interface TeacherDAO {
+    /**
+     * Gets a list of teachers
+     *
+     * @return List of teachers
+     */
     @Query("SELECT * FROM Teacher")
     Flowable<List<Teacher>> getAll();
 
+    /**
+     * Gets a list of teachers
+     *
+     * @return List of teachers
+     */
     @Query("SELECT * FROM Teacher")
     List<Teacher> getAllAsList();
 
+    /**
+     * Gets a list of teachers with ids
+     *
+     * @param userIds
+     * @return List of teachers
+     */
     @Query("SELECT * FROM Teacher WHERE uid IN (:userIds)")
     List<Teacher> loadAllByIds(int[] userIds);
 
+    /**
+     * Get a teacher with specific id
+     *
+     * @param uid
+     * @return a teacher
+     */
     @Query("SELECT * FROM Teacher WHERE uid LIKE :uid")
     Teacher loadTeacherById(int uid);
-
-    @Query("SELECT * FROM Teacher WHERE firstName LIKE :first AND "
-            + "lastName LIKE :last LIMIT 1")
-
-    Teacher findByName(String first, String last);
 
     @Update
     void update(Teacher... students);

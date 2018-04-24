@@ -9,7 +9,7 @@ import io.reactivex.Flowable;
  * Created by loren on 21.04.2018.
  */
 
-public class StudentRepository implements IStudentDataSource{
+public class StudentRepository implements IStudentDataSource {
 
     private IStudentDataSource mLocalDataSource;
 
@@ -19,10 +19,8 @@ public class StudentRepository implements IStudentDataSource{
         this.mLocalDataSource = mLocalDataSource;
     }
 
-    public static StudentRepository getInstance(IStudentDataSource mLocalDataSource)
-    {
-        if (mInstance == null)
-        {
+    public static StudentRepository getInstance(IStudentDataSource mLocalDataSource) {
+        if (mInstance == null) {
             mInstance = new StudentRepository(mLocalDataSource);
         }
         return mInstance;
@@ -49,7 +47,7 @@ public class StudentRepository implements IStudentDataSource{
     }
 
     @Override
-    public void insertAll(Student...students) {
+    public void insertAll(Student... students) {
         mLocalDataSource.insertAll(students);
     }
 

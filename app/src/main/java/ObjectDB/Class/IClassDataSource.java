@@ -13,9 +13,14 @@ import io.reactivex.Flowable;
 public interface IClassDataSource {
 
     Flowable<List<Class>> getAll();
+
     List<Class> getAllAsList();
+
     List<Class> loadAllByIds(int[] Ids);
+
     Class loadClassById(int idclass);
+
     void insertAll(Class... classes);
+
     void delete(Class classe);
 }

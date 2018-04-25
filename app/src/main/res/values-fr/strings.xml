@@ -28,4 +28,6 @@
     <string name="NomClasseRequis">Nom de classe requis</string>
     <string name="avril">Avril</string>
     <string name="ajout">Ajout réussi</string>
+    <string name="deletesuccess">Suppression réussie</string>
+    <string name="saved">Modification effectuée</string>
 </resources>

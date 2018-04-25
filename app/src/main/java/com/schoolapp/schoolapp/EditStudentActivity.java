@@ -11,6 +11,7 @@ import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.List;
 
@@ -66,8 +67,22 @@ public class EditStudentActivity extends AppCompatActivity {
         spinner.setAdapter(adapter);
 
       //  System.out.println("****************************************"+(classes.indexOf(currentClass)));
-     //   spinner.setSelection((classes.indexOf()));
+        c = MainActivity.studentDB.classDAO().loadClassById(idClass);
+        int index= getIndex(spinner, c.getName());
+        spinner.setSelection(index);
 
+    }
+    //getting the index of the correct class name
+    public int getIndex(Spinner spinner, String myString){
+
+        int index = 0;
+
+        for (int i=0;i<spinner.getCount();i++){
+            if (spinner.getItemAtPosition(i).toString().equals(myString)){
+                index = i;
+            }
+        }
+        return index;
     }
 
     //creating the menu
@@ -96,6 +111,8 @@ public class EditStudentActivity extends AppCompatActivity {
                 break;
             case R.id.action_delete:
                 MainActivity.studentDB.sdtDao().delete(etudiant);
+                //confirmation for the user
+                Toast.makeText(getApplicationContext(), getResources().getString(R.string.deletesuccess), Toast.LENGTH_LONG).show();
                 Intent intent3 = new Intent(EditStudentActivity.this,
                         ListOfStudentsActivity.class);
                 startActivity(intent3);
@@ -123,7 +140,8 @@ public class EditStudentActivity extends AppCompatActivity {
                     etudiant.setAddress(txtAddress.getText().toString());
                     etudiant.setIdclass(c.getIdclass());
                     MainActivity.studentDB.sdtDao().update(etudiant);
-
+                    //confirmation for the user
+                    Toast.makeText(getApplicationContext(), getResources().getString(R.string.saved), Toast.LENGTH_LONG).show();
                     Intent myIntent = new Intent(EditStudentActivity.this,
                             DetailStudentActivity.class);
                     myIntent.putExtra(getResources().getString(R.string.lastName), txtLastName.getText().toString());

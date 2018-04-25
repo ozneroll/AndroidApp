@@ -8,6 +8,7 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import Classes.Student;
 import Classes.Teacher;
@@ -66,6 +67,8 @@ public class EditTeacherActivity extends AppCompatActivity {
                 break;
             case R.id.action_delete:
                 MainActivity.studentDB.teacherDAO().delete(teacher);
+                //confirmation for the user
+                Toast.makeText(getApplicationContext(), getResources().getString(R.string.deletesuccess), Toast.LENGTH_LONG).show();
                 Intent intent3 = new Intent(EditTeacherActivity.this,
                         ListOfTeachersActivity.class);
                 startActivity(intent3);
@@ -86,7 +89,8 @@ public class EditTeacherActivity extends AppCompatActivity {
                     teacher.setLastName(txtLastName.getText().toString());
                     teacher.setFirstName(txtFirstName.getText().toString());
                     MainActivity.studentDB.teacherDAO().update(teacher);
-
+                    //confirmation for the user
+                    Toast.makeText(getApplicationContext(), getResources().getString(R.string.saved), Toast.LENGTH_LONG).show();
                     Intent myIntent = new Intent(EditTeacherActivity.this,
                             DetailTeacherActivity.class);
                     myIntent.putExtra(getResources().getString(R.string.lastName), txtLastName.getText().toString());

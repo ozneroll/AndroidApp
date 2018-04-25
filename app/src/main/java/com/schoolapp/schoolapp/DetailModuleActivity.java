@@ -30,7 +30,7 @@ public class DetailModuleActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        getSupportActionBar().setTitle(getResources().getString(R.string.modules));
+        getSupportActionBar().setTitle(getResources().getString(R.string.details));
         id  =getIntent().getIntExtra("idModule",1);
 
         txtName = (TextView) findViewById(R.id.txtName);

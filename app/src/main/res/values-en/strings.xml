@@ -31,4 +31,6 @@
     <string name="NomClasseRequis">Name of class is required</string>
     <string name="avril">April</string>
     <string name="ajout">Added successfully</string>
+    <string name="deletesuccess">Deleted successfully</string>
+    <string name="saved">" Modification done"</string>
 </resources>

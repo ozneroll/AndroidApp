@@ -53,6 +53,7 @@ public class EditStudentActivity extends AppCompatActivity {
 
         idClass = getIntent().getIntExtra("idClass", -1);
 
+
         classes = MainActivity.studentDB.classDAO().getAllAsList();
         spinner = (Spinner)findViewById(R.id.all_classes);
 
@@ -63,6 +64,9 @@ public class EditStudentActivity extends AppCompatActivity {
 
         // Apply the adapter to the spinner
         spinner.setAdapter(adapter);
+
+      //  System.out.println("****************************************"+(classes.indexOf(currentClass)));
+     //   spinner.setSelection((classes.indexOf()));
 
     }
 

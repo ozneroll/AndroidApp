@@ -42,7 +42,6 @@ public class ListOfCoursesActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
 
 
-
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list_of_courses);
 
@@ -75,7 +74,7 @@ public class ListOfCoursesActivity extends AppCompatActivity {
                 int id = _temp.getId();
 
 
-                List<Course> cours = MainActivity.studentDB.courseDAO().loadAllByIds(new int[] {id} );
+                List<Course> cours = MainActivity.studentDB.courseDAO().loadAllByIds(new int[]{id});
 
                 Intent myIntent = new Intent(ListOfCoursesActivity.this,
                         DetailCourseActivity.class);
@@ -90,7 +89,7 @@ public class ListOfCoursesActivity extends AppCompatActivity {
         });
 
 
-        searchView = (MaterialSearchView)findViewById(R.id.search_view);
+        searchView = (MaterialSearchView) findViewById(R.id.search_view);
         searchView.setOnSearchViewListener(new MaterialSearchView.SearchViewListener() {
             @Override
             public void onSearchViewShown() {
@@ -114,16 +113,15 @@ public class ListOfCoursesActivity extends AppCompatActivity {
 
             @Override
             public boolean onQueryTextChange(String newText) {
-                if(newText !=null && !newText.isEmpty()){
+                if (newText != null && !newText.isEmpty()) {
                     List<Course> lstFound = new ArrayList<Course>();
-                    for(Course item:courseList){
-                        if(item.getName().contains(newText))
+                    for (Course item : courseList) {
+                        if (item.getName().toUpperCase().contains(newText)||(item.getName().toLowerCase().contains(newText)))
                             lstFound.add(item);
                     }
                     ArrayAdapter adapter = new ArrayAdapter(ListOfCoursesActivity.this, android.R.layout.simple_list_item_1, lstFound);
                     listCourses.setAdapter(adapter);
-                }
-                else{
+                } else {
 
                     ArrayAdapter adapter = new ArrayAdapter(ListOfCoursesActivity.this, android.R.layout.simple_list_item_1, courseList);
                     listCourses.setAdapter(adapter);
@@ -136,6 +134,7 @@ public class ListOfCoursesActivity extends AppCompatActivity {
 
 
     }
+
     //creating the menu
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
@@ -166,7 +165,6 @@ public class ListOfCoursesActivity extends AppCompatActivity {
     }
 
 
-
     public void onClick(View v) {
         // Start NewActivity.class
         Intent myIntent = new Intent(ListOfCoursesActivity.this,
@@ -187,7 +185,7 @@ public class ListOfCoursesActivity extends AppCompatActivity {
                         new Consumer<Throwable>() {
                             @Override
                             public void accept(Throwable throwable) throws Exception {
-                                Toast.makeText(ListOfCoursesActivity.this,""+throwable.getMessage() , Toast.LENGTH_SHORT).show();
+                                Toast.makeText(ListOfCoursesActivity.this, "" + throwable.getMessage(), Toast.LENGTH_SHORT).show();
                             }
                         });
         compositeDisposable.add(disposable);
@@ -200,12 +198,13 @@ public class ListOfCoursesActivity extends AppCompatActivity {
     }
 
     //redirect to MainActivity when back button is pressed
-
+    //finish
     @Override
     public void onBackPressed() {
         Intent myIntent = new Intent(ListOfCoursesActivity.this,
                 MainActivity.class);
         startActivity(myIntent);
+        finish();
     }
 
 }

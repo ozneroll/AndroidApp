@@ -16,22 +16,22 @@ public class DetailTeacherActivity extends AppCompatActivity {
     private TextView txtAddress;
     private int id;
 
-   @Override
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
-       super.onCreate(savedInstanceState);
-       setContentView(R.layout.activity_detail_teacher);
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_detail_teacher);
 
-       Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-       setSupportActionBar(toolbar);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
 
-       getSupportActionBar().setTitle(getResources().getString(R.string.details));
+        getSupportActionBar().setTitle(getResources().getString(R.string.details));
 
-       txtFirstName = (TextView) findViewById(R.id.txtFirstName);
-       txtLastName = (TextView) findViewById(R.id.txtLastName);
+        txtFirstName = (TextView) findViewById(R.id.txtFirstName);
+        txtLastName = (TextView) findViewById(R.id.txtLastName);
 
-       txtFirstName.setText(getIntent().getStringExtra(getResources().getString(R.string.firstName)));
-       txtLastName.setText(getIntent().getStringExtra(getResources().getString(R.string.lastName)));
-       id = getIntent().getIntExtra("id",1);
+        txtFirstName.setText(getIntent().getStringExtra(getResources().getString(R.string.firstName)));
+        txtLastName.setText(getIntent().getStringExtra(getResources().getString(R.string.lastName)));
+        id = getIntent().getIntExtra("id", 1);
 
     }
 
@@ -63,7 +63,7 @@ public class DetailTeacherActivity extends AppCompatActivity {
                 Intent intent3 = new Intent(this, EditTeacherActivity.class);
                 intent3.putExtra(getResources().getString(R.string.lastName), txtLastName.getText());
                 intent3.putExtra(getResources().getString(R.string.firstName), txtFirstName.getText());
-                intent3.putExtra("id",id);
+                intent3.putExtra("id", id);
                 startActivity(intent3);
 
             default:

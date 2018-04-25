@@ -31,10 +31,10 @@ public class DetailModuleActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
         getSupportActionBar().setTitle(getResources().getString(R.string.details));
-        id  =getIntent().getIntExtra("idModule",1);
+        id = getIntent().getIntExtra("idModule", 1);
 
         txtName = (TextView) findViewById(R.id.txtName);
-        listCourses = (ListView)findViewById(R.id.listCourses);
+        listCourses = (ListView) findViewById(R.id.listCourses);
         txtName.setText(getIntent().getStringExtra("nomModule"));
         //get list of courses
         List<Course> courses = MainActivity.studentDB.courseDAO().getAllListForOneModule(id);

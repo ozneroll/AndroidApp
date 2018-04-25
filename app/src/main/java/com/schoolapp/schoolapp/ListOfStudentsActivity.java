@@ -214,11 +214,13 @@ public class ListOfStudentsActivity extends AppCompatActivity {
     }
 
     //redirect to MainActivity when back button is pressed
+    //finish
     @Override
     public void onBackPressed() {
         Intent myIntent = new Intent(ListOfStudentsActivity.this,
                 MainActivity.class);
         startActivity(myIntent);
+        finish();
     }
 
 

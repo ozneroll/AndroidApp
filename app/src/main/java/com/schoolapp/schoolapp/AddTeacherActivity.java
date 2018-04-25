@@ -56,16 +56,16 @@ public class AddTeacherActivity extends AppCompatActivity {
                 startActivity(intent2);
                 break;
 
-                //save the teacher, but checking the values first
+            //save the teacher, but checking the values first
             case R.id.btnSave:
                 int error = 0;
-                if( txtFirstName.getText().toString().length() == 0 ) {
+                if (txtFirstName.getText().toString().length() == 0) {
                     txtFirstName.setError(getResources().getString(R.string.prenomRequis));
-                    error =1;
+                    error = 1;
                 }
-                if( txtLastName.getText().toString().length() == 0 ) {
+                if (txtLastName.getText().toString().length() == 0) {
                     txtLastName.setError(getResources().getString(R.string.nomRequis));
-                    error =1;
+                    error = 1;
                 }
 
                 if (error == 0) {
@@ -88,8 +88,7 @@ public class AddTeacherActivity extends AppCompatActivity {
 
     //finish the activity
     @Override
-    protected void onStop()
-    {
+    protected void onStop() {
         super.onStop();
         finish();
     }

@@ -21,29 +21,30 @@ public class DetailClassActivity extends AppCompatActivity {
     private ListView listStudent;
     private int idClass;
 
-   @Override
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
-       super.onCreate(savedInstanceState);
-       setContentView(R.layout.activity_detail_class);
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_detail_class);
 
-       Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-       setSupportActionBar(toolbar);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
 
-       getSupportActionBar().setTitle(getResources().getString(R.string.details));
-       idClass  =getIntent().getIntExtra("id",1);
+        getSupportActionBar().setTitle(getResources().getString(R.string.details));
+        idClass = getIntent().getIntExtra("id", 1);
 
-       txtName = (TextView) findViewById(R.id.txtName);
-       listStudent = (ListView)findViewById(R.id.listStudent);
+        txtName = (TextView) findViewById(R.id.txtName);
+        listStudent = (ListView) findViewById(R.id.listStudent);
 
-       txtName.setText(getIntent().getStringExtra(getResources().getString(R.string.name)));
+        txtName.setText(getIntent().getStringExtra(getResources().getString(R.string.name)));
 
-       //list of students in the class
-       List<Student> students = MainActivity.studentDB.sdtDao().getAllListForOneClass(idClass);
-       ArrayAdapter<Student> adapter = new ArrayAdapter<Student>(DetailClassActivity.this,
-               android.R.layout.simple_list_item_1, students);
-       listStudent.setAdapter(adapter);
+        //list of students in the class
+        List<Student> students = MainActivity.studentDB.sdtDao().getAllListForOneClass(idClass);
+        ArrayAdapter<Student> adapter = new ArrayAdapter<Student>(DetailClassActivity.this,
+                android.R.layout.simple_list_item_1, students);
+        listStudent.setAdapter(adapter);
 
     }
+
     //creating the menu
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();

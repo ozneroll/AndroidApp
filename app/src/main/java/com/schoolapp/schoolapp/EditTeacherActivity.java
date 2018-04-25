@@ -19,7 +19,7 @@ public class EditTeacherActivity extends AppCompatActivity {
     private EditText txtFirstName;
     private EditText txtLastName;
     private int id;
-    public Teacher teacher = new Teacher() ;
+    public Teacher teacher = new Teacher();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,7 +36,7 @@ public class EditTeacherActivity extends AppCompatActivity {
 
         txtLastName.setText(getIntent().getStringExtra(getResources().getString(R.string.lastName)));
         txtFirstName.setText(getIntent().getStringExtra(getResources().getString(R.string.firstName)));
-        id = getIntent().getIntExtra("id",-1);
+        id = getIntent().getIntExtra("id", -1);
         teacher = MainActivity.studentDB.teacherDAO().loadTeacherById(id);
 
     }
@@ -76,13 +76,13 @@ public class EditTeacherActivity extends AppCompatActivity {
                 break;
             case R.id.btnSave:
                 int error = 0;
-                if( txtFirstName.getText().toString().length() == 0 ) {
+                if (txtFirstName.getText().toString().length() == 0) {
                     txtFirstName.setError(getResources().getString(R.string.prenomRequis));
-                    error =1;
+                    error = 1;
                 }
-                if( txtLastName.getText().toString().length() == 0 ) {
+                if (txtLastName.getText().toString().length() == 0) {
                     txtLastName.setError(getResources().getString(R.string.nomRequis));
-                    error =1;
+                    error = 1;
                 }
 
                 if (error == 0) {
@@ -110,8 +110,7 @@ public class EditTeacherActivity extends AppCompatActivity {
 
     //finish the activity
     @Override
-    protected void onStop()
-    {
+    protected void onStop() {
         super.onStop();
         finish();
     }

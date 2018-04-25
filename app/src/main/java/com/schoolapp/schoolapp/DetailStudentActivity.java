@@ -23,28 +23,28 @@ public class DetailStudentActivity extends AppCompatActivity {
     private int id;
     private int idClass;
 
-   @Override
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
-       super.onCreate(savedInstanceState);
-       setContentView(R.layout.activity_detail_student);
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_detail_student);
 
-       Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-       setSupportActionBar(toolbar);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
 
-       getSupportActionBar().setTitle(getResources().getString(R.string.details));
+        getSupportActionBar().setTitle(getResources().getString(R.string.details));
 
-       txtFirstName = (TextView) findViewById(R.id.txtFirstName);
-       txtLastName = (TextView) findViewById(R.id.txtLastName);
-       txtAddress = (TextView) findViewById(R.id.txtAddress);
-       txtClass = (TextView) findViewById(R.id.txtClass);
+        txtFirstName = (TextView) findViewById(R.id.txtFirstName);
+        txtLastName = (TextView) findViewById(R.id.txtLastName);
+        txtAddress = (TextView) findViewById(R.id.txtAddress);
+        txtClass = (TextView) findViewById(R.id.txtClass);
 
-       txtLastName.setText(getIntent().getStringExtra(getResources().getString(R.string.lastName)));
-       txtFirstName.setText(getIntent().getStringExtra(getResources().getString(R.string.firstName)));
-       txtAddress.setText(getIntent().getStringExtra(getResources().getString(R.string.address)));
-       id = getIntent().getIntExtra("id",1);
-       idClass = getIntent().getIntExtra("idClasse",-1);
-       Class c = MainActivity.studentDB.classDAO().loadClassById(idClass);
-       txtClass.setText(c.getName());
+        txtLastName.setText(getIntent().getStringExtra(getResources().getString(R.string.lastName)));
+        txtFirstName.setText(getIntent().getStringExtra(getResources().getString(R.string.firstName)));
+        txtAddress.setText(getIntent().getStringExtra(getResources().getString(R.string.address)));
+        id = getIntent().getIntExtra("id", 1);
+        idClass = getIntent().getIntExtra("idClasse", -1);
+        Class c = MainActivity.studentDB.classDAO().loadClassById(idClass);
+        txtClass.setText(c.getName());
     }
 
     //creating the menu
@@ -74,9 +74,9 @@ public class DetailStudentActivity extends AppCompatActivity {
                 Intent intent3 = new Intent(this, EditStudentActivity.class);
                 intent3.putExtra(getResources().getString(R.string.lastName), txtLastName.getText());
                 intent3.putExtra(getResources().getString(R.string.firstName), txtFirstName.getText());
-                intent3.putExtra(getResources().getString(R.string.address),txtAddress.getText());
+                intent3.putExtra(getResources().getString(R.string.address), txtAddress.getText());
                 intent3.putExtra("idClass", idClass);
-                intent3.putExtra("id",id);
+                intent3.putExtra("id", id);
                 startActivity(intent3);
 
             default:

@@ -84,8 +84,7 @@ public class AddClassActivity extends AppCompatActivity {
 
     //finish the activity
     @Override
-    protected void onStop()
-    {
+    protected void onStop() {
         super.onStop();
         finish();
     }

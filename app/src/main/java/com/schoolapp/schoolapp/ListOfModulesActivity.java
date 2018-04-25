@@ -110,7 +110,7 @@ public class ListOfModulesActivity extends AppCompatActivity {
                 if (newText != null && !newText.isEmpty()) {
                     List<Module> lstFound = new ArrayList<Module>();
                     for (Module item : moduleList) {
-                        if (item.getName().contains(newText))
+                        if (item.getName().toUpperCase().contains(newText)||(item.getName().toLowerCase().contains(newText)))
                             lstFound.add(item);
                     }
                     ArrayAdapter adapter = new ArrayAdapter(ListOfModulesActivity.this, android.R.layout.simple_list_item_1, lstFound);
@@ -192,12 +192,13 @@ public class ListOfModulesActivity extends AppCompatActivity {
     }
 
     //redirect to MainActivity when back button is pressed
-
+    //finish
     @Override
     public void onBackPressed() {
         Intent myIntent = new Intent(ListOfModulesActivity.this,
                 MainActivity.class);
         startActivity(myIntent);
+        finish();
     }
 
 }

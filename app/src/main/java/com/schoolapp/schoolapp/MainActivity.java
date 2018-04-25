@@ -23,6 +23,8 @@ public class MainActivity extends AppCompatActivity {
     private ImageButton ib4;
     private ImageButton ib5;
 
+    View.OnClickListener myListener;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         studentDB = AppDatabase.getInstance(this);
@@ -45,7 +47,7 @@ public class MainActivity extends AppCompatActivity {
 
 
 // Create an implementation of OnClickListener
-        View.OnClickListener myListener = new View.OnClickListener() {
+        myListener = new View.OnClickListener() {
             public void onClick(View v) {
                 Intent myIntent;
                 switch (v.getId() /*to get clicked view id**/) {
@@ -79,6 +81,14 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         };
+
+
+
+    }
+
+    public void onResume()
+    {
+        super.onResume();
         ib1.setOnClickListener(myListener);
         ib2.setOnClickListener(myListener);
         ib3.setOnClickListener(myListener);
@@ -90,8 +100,22 @@ public class MainActivity extends AppCompatActivity {
         cv3.setOnClickListener(myListener);
         cv4.setOnClickListener(myListener);
         cv5.setOnClickListener(myListener);
+    }
 
+    public void onPause()
+    {
+        super.onPause();
+        ib1.setOnClickListener(null);
+        ib2.setOnClickListener(null);
+        ib3.setOnClickListener(null);
+        ib4.setOnClickListener(null);
+        ib5.setOnClickListener(null);
 
+        cv1.setOnClickListener(null);
+        cv2.setOnClickListener(null);
+        cv3.setOnClickListener(null);
+        cv4.setOnClickListener(null);
+        cv5.setOnClickListener(null);
     }
 
     @Override
@@ -100,6 +124,7 @@ public class MainActivity extends AppCompatActivity {
         intent.addCategory(Intent.CATEGORY_HOME);
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         startActivity(intent);
+        finish();
     }
 
 

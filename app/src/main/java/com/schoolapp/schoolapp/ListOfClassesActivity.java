@@ -114,7 +114,7 @@ public class ListOfClassesActivity extends AppCompatActivity {
                 if (newText != null && !newText.isEmpty()) {
                     List<Class> lstFound = new ArrayList<Class>();
                     for (Class item : classList) {
-                        if (item.getName().contains(newText))
+                        if (item.getName().toUpperCase().contains(newText)||(item.getName().toLowerCase().contains(newText)))
                             lstFound.add(item);
                     }
                     ArrayAdapter adapter = new ArrayAdapter(ListOfClassesActivity.this, android.R.layout.simple_list_item_1, lstFound);
@@ -214,11 +214,12 @@ public class ListOfClassesActivity extends AppCompatActivity {
     }
 
     //redirect to MainActivity when back button is pressed
-
+    //finish
     @Override
     public void onBackPressed() {
         Intent myIntent = new Intent(ListOfClassesActivity.this,
                 MainActivity.class);
         startActivity(myIntent);
+        finish();
     }
 }

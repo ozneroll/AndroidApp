@@ -18,7 +18,7 @@ public class EditClassActivity extends AppCompatActivity {
 
     private EditText txtClassName;
     private int idClass;
-    public Class classe = new Class() ;
+    public Class classe = new Class();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,7 +34,7 @@ public class EditClassActivity extends AppCompatActivity {
 
 
         txtClassName.setText(getIntent().getStringExtra(getResources().getString(R.string.lastName)));
-        idClass = getIntent().getIntExtra("idClass",-1);
+        idClass = getIntent().getIntExtra("idClass", -1);
         classe = MainActivity.studentDB.classDAO().loadClassById(idClass);
 
     }
@@ -75,9 +75,9 @@ public class EditClassActivity extends AppCompatActivity {
                 break;
             case R.id.btnSave:
                 int error = 0;
-                if( txtClassName.getText().toString().length() == 0 ) {
+                if (txtClassName.getText().toString().length() == 0) {
                     txtClassName.setError(getResources().getString(R.string.NomClasseRequis));
-                    error =1;
+                    error = 1;
                 }
 
                 if (error == 0) {
@@ -88,7 +88,7 @@ public class EditClassActivity extends AppCompatActivity {
                     Intent myIntent = new Intent(EditClassActivity.this,
                             DetailClassActivity.class);
                     myIntent.putExtra(getResources().getString(R.string.name), txtClassName.getText().toString());
-                    myIntent.putExtra("id",classe.getIdclass());
+                    myIntent.putExtra("id", classe.getIdclass());
                     startActivity(myIntent);
                 }
                 break;
@@ -100,10 +100,10 @@ public class EditClassActivity extends AppCompatActivity {
 
         return true;
     }
+
     //finish the activity
     @Override
-    protected void onStop()
-    {
+    protected void onStop() {
         super.onStop();
         finish();
     }

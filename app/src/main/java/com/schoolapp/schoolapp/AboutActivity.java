@@ -20,7 +20,7 @@ public class AboutActivity extends AppCompatActivity {
         setContentView(R.layout.activity_about);
 
         toolbar = (Toolbar) findViewById(R.id.toolbar);
-        textView = (TextView)findViewById(R.id.about);
+        textView = (TextView) findViewById(R.id.about);
         setSupportActionBar(toolbar);
     }
 
@@ -32,7 +32,6 @@ public class AboutActivity extends AppCompatActivity {
         itemSearch.setVisible(false);
         return true;
     }
-
 
 
     //settings and about
@@ -57,8 +56,7 @@ public class AboutActivity extends AppCompatActivity {
 
     //finish this activity
     @Override
-    public void onStop()
-    {
+    public void onStop() {
         super.onStop();
         finish();
     }

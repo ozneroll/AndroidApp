@@ -32,54 +32,54 @@ public class LanguageActivity extends AppCompatActivity {
 
     //Button to pass in FR
 
-    public void changeToFR(View v)
-    {
-        String languageToLoad  = "fr";
+    public void changeToFR(View v) {
+        String languageToLoad = "fr";
         Locale locale = new Locale(languageToLoad);
         Locale.setDefault(locale);
         Configuration config = new Configuration();
         config.setLocale(locale);
         //noinspection deprecation
-        getResources().updateConfiguration(config,v.getResources().getDisplayMetrics());
+        getResources().updateConfiguration(config, v.getResources().getDisplayMetrics());
 
-        Intent intent = new Intent(this, LanguageActivity.class);
+        Intent intent = new Intent(this, MainActivity.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         startActivity(intent);
+        finish();
 
     }
 
     //Button to pass in ALL
 
-    public void changeToALL(View v)
-    {
-        String languageToLoad  = "de";
+    public void changeToALL(View v) {
+        String languageToLoad = "de";
         Locale locale = new Locale(languageToLoad);
         Locale.setDefault(locale);
         Configuration config = new Configuration();
         config.setLocale(locale);
         //noinspection deprecation
-        getResources().updateConfiguration(config,v.getResources().getDisplayMetrics());
+        getResources().updateConfiguration(config, v.getResources().getDisplayMetrics());
 
-        Intent intent = new Intent(this, LanguageActivity.class);
+        Intent intent = new Intent(this, MainActivity.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         startActivity(intent);
+        finish();
     }
 
     //Button to pass in ENG
 
-    public void changeToEN(View v)
-    {
-        String languageToLoad  = "en"; // your language
+    public void changeToEN(View v) {
+        String languageToLoad = "en"; // your language
         Locale locale = new Locale(languageToLoad);
         Locale.setDefault(locale);
         Configuration config = new Configuration();
         config.setLocale(locale);
         //noinspection deprecation
-        getResources().updateConfiguration(config,v.getResources().getDisplayMetrics());
+        getResources().updateConfiguration(config, v.getResources().getDisplayMetrics());
 
-        Intent intent = new Intent(this, LanguageActivity.class);
+        Intent intent = new Intent(this, MainActivity.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         startActivity(intent);
+        finish();
     }
 
     //creating the menu

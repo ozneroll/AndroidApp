@@ -113,7 +113,7 @@ public class ListOfTeachersActivity extends AppCompatActivity {
                 if (newText != null && !newText.isEmpty()) {
                     List<Teacher> lstFound = new ArrayList<Teacher>();
                     for (Teacher item : teacherList) {
-                        if (item.getLastName().contains(newText))
+                        if ((item.getLastName().toLowerCase().contains(newText) || item.getFirstName().toLowerCase().contains(newText)) || (item.getLastName().toUpperCase().contains(newText) || item.getFirstName().toUpperCase().contains(newText)))
                             lstFound.add(item);
                     }
                     ArrayAdapter adapter = new ArrayAdapter(ListOfTeachersActivity.this, android.R.layout.simple_list_item_1, lstFound);
@@ -209,11 +209,13 @@ public class ListOfTeachersActivity extends AppCompatActivity {
     }
 
     //redirect to MainActivity when back button is pressed
+    //finish
     @Override
     public void onBackPressed() {
         Intent myIntent = new Intent(ListOfTeachersActivity.this,
                 MainActivity.class);
         startActivity(myIntent);
+        finish();
     }
 
 }

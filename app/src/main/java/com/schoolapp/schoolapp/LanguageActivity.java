@@ -118,8 +118,6 @@ public class LanguageActivity extends AppCompatActivity {
     //redirect to MainActivity when back button is pressed
     @Override
     public void onBackPressed() {
-        Intent i = new Intent(getApplicationContext(), MainActivity.class);
-        startActivity(i);
         finish();
     }
 }

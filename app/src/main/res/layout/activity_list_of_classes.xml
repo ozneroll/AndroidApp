@@ -33,31 +33,37 @@
 
     </android.support.design.widget.AppBarLayout>
 
-    <LinearLayout
+    <FrameLayout
+
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        tools:context="com.schoolapp.schoolapp.ListOfTeachersActivity"
-        tools:layout_margin="20dp">
+        tools:context="com.schoolapp.schoolapp.StudentsActivity"
+        tools:layout_margin="20dp"
+        >
 
         <ListView
             android:id="@+id/listitem"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="match_parent"
+            android:scrollbars="vertical">
+
+        </ListView>
 
         <android.support.design.widget.FloatingActionButton
             android:id="@+id/fab"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="end|bottom"
-            android:layout_margin="@dimen/fab_margin"
-            android:tint="@android:color/black"
-            app:backgroundTint="@android:color/background_light"
-            app:rippleColor="@android:color/background_light"
-            app:srcCompat="@android:drawable/ic_input_add" />
+            android:layout_gravity="bottom|end"
+            android:layout_margin="20dp"
+            android:layout_marginBottom="20dp"
+            android:background="@color/black"
+            android:paddingBottom="20dp"
+            android:src="@drawable/ic_add"
+            app:backgroundTint="@color/black" />
 
-    </LinearLayout>
 
+    </FrameLayout>
 
 
 </LinearLayout>

@@ -64,8 +64,6 @@ public class AboutActivity extends AppCompatActivity {
     //redirect to MainActivity when back button is pressed
     @Override
     public void onBackPressed() {
-        Intent i = new Intent(getApplicationContext(), ListOfStudentsActivity.class);
-        startActivity(i);
-        finishAffinity();
+        finish();
     }
 }

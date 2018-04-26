@@ -117,7 +117,28 @@ public abstract class AppDatabase extends RoomDatabase {
                 new Class("602-F"),
                 new Class("603-F"),
                 new Class("604-F"),
-                new Class("605-F")
+                new Class("605-F"),
+                new Class("611-F"),
+                new Class("612-F"),
+                new Class("613-F"),
+                new Class("614-F"),
+                new Class("615-F"),
+                new Class("621-F"),
+                new Class("622-F"),
+                new Class("623-F"),
+                new Class("624-F"),
+                new Class("625-F"),
+                new Class("621-F"),
+                new Class("622-F"),
+                new Class("623-F"),
+                new Class("624-F"),
+                new Class("625-F"),
+                new Class("631-F"),
+                new Class("632-F"),
+                new Class("633-F"),
+                new Class("634-F"),
+                new Class("635-F"),
+
         };
     }
 
@@ -162,7 +183,13 @@ public abstract class AppDatabase extends RoomDatabase {
                 new Teacher("Grèzes", "Vincent"),
                 new Teacher("Schumann", "René"),
                 new Teacher("Lamon", "Anthony"),
-                new Teacher("Cotting", "Alexandre")
+                new Teacher("Cotting", "Alexandre"),
+                new Teacher("LeCalve", "Anne"),
+                new Teacher("Glassey", "Nicole"),
+                new Teacher("Gex", "Jean-Pierre"),
+                new Teacher("Sokhn", "Maria"),
+                new Teacher("Salamin", "Anne-Dominique"),
+                new Teacher("Barmaz", "Xavier")
 
         };
     }

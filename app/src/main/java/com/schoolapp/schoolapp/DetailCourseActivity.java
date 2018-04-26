@@ -19,7 +19,6 @@ public class DetailCourseActivity extends AppCompatActivity {
     private TextView txtName;
     private TextView txtModule;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,7 +38,6 @@ public class DetailCourseActivity extends AppCompatActivity {
         txtModule.setText(m.get(0).getName());
 
     }
-
     //creating the menu
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();

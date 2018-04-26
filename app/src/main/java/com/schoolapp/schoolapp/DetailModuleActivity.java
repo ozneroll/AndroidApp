@@ -18,7 +18,6 @@ import Classes.Course;
 public class DetailModuleActivity extends AppCompatActivity {
 
     private TextView txtName;
-
     private ListView listCourses;
     private int id;
 
@@ -40,7 +39,7 @@ public class DetailModuleActivity extends AppCompatActivity {
         List<Course> courses = MainActivity.studentDB.courseDAO().getAllListForOneModule(id);
 
         ArrayAdapter<Course> adapter = new ArrayAdapter<Course>(DetailModuleActivity.this,
-                android.R.layout.simple_list_item_1, courses);
+                R.layout.textview, courses);
         listCourses.setAdapter(adapter);
 
     }

@@ -21,7 +21,7 @@ public interface ClassDAO {
      *
      * @return List of classes
      */
-    @Query("SELECT * FROM Class")
+    @Query("SELECT * FROM Class ORDER BY name")
     Flowable<List<Class>> getAll();
 
     /**
@@ -29,7 +29,7 @@ public interface ClassDAO {
      *
      * @return List of classes
      */
-    @Query("SELECT * FROM Class")
+    @Query("SELECT * FROM Class ORDER BY name")
     List<Class> getAllAsList();
 
 
@@ -39,7 +39,7 @@ public interface ClassDAO {
      * @param Ids
      * @return List of classes
      */
-    @Query("SELECT * FROM Class WHERE idclass IN (:Ids)")
+    @Query("SELECT * FROM Class WHERE idclass IN (:Ids) ORDER BY name")
     List<Class> loadAllByIds(int[] Ids);
 
 
@@ -49,7 +49,7 @@ public interface ClassDAO {
      * @param idclass
      * @return a class
      */
-    @Query("SELECT * FROM Class WHERE idclass LIKE :idclass")
+    @Query("SELECT * FROM Class WHERE idclass LIKE :idclass ORDER BY name")
     Class loadClassById(int idclass);
 
     @Insert

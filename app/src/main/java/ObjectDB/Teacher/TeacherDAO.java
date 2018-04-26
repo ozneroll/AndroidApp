@@ -22,7 +22,7 @@ public interface TeacherDAO {
      *
      * @return List of teachers
      */
-    @Query("SELECT * FROM Teacher")
+    @Query("SELECT * FROM Teacher ORDER BY lastName, firstName")
     Flowable<List<Teacher>> getAll();
 
     /**
@@ -30,7 +30,7 @@ public interface TeacherDAO {
      *
      * @return List of teachers
      */
-    @Query("SELECT * FROM Teacher")
+    @Query("SELECT * FROM Teacher ORDER BY lastName, firstName")
     List<Teacher> getAllAsList();
 
     /**
@@ -39,7 +39,7 @@ public interface TeacherDAO {
      * @param userIds
      * @return List of teachers
      */
-    @Query("SELECT * FROM Teacher WHERE uid IN (:userIds)")
+    @Query("SELECT * FROM Teacher WHERE uid IN (:userIds) ORDER BY lastName, firstName")
     List<Teacher> loadAllByIds(int[] userIds);
 
     /**
@@ -48,7 +48,7 @@ public interface TeacherDAO {
      * @param uid
      * @return a teacher
      */
-    @Query("SELECT * FROM Teacher WHERE uid LIKE :uid")
+    @Query("SELECT * FROM Teacher WHERE uid LIKE :uid  ORDER BY lastName, firstName")
     Teacher loadTeacherById(int uid);
 
     @Update

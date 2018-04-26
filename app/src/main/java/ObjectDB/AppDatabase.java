@@ -81,12 +81,33 @@ public abstract class AppDatabase extends RoomDatabase {
 
     public static Student[] populateDataStudents() {
         return new Student[]{
-                new Student("Célia", "Ahmad", "Rive des Nombieux 33", 3),
-                new Student("Lorenzo", "Lamberti", "Rue du Grand Clos 5", 3),
+                new Student("Ahmad", "Célia", "Rive des Nombieux 33", 3),
+                new Student("Lamberti", "Lorenzo", "Rue du Grand Clos 5", 3),
+                new Student("Mitrovic", "Vlado", "Avenue des Champs 8", 5),
+                new Student("Moreira", "Caroline", "Rue des Pommiers 29", 5),
+                new Student("Arbellay", "Olivier", "Rue des Pommiers 29", 2),
+                new Student("Coluccia", "Mick", "Rue des Pommiers 29", 4),
+                new Student("Debons", "Jean-François", "Rue du Cimetière 12", 1),
+                new Student("Duay", "Killian", "Rue des Pommiers 29", 2),
+                new Student("Gindre", "Anne", "Rue des Pommiers 29", 3),
+                new Student("Huser", "Gaétan", "Rue des Pommiers 29", 4),
+                new Student("Glassey", "Aurélie", "Ruelle Sombre 39", 5),
+                new Student("Lourenço", "Daniela", "Ruelle Sombre 39", 1),
+                new Student("Picon", "Romain", "Ruelle Sombre 39", 2),
+                new Student("Piguet", "Nicolas", "Ruelle Sombre 39", 3),
+                new Student("Pinto", "Sam", "Ruelle du Chou 12", 5),
+                new Student("Reichenbach", "Julien", "Ruelle du Chou 12", 5),
+                new Student("Remion", "Quentin", "Ruelle du Chou 12", 4),
+                new Student("Resin", "Julien", "Ruelle du Chou 12", 3),
+                new Student("Rey", "Gauthier", "Route des Marais 9", 2),
+                new Student("Roh", "Sylvain", "Route des Marais 9", 1),
+                new Student("Salyador", "Beyza", "Route des Marais 9", 2),
+                new Student("Schnyder", "Jonathan", "Route des Marais 9", 3),
+                new Student("Sornette", "Jaufray", "Route des Marais 9", 4),
+                new Student("Spahr", "Bryan", "Route des Marais 9", 3),
+                new Student("Terrani", "Fabien", "Route des Marais 9", 2),
+                new Student("Walter", "Florian", "Route des Marais 9", 1)
 
-                new Student("Vlado", "Mitrovic", "Avenue des Champs 8", 4),
-                new Student("Caroline", "Moreira", "Ruelle Sombre 39", 4),
-                new Student("Killian", "Duay", "Autoroute 65", 4)
         };
     }
 

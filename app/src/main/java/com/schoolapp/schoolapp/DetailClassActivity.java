@@ -40,7 +40,7 @@ public class DetailClassActivity extends AppCompatActivity {
         //list of students in the class
         List<Student> students = MainActivity.studentDB.sdtDao().getAllListForOneClass(idClass);
         ArrayAdapter<Student> adapter = new ArrayAdapter<Student>(DetailClassActivity.this,
-                android.R.layout.simple_list_item_1, students);
+                R.layout.textview, students);
         listStudent.setAdapter(adapter);
 
     }

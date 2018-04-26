@@ -21,7 +21,7 @@
     <string name="lastName">Nom</string>
     <string name="details">Détails</string>
     <string name="errorEmptyField">Champs vides</string>
-    <string name="classe">classe</string>
+    <string name="classe">Classe</string>
     <string name="name">Nom</string>
     <string name="NomClasse">Nom de la classe</string>
     <string name="prenomRequis">Prénom requis</string>
@@ -32,4 +32,5 @@
     <string name="ajout">Ajout réussi</string>
     <string name="deletesuccess">Suppression réussie</string>
     <string name="saved">Modification effectuée</string>
+    <string name="module">Module</string>
 </resources>

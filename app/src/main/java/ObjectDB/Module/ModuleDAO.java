@@ -23,7 +23,7 @@ public interface ModuleDAO {
      *
      * @return list of modules
      */
-    @Query("SELECT * FROM Module")
+    @Query("SELECT * FROM Module ORDER BY name")
     Flowable<List<Module>> getAll();
 
     /**
@@ -31,7 +31,7 @@ public interface ModuleDAO {
      *
      * @return list of modules
      */
-    @Query("SELECT * FROM Module")
+    @Query("SELECT * FROM Module ORDER BY name")
     List<Module> getAllAsList();
 
     /**
@@ -40,7 +40,7 @@ public interface ModuleDAO {
      * @param Ids
      * @return List of modules
      */
-    @Query("SELECT * FROM Module WHERE id IN (:Ids)")
+    @Query("SELECT * FROM Module WHERE id IN (:Ids) ORDER BY name")
     List<Module> loadAllByIds(int[] Ids);
 
     @Insert

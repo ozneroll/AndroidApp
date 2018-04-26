@@ -23,7 +23,7 @@ public interface CourseDAO {
      *
      * @return list of courses
      */
-    @Query("SELECT * FROM Course")
+    @Query("SELECT * FROM Course ORDER BY name")
     Flowable<List<Course>> getAll();
 
     /**
@@ -31,7 +31,7 @@ public interface CourseDAO {
      *
      * @return list of courses
      */
-    @Query("SELECT * FROM Course")
+    @Query("SELECT * FROM Course ORDER BY name")
     List<Course> getAllAsList();
 
     /**
@@ -40,7 +40,7 @@ public interface CourseDAO {
      * @param Ids
      * @return List of courses
      */
-    @Query("SELECT * FROM Course WHERE id IN (:Ids)")
+    @Query("SELECT * FROM Course WHERE id IN (:Ids) ORDER BY name")
     List<Course> loadAllByIds(int[] Ids);
 
     /**

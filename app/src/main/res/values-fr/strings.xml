@@ -30,4 +30,5 @@
     <string name="ajout">Ajout réussi</string>
     <string name="deletesuccess">Suppression réussie</string>
     <string name="saved">Modification effectuée</string>
+    <string name="module">Module</string>
 </resources>

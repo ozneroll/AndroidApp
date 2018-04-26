@@ -30,16 +30,25 @@
 
 
         <TextView
+            android:id="@+id/textView15"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/name"
+            android:textStyle="bold" />
+
+        <TextView
             android:id="@+id/txtName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10" />
 
         <TextView
-            android:id="@+id/txtEt"
+            android:id="@+id/textView16"
+            android:layout_marginTop="10dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:ems="10" />
+            android:text="@string/students"
+            android:textStyle="bold" />
 
         <ListView
             android:id="@+id/listStudent"

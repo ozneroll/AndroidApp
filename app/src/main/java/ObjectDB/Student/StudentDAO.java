@@ -23,7 +23,7 @@ public interface StudentDAO {
      *
      * @return List of students
      */
-    @Query("SELECT * FROM Student ORDER BY FirstName")
+    @Query("SELECT * FROM Student ORDER BY lastName, firstName")
     Flowable<List<Student>> getAll();
 
     /**
@@ -31,7 +31,7 @@ public interface StudentDAO {
      *
      * @return List of students
      */
-    @Query("SELECT * FROM Student ORDER BY FirstName")
+    @Query("SELECT * FROM Student ORDER BY lastName, firstName")
     List<Student> getAllAsList();
 
     /**
@@ -40,7 +40,7 @@ public interface StudentDAO {
      * @param idclass
      * @return a list of students
      */
-    @Query("SELECT * FROM Student WHERE idclass LIKE :idclass ORDER BY FirstName")
+    @Query("SELECT * FROM Student WHERE idclass LIKE :idclass ORDER BY lastName, firstName")
     List<Student> getAllListForOneClass(int idclass);
 
     /**

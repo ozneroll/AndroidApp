@@ -19,13 +19,14 @@ public class EditClassActivity extends AppCompatActivity {
     private EditText txtClassName;
     private int idClass;
     public Class classe = new Class();
+    private Toolbar toolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_class);
 
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
         getSupportActionBar().setTitle(getResources().getString(R.string.edit));

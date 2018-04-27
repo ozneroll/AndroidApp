@@ -27,6 +27,7 @@ public class AddStudentActivity extends AppCompatActivity {
     private List<Class> classes;
     private ArrayAdapter<Class> adapter;
     private Class c;
+    private Toolbar toolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,7 +35,7 @@ public class AddStudentActivity extends AppCompatActivity {
         setContentView(R.layout.activity_add_student);
 
 
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
         getSupportActionBar().setTitle(getResources().getString(R.string.add));
@@ -56,7 +57,7 @@ public class AddStudentActivity extends AppCompatActivity {
 
     }
 
-
+    //creating the menu
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.menu_settings, menu);
@@ -66,7 +67,7 @@ public class AddStudentActivity extends AppCompatActivity {
         return true;
     }
 
-
+    //actions on the menu
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {

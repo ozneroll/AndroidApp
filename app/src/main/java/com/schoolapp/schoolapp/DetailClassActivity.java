@@ -20,13 +20,14 @@ public class DetailClassActivity extends AppCompatActivity {
     private TextView txtName;
     private ListView listStudent;
     private int idClass;
+    private Toolbar toolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail_class);
 
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
         getSupportActionBar().setTitle(getResources().getString(R.string.details));

@@ -41,6 +41,7 @@ public class ListOfClassesActivity extends AppCompatActivity {
     private CompositeDisposable compositeDisposable;
     private ClassRepository classRepository;
     private int id;
+    private Toolbar toolbar;
 
 
     @Override
@@ -52,7 +53,7 @@ public class ListOfClassesActivity extends AppCompatActivity {
 
         compositeDisposable = new CompositeDisposable();
 
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setTitle(getResources().getString(R.string.classes));
 
@@ -181,12 +182,6 @@ public class ListOfClassesActivity extends AppCompatActivity {
         return true;
     }
 
-    public void onClick(View v) {
-        // Start NewActivity.class
-        Intent myIntent = new Intent(ListOfClassesActivity.this,
-                DetailStudentActivity.class);
-        startActivity(myIntent);
-    }
 
     private void loadData() {
         Disposable disposable = classRepository.getAll()

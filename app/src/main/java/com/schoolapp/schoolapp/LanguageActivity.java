@@ -17,6 +17,7 @@ import android.widget.Toast;
 import java.util.Locale;
 
 public class LanguageActivity extends AppCompatActivity {
+    private Toolbar toolbar;
 
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
@@ -24,7 +25,7 @@ public class LanguageActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_language);
 
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setTitle(getResources().getString(R.string.lang));
     }

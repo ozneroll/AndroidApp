@@ -160,6 +160,7 @@ public class ListOfStudentsActivity extends AppCompatActivity {
         return true;
     }
 
+
     //actions on the menu
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -180,13 +181,6 @@ public class ListOfStudentsActivity extends AppCompatActivity {
         return true;
     }
 
-
-    public void onClick(View v) {
-        // Start NewActivity.class
-        Intent myIntent = new Intent(ListOfStudentsActivity.this,
-                DetailStudentActivity.class);
-        startActivity(myIntent);
-    }
 
     private void loadData() {
         Disposable disposable = studentRepository.getAll()

@@ -92,7 +92,6 @@ public class ListOfModulesActivity extends AppCompatActivity {
 
             @Override
             public void onSearchViewClosed() {
-
                 listModules = (ListView) findViewById(R.id.listitem);
 
                 ArrayAdapter adapter = new ArrayAdapter(ListOfModulesActivity.this, android.R.layout.simple_list_item_1, moduleList);
@@ -138,6 +137,8 @@ public class ListOfModulesActivity extends AppCompatActivity {
         return true;
     }
 
+
+
     //actions on the menu
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -158,13 +159,6 @@ public class ListOfModulesActivity extends AppCompatActivity {
         return true;
     }
 
-
-    public void onClick(View v) {
-        // Start NewActivity.class
-        Intent myIntent = new Intent(ListOfModulesActivity.this,
-                DetailStudentActivity.class);
-        startActivity(myIntent);
-    }
 
     private void loadData() {
         Disposable disposable = moduleRepository.getAll()

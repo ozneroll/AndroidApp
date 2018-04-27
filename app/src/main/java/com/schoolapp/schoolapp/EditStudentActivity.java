@@ -29,13 +29,14 @@ public class EditStudentActivity extends AppCompatActivity {
     private List<Class> classes;
     private Class c = new Class();
     private int idClass;
+    private Toolbar toolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_student);
 
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
         getSupportActionBar().setTitle(getResources().getString(R.string.edit));
@@ -66,7 +67,6 @@ public class EditStudentActivity extends AppCompatActivity {
         // Apply the adapter to the spinner
         spinner.setAdapter(adapter);
 
-        //  System.out.println("****************************************"+(classes.indexOf(currentClass)));
         c = MainActivity.studentDB.classDAO().loadClassById(idClass);
         int index = getIndex(spinner, c.getName());
         spinner.setSelection(index);

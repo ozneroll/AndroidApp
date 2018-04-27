@@ -177,12 +177,6 @@ public class ListOfTeachersActivity extends AppCompatActivity {
     }
 
 
-    public void onClick(View v) {
-        Intent myIntent = new Intent(ListOfTeachersActivity.this,
-                DetailTeacherActivity.class);
-        startActivity(myIntent);
-    }
-
     private void loadData() {
         Disposable disposable = teacherRepository.getAll()
                 .observeOn(AndroidSchedulers.mainThread())

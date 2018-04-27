@@ -31,6 +31,7 @@
             app:searchSuggestionIcon="@drawable/ic_suggestion"
             android:textColor="#FFFFFF"/>
 
+
     </android.support.design.widget.AppBarLayout>
 
 

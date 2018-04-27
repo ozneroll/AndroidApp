@@ -34,7 +34,7 @@ public class AboutActivity extends AppCompatActivity {
     }
 
 
-    //settings and about
+    //actions on the menu
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {

@@ -17,13 +17,14 @@ public class AddClassActivity extends AppCompatActivity {
 
 
     private EditText txtClassName;
+    private Toolbar toolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_class);
 
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
         getSupportActionBar().setTitle(getResources().getString(R.string.add));
@@ -43,7 +44,7 @@ public class AddClassActivity extends AppCompatActivity {
     }
 
 
-    //settings and about
+    //actions on the menu
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {

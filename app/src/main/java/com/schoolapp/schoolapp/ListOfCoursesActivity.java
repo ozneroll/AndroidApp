@@ -37,6 +37,7 @@ public class ListOfCoursesActivity extends AppCompatActivity {
     private ArrayAdapter<Course> adapter;
     private CompositeDisposable compositeDisposable;
     private CourseRepository courseRepository;
+    private Toolbar toolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,13 +48,10 @@ public class ListOfCoursesActivity extends AppCompatActivity {
 
         compositeDisposable = new CompositeDisposable();
 
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setTitle(getResources().getString(R.string.course));
 
-        /*
-        A CREER UN NOUVEAU R.string je sais pas comment on fait
-         */
 
         listCourses = (ListView) findViewById(R.id.listitem);
 
@@ -80,8 +78,6 @@ public class ListOfCoursesActivity extends AppCompatActivity {
                         DetailCourseActivity.class);
                 myIntent.putExtra("Cours", cours.get(0).getName());
                 myIntent.putExtra("IdModule", cours.get(0).getId_module());
-
-                //ajouter le nom de la classe
 
                 startActivity(myIntent);
 
@@ -164,13 +160,6 @@ public class ListOfCoursesActivity extends AppCompatActivity {
         return true;
     }
 
-
-    public void onClick(View v) {
-        // Start NewActivity.class
-        Intent myIntent = new Intent(ListOfCoursesActivity.this,
-                DetailStudentActivity.class);
-        startActivity(myIntent);
-    }
 
     private void loadData() {
         Disposable disposable = courseRepository.getAll()

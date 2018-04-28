@@ -57,6 +57,7 @@ public class ListOfClassesActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
         getSupportActionBar().setTitle(getResources().getString(R.string.classes));
 
+
         listClasses = (ListView) findViewById(R.id.listitem);
 
 
@@ -93,6 +94,7 @@ public class ListOfClassesActivity extends AppCompatActivity {
             @Override
             public void onSearchViewShown() {
 
+                    searchView.setVisibility(View.VISIBLE);
             }
 
             @Override
@@ -157,6 +159,7 @@ public class ListOfClassesActivity extends AppCompatActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.menu_settings, menu);
+        inflater.inflate(R.menu.menu_search,menu );
         MenuItem item = menu.findItem(R.id.action_search);
         searchView.setMenuItem(item);
         return true;

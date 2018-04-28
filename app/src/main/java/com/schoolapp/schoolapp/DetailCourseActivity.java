@@ -43,8 +43,6 @@ public class DetailCourseActivity extends AppCompatActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.menu_settings, menu);
-        MenuItem itemSearch = menu.findItem(R.id.action_search);
-        itemSearch.setVisible(false);
         return true;
     }
 

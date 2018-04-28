@@ -92,8 +92,6 @@ public class EditStudentActivity extends AppCompatActivity {
         inflater.inflate(R.menu.menu_settings, menu);
         inflater.inflate(R.menu.menu_save, menu);
         inflater.inflate(R.menu.menu_delete, menu);
-        MenuItem itemSearch = menu.findItem(R.id.action_search);
-        itemSearch.setVisible(false);
         return true;
     }
 

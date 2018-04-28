@@ -51,8 +51,7 @@ public class DetailClassActivity extends AppCompatActivity {
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.menu_settings, menu);
         inflater.inflate(R.menu.menu_edit, menu);
-        MenuItem itemSearch = menu.findItem(R.id.action_search);
-        itemSearch.setVisible(false);
+
         return true;
     }
 

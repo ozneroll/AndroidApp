@@ -90,8 +90,6 @@ public class LanguageActivity extends AppCompatActivity {
         inflater.inflate(R.menu.menu_settings, menu);
         MenuItem itemSettings = menu.findItem(R.id.action_settings);
         itemSettings.setVisible(false);
-        MenuItem itemSearch = menu.findItem(R.id.action_search);
-        itemSearch.setVisible(false);
 
         return true;
     }

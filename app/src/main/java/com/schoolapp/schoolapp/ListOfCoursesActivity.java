@@ -89,7 +89,7 @@ public class ListOfCoursesActivity extends AppCompatActivity {
         searchView.setOnSearchViewListener(new MaterialSearchView.SearchViewListener() {
             @Override
             public void onSearchViewShown() {
-
+                searchView.setVisibility(View.VISIBLE);
             }
 
             @Override
@@ -135,6 +135,7 @@ public class ListOfCoursesActivity extends AppCompatActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.menu_settings, menu);
+        inflater.inflate(R.menu.menu_search,menu );
         MenuItem item = menu.findItem(R.id.action_search);
         searchView.setMenuItem(item);
         return true;

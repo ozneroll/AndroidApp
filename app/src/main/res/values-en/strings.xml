@@ -34,4 +34,5 @@
     <string name="deletesuccess">Deleted successfully</string>
     <string name="saved">" Modification done"</string>
     <string name="module">Modul</string>
+    <string name="rechercher">Search</string>
 </resources>

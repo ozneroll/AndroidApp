@@ -66,7 +66,7 @@ public class ListOfModulesActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
 
-                Module _temp = moduleList.get(i);
+                Module _temp = (Module) adapterView.getItemAtPosition(i);
                 int id = _temp.getId();
 
 

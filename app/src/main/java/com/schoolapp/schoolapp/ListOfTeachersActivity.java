@@ -68,7 +68,7 @@ public class ListOfTeachersActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
 
-                Teacher _temp = teacherList.get(i);
+                Teacher _temp = (Teacher) adapterView.getItemAtPosition(i);
                 int id = _temp.getUid();
 
 

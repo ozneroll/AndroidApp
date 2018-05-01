@@ -65,7 +65,7 @@ public class ListOfStudentsActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
 
-                Student _temp = studentList.get(i);
+                Student _temp = (Student) adapterView.getItemAtPosition(i);
                 int id = _temp.getUid();
 
 

@@ -74,7 +74,7 @@ public class ListOfClassesActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
 
-                Class _temp = classList.get(i);
+                Class _temp = (Class) adapterView.getItemAtPosition(i);
                 int id = _temp.getIdclass();
 
                 List<Class> classes = MainActivity.studentDB.classDAO().loadAllByIds(new int[]{id});

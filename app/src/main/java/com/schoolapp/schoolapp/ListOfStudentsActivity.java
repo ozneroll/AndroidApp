@@ -101,6 +101,7 @@ public class ListOfStudentsActivity extends AppCompatActivity {
                 listStudents.setAdapter(adapter);
             }
         });
+
         searchView.setOnQueryTextListener(new MaterialSearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {

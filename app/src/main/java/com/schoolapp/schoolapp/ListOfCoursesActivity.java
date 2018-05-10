@@ -96,7 +96,6 @@ public class ListOfCoursesActivity extends AppCompatActivity {
             public void onSearchViewClosed() {
 
                 listCourses = (ListView) findViewById(R.id.listitem);
-
                 ArrayAdapter adapter = new ArrayAdapter(ListOfCoursesActivity.this, android.R.layout.simple_list_item_1, courseList);
                 listCourses.setAdapter(adapter);
             }

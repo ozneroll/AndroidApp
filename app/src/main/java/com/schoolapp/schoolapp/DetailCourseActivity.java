@@ -8,7 +8,6 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.widget.ArrayAdapter;
-import android.widget.ListView;
 import android.widget.TextView;
 
 import com.google.firebase.database.DataSnapshot;
@@ -29,8 +28,8 @@ import static com.schoolapp.schoolapp.MainActivity.mDatabaseReference;
  * on 11.05.2018.
  */
 
-public class DetailModuleActivity extends AppCompatActivity {
-    private ListView listCourses;
+public class DetailCourseActivity extends AppCompatActivity {
+    private TextView txtCourse;
     private TextView txtModule;
     private Toolbar toolbar;
     List<Course> listOfCourses = new ArrayList<>();
@@ -39,19 +38,18 @@ public class DetailModuleActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_detail_class);
+        setContentView(R.layout.activity_detail_course);
 
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        listCourses = (ListView) findViewById(R.id.listStudent);
         getSupportActionBar().setTitle(getResources().getString(R.string.details));
 
-        txtModule = (TextView) findViewById(R.id.txtName);
+        txtCourse = (TextView) findViewById(R.id.txtName);
+        txtCourse.setText(getIntent().getStringExtra("name"));
+        txtModule = (TextView) findViewById(R.id.txtModule) ;
+        txtModule.setText (getIntent().getStringExtra("module"));
 
-        txtModule.setText(getIntent().getStringExtra("name"));
-
-        getAllCourses();
 
     }
 
@@ -84,45 +82,12 @@ public class DetailModuleActivity extends AppCompatActivity {
     //back to the list, finish the activity
     @Override
     public void onBackPressed() {
-        Intent myIntent = new Intent(DetailModuleActivity.this,
+        Intent myIntent = new Intent(DetailCourseActivity.this,
                 ListOfClassesActivity.class);
         startActivity(myIntent);
         finish();
     }
 
-    protected void getAllCourses() {
-
-   //     db.restaurants.find( { "borough" : "Brooklyn" } );
-        mDatabaseReference.child("Courses").addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-
-                if (listOfCourses.size() > 0)
-                    listOfCourses.clear();
-                for (DataSnapshot postSchnapshot : dataSnapshot.getChildren()) {
-                    Course course = postSchnapshot.getValue(Course.class);
-                    listOfCourses.add(course);
-
-                }
-
-                ArrayAdapter<Course> adapter = new ArrayAdapter<Course>(DetailModuleActivity.this,
-                        R.layout.textview, listOfCourses);
-                listCourses.setAdapter(adapter);
-                listCourses.setAdapter(adapter);
-
-
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-
-            }
-
-
-        });
-
-
-    }
 
 
 }

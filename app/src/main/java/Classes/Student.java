@@ -35,7 +35,7 @@ public class Student {
 
     }
 
-    public Student( String uid, String lastName, String firstName, String address,String classe) {
+    public Student( String uid, String lastName, String firstName, String address, String classe) {
 
         this.uid = uid;
         this.lastName = lastName;

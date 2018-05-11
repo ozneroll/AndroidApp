@@ -48,7 +48,7 @@ public class ListOfTeachersActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list_of_teachers);
 
-       
+
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setTitle(getResources().getString(R.string.teachers));

@@ -12,26 +12,32 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.ValueEventListener;
+
+import java.util.ArrayList;
 import java.util.List;
 
 import Classes.Class;
 import Classes.Student;
 
+import static com.schoolapp.schoolapp.MainActivity.mDatabaseReference;
+
 /**
  * Created by loren on 11.05.2018.
  */
 
-public class EditStudentActivity extends AppCompatActivity{
+public class EditStudentActivity extends AppCompatActivity {
     private EditText txtFirstName;
     private EditText txtLastName;
     private EditText txtAddress;
     private int id;
     public Student etudiant = new Student();
     private Spinner spinner;
-    private List<Class> classes;
-    private Class c = new Class();
     private int idClass;
     private Toolbar toolbar;
+    List<String> listOfClasses = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,22 +64,22 @@ public class EditStudentActivity extends AppCompatActivity{
         idClass = getIntent().getIntExtra("idClass", -1);
 
 
-
         spinner = (Spinner) findViewById(R.id.all_classes);
 
         // Create an ArrayAdapter using the string array and a default spinner layout
-        ArrayAdapter<Class> adapter = new ArrayAdapter<Class>(this, android.R.layout.simple_spinner_item, classes);
+        //ArrayAdapter<Class> adapter = new ArrayAdapter<Class>(this, android.R.layout.simple_spinner_item, classes);
         // Specify the layout to use when the list of choices appears
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        //adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 
         // Apply the adapter to the spinner
-        spinner.setAdapter(adapter);
+        //spinner.setAdapter(adapter);
 
-        /*
-        c = MainActivity.studentDB.classDAO().loadClassById(idClass);
-        int index = getIndex(spinner, c.getName());
+        getAllClasses();
+
+        int index = getIndex(spinner, getIntent().getStringExtra("classe"));
         spinner.setSelection(index);
-        */
+
+
     }
 
     //getting the index of the correct class name
@@ -82,7 +88,7 @@ public class EditStudentActivity extends AppCompatActivity{
         int index = 0;
 
         for (int i = 0; i < spinner.getCount(); i++) {
-            if (spinner.getItemAtPosition(i).toString().equals(myString)) {
+            if (spinner.getItemAtPosition(i).equals(myString)) {
                 index = i;
             }
         }
@@ -112,7 +118,7 @@ public class EditStudentActivity extends AppCompatActivity{
                 startActivity(intent2);
                 break;
             case R.id.action_delete:
-                MainActivity.mDatabaseReference.child("Students").child(getIntent().getStringExtra("id")).removeValue();
+                mDatabaseReference.child("Students").child(getIntent().getStringExtra("id")).removeValue();
                 //confirmation for the user
                 Toast.makeText(getApplicationContext(), getResources().getString(R.string.deletesuccess), Toast.LENGTH_LONG).show();
                 Intent intent3 = new Intent(EditStudentActivity.this,
@@ -136,7 +142,7 @@ public class EditStudentActivity extends AppCompatActivity{
                     error = 1;
                 }
                 if (error == 0) {
-                    c = (Class) spinner.getSelectedItem();
+                    //c = (Class) spinner.getSelectedItem();
                     etudiant.setLastName(txtLastName.getText().toString());
                     etudiant.setFirstName(txtFirstName.getText().toString());
                     etudiant.setAddress(txtAddress.getText().toString());
@@ -162,6 +168,48 @@ public class EditStudentActivity extends AppCompatActivity{
 
         return true;
     }
+
+    protected void getAllClasses() {
+
+        mDatabaseReference.child("Classes").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+
+                if (listOfClasses.size() > 0)
+                    listOfClasses.clear();
+                for (DataSnapshot postSchnapshot : dataSnapshot.getChildren()) {
+                    Class classe = postSchnapshot.getValue(Class.class);
+                    listOfClasses.add(classe.toString());
+
+
+
+                }
+                ArrayAdapter<String> adapter = new ArrayAdapter<String>(EditStudentActivity.this, android.R.layout.simple_spinner_item, listOfClasses);
+
+                // Specify the layout to use when the list of choices appears
+                adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+
+                spinner.setAdapter(adapter);
+
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+
+
+        });
+        // Create an ArrayAdapter using the string array and a default spinner layout
+
+
+
+
+
+
+    }
+
+
 
     //finish the activity
     @Override

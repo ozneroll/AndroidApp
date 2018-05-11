@@ -1,58 +1,45 @@
 package Classes;
 
-import android.arch.persistence.room.ColumnInfo;
-import android.arch.persistence.room.Entity;
-import android.arch.persistence.room.Ignore;
-import android.arch.persistence.room.PrimaryKey;
 
-import io.reactivex.annotations.NonNull;
 
 /**
  * Project : AndroidApp
  * Created by Célia Ahmad & Lorenzo Lamberti on 17.04.2018.
  */
 
-@Entity(tableName = "Teacher")
 public class Teacher {
 
-    @NonNull
-    @PrimaryKey(autoGenerate = true)
-    @ColumnInfo(name = "uid")
-    private int uid;
+    private String uid;
 
-    @ColumnInfo(name = "lastName")
     private String lastName;
 
-    @ColumnInfo(name = "firstName")
+
+
     private String firstName;
 
 
-    public void setClasse(String classe) {
-        this.classe = classe;
-    }
 
-    @ColumnInfo(name = "class")
-    private String classe;
-
-
-    //Constructors
-    public Teacher() {
+    //required by firebase
+    public Teacher()
+    {
 
     }
 
-    @Ignore
-    public Teacher(String lastName, String firstName) {
+    public Teacher( String uid, String lastName, String firstName ) {
+
+        this.uid = uid;
         this.lastName = lastName;
         this.firstName = firstName;
 
     }
 
     // Getters and setters
-    public int getUid() {
+
+    public String getUid() {
         return uid;
     }
 
-    public void setUid(int uid) {
+    public void setUid(String uid) {
         this.uid = uid;
     }
 
@@ -72,9 +59,8 @@ public class Teacher {
         this.firstName = firstName;
     }
 
-    public String getClasse() {
-        return classe;
-    }
+
+
 
     @Override
     public String toString() {

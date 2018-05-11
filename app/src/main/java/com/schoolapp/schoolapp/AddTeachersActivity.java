@@ -7,25 +7,19 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.widget.ArrayAdapter;
 import android.widget.EditText;
-import android.widget.Spinner;
 import android.widget.Toast;
 
-import java.util.List;
 import java.util.UUID;
 
 import Classes.Class;
 import Classes.Student;
+import Classes.Teacher;
 
-public class AddStudentsActivity extends AppCompatActivity {
+public class AddTeachersActivity extends AppCompatActivity {
     private EditText txtFirstName;
     private EditText txtLastName;
     private EditText txtAddress;
-    private Spinner spinner;
-    private List<Class> classes;
-    private ArrayAdapter<Class> adapter;
-    private Class c;
     private Toolbar toolbar;
 
 
@@ -33,7 +27,7 @@ public class AddStudentsActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_add_student);
+        setContentView(R.layout.activity_add_teacher);
 
 
         toolbar = (Toolbar) findViewById(R.id.toolbar);
@@ -41,20 +35,9 @@ public class AddStudentsActivity extends AppCompatActivity {
 
         getSupportActionBar().setTitle(getResources().getString(R.string.add));
 
-      //  classes = MainActivity.studentDB.classDAO().getAllAsList();
-
         txtFirstName = (EditText) findViewById(R.id.txtaddFirstName);
         txtLastName = (EditText) findViewById(R.id.txtaddLastName);
-        txtAddress = (EditText) findViewById(R.id.txtaddAddress);
 
-        spinner = (Spinner) findViewById(R.id.all_classes);
-
-//        // Create an ArrayAdapter using the string array and a default spinner layout
-//        adapter = new ArrayAdapter<Class>(this, android.R.layout.simple_spinner_item, classes);
-//        // Specify the layout to use when the list of choices appears
-//        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-//        // Apply the adapter to the spinner
-//        spinner.setAdapter(adapter);
 
     }
 
@@ -91,16 +74,12 @@ public class AddStudentsActivity extends AppCompatActivity {
                     error = 1;
                 }
 
-                if (txtAddress.getText().toString().length() == 0) {
-                    txtAddress.setError(getResources().getString(R.string.adresseRequise));
-                    error = 1;
-                }
                 if (error == 0) {
                    //confirmation for the user
-                    createStudent();
+                    createTeacher();
                     Toast.makeText(getApplicationContext(), getResources().getString(R.string.ajout), Toast.LENGTH_LONG).show();
-                    Intent myIntent = new Intent(AddStudentsActivity.this,
-                            ListOfStudentsActivity.class);
+                    Intent myIntent = new Intent(AddTeachersActivity.this,
+                            ListOfTeachersActivity.class);
                     startActivity(myIntent);
                 }
                 break;
@@ -112,10 +91,10 @@ public class AddStudentsActivity extends AppCompatActivity {
         return true;
     }
 
-    private void createStudent(){
+    private void createTeacher(){
         String randomID= UUID.randomUUID().toString();
-        Student student = new Student (randomID, txtLastName.getText().toString(), txtFirstName.getText().toString(),txtAddress.getText().toString(), "604-F");
-        MainActivity.mDatabaseReference.child("Students").child(randomID).setValue(student);
+        Teacher teacher = new Teacher (randomID, txtLastName.getText().toString(), txtFirstName.getText().toString());
+        MainActivity.mDatabaseReference.child("Teachers").child(randomID).setValue(teacher);
     }
     //finish the activity
     @Override

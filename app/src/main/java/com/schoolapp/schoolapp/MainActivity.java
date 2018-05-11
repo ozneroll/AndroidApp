@@ -74,12 +74,12 @@ public class MainActivity extends AppCompatActivity {
                     case R.id.imageButton4:
                         myIntent = new Intent(MainActivity.this, ListOfModulesActivity.class);
                         startActivity(myIntent);
-                        break;
+                        break;*/
                     case R.id.cardview5:
                     case R.id.imageButton5:
                         myIntent = new Intent(MainActivity.this, ListOfTeachersActivity.class);
                         startActivity(myIntent);
-                        break;*/
+                        break;
                     default:
                         break;
                 }

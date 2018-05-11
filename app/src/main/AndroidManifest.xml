@@ -23,13 +23,25 @@
             android:name=".AddClassActivity"
             android:label="@string/add"
             android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".AddTeachersActivity"
+            android:label="@string/add"
+            android:theme="@style/AppTheme.NoActionBar" />
 
         <activity
             android:name=".ListOfStudentsActivity"
             android:label="@string/students"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
+            android:name=".ListOfTeachersActivity"
+            android:label="@string/teachers"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
             android:name=".DetailStudentActivity"
+            android:label="@string/details"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".DetailTeacherActivity"
             android:label="@string/details"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity

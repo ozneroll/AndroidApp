@@ -11,10 +11,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.EditText;
-import android.widget.ListAdapter;
 import android.widget.ListView;
-import android.widget.Toast;
 
 import com.google.firebase.FirebaseApp;
 import com.google.firebase.database.DataSnapshot;
@@ -27,8 +24,7 @@ import com.miguelcatalan.materialsearchview.MaterialSearchView;
 import java.util.ArrayList;
 import java.util.List;
 
-import Classes.Class;
-import Classes.Student;
+import Classes.Teacher;
 import io.reactivex.disposables.CompositeDisposable;
 
 
@@ -36,13 +32,11 @@ import io.reactivex.disposables.CompositeDisposable;
  * Created by loren on 11.05.2018.
  */
 
-public class ListOfStudentsActivity extends AppCompatActivity {
-    private ListView listStudents;
+public class ListOfTeachersActivity extends AppCompatActivity {
+    private ListView listTeachers;
     private MaterialSearchView searchView;
     private FloatingActionButton fab;
-    private List<Student> studentList = new ArrayList<>();
-    private ArrayAdapter<Student> adapter;
-    private CompositeDisposable compositeDisposable;
+    private List<Teacher> teacherList = new ArrayList<>();
     private FirebaseDatabase mFirebaseDatabase;
     private DatabaseReference mDatabaseReference;
 
@@ -52,39 +46,31 @@ public class ListOfStudentsActivity extends AppCompatActivity {
 
 
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_list_of_students);
+        setContentView(R.layout.activity_list_of_teachers);
 
-        compositeDisposable = new CompositeDisposable();
-
+       
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        getSupportActionBar().setTitle(getResources().getString(R.string.students));
+        getSupportActionBar().setTitle(getResources().getString(R.string.teachers));
 
         initFirebase();
         addEventFirebaseListener();
 
-        listStudents = (ListView) findViewById(R.id.listitem);
+        listTeachers = (ListView) findViewById(R.id.listitem);
 
 
-
-        //studentRepository = StudentRepository.getInstance(StudentDataSource.getInstance(MainActivity.studentDB.sdtDao()));
-
-        //loadData();
-
-
-        listStudents.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        listTeachers.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
 
-                Student _temp = (Student) adapterView.getItemAtPosition(i);
+                Teacher _temp = (Teacher) adapterView.getItemAtPosition(i);
 
-                Intent myIntent = new Intent(ListOfStudentsActivity.this,
-                        DetailStudentActivity.class);
+                Intent myIntent = new Intent(ListOfTeachersActivity.this,
+                        DetailTeacherActivity.class);
                 myIntent.putExtra("firstName",_temp.getFirstName());
                 myIntent.putExtra("lastName", _temp.getLastName());
-                myIntent.putExtra("address", _temp.getAddress());
                 myIntent.putExtra("id", _temp.getUid());
-                myIntent.putExtra("classe", _temp.getClasse());
+
 
                 startActivity(myIntent);
 
@@ -102,10 +88,10 @@ public class ListOfStudentsActivity extends AppCompatActivity {
             @Override
             public void onSearchViewClosed() {
 
-                listStudents = (ListView) findViewById(R.id.listitem);
+                listTeachers = (ListView) findViewById(R.id.listitem);
 
-                ArrayAdapter adapter = new ArrayAdapter(ListOfStudentsActivity.this, android.R.layout.simple_list_item_1, studentList);
-                listStudents.setAdapter(adapter);
+                ArrayAdapter adapter = new ArrayAdapter(ListOfTeachersActivity.this, android.R.layout.simple_list_item_1, teacherList);
+                listTeachers.setAdapter(adapter);
             }
         });
 
@@ -118,17 +104,17 @@ public class ListOfStudentsActivity extends AppCompatActivity {
             @Override
             public boolean onQueryTextChange(String newText) {
                 if (newText != null && !newText.isEmpty()) {
-                    List<Student> lstFound = new ArrayList<Student>();
-                    for (Student item : studentList) {
+                    List<Teacher> lstFound = new ArrayList<Teacher>();
+                    for (Teacher item : teacherList) {
                         if ((item.getLastName().toLowerCase().contains(newText) || item.getFirstName().toLowerCase().contains(newText)) || (item.getLastName().toUpperCase().contains(newText) || item.getFirstName().toUpperCase().contains(newText)))
                             lstFound.add(item);
                     }
-                    ArrayAdapter adapter = new ArrayAdapter(ListOfStudentsActivity.this, android.R.layout.simple_list_item_1, lstFound);
-                    listStudents.setAdapter(adapter);
+                    ArrayAdapter adapter = new ArrayAdapter(ListOfTeachersActivity.this, android.R.layout.simple_list_item_1, lstFound);
+                    listTeachers.setAdapter(adapter);
                 } else {
 
-                    ArrayAdapter adapter = new ArrayAdapter(ListOfStudentsActivity.this, android.R.layout.simple_list_item_1, studentList);
-                    listStudents.setAdapter(adapter);
+                    ArrayAdapter adapter = new ArrayAdapter(ListOfTeachersActivity.this, android.R.layout.simple_list_item_1, teacherList);
+                    listTeachers.setAdapter(adapter);
 
                 }
                 return true;
@@ -148,8 +134,8 @@ public class ListOfStudentsActivity extends AppCompatActivity {
             public void onClick(View arg0) {
 
                 // Start NewActivity.class
-                Intent myIntent = new Intent(ListOfStudentsActivity.this,
-                        AddStudentsActivity.class);
+                Intent myIntent = new Intent(ListOfTeachersActivity.this,
+                        AddTeachersActivity.class);
                 startActivity(myIntent)
                 ;
             }
@@ -169,21 +155,21 @@ public class ListOfStudentsActivity extends AppCompatActivity {
         return true;
     }
     private void addEventFirebaseListener() {
-        mDatabaseReference.child("Students").addValueEventListener(new ValueEventListener() {
+        mDatabaseReference.child("Teachers").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
 
-                if(studentList.size()>0 )
-                    studentList.clear();
+                if(teacherList.size()>0 )
+                    teacherList.clear();
                 for(DataSnapshot postSchnapshot : dataSnapshot.getChildren()){
-                    Student student = postSchnapshot.getValue(Student.class);
-                    studentList.add(student);
+                    Teacher teacher = postSchnapshot.getValue(Teacher.class);
+                    teacherList.add(teacher);
 
-                    registerForContextMenu(listStudents);
+                    registerForContextMenu(listTeachers);
 
                 }
-                ArrayAdapter adapter = new ArrayAdapter(ListOfStudentsActivity.this, android.R.layout.simple_list_item_1, studentList);
-                listStudents.setAdapter(adapter);
+                ArrayAdapter adapter = new ArrayAdapter(ListOfTeachersActivity.this, android.R.layout.simple_list_item_1, teacherList);
+                listTeachers.setAdapter(adapter);
             }
 
             @Override
@@ -225,36 +211,11 @@ public class ListOfStudentsActivity extends AppCompatActivity {
     }
 
 
-    private void loadData() {
-    /*    Disposable disposable = studentRepository.getAll()
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribeOn(Schedulers.io())
-                .subscribe(new Consumer<List<Student>>() {
-                               @Override
-                               public void accept(List<Student> students) throws Exception {
-                                   onGetAllStudentsSuccess(students);
-                               }
-                           },
-                        new Consumer<Throwable>() {
-                            @Override
-                            public void accept(Throwable throwable) throws Exception {
-                                Toast.makeText(ListOfStudentsActivity.this, "" + throwable.getMessage(), Toast.LENGTH_SHORT).show();
-                            }
-                        });
-        compositeDisposable.add(disposable);*/
-    }
-
-    private void onGetAllStudentsSuccess(List<Student> students) {
-       /* studentList.clear();
-        studentList.addAll(students);
-        adapter.notifyDataSetChanged();*/
-    }
-
     //redirect to MainActivity when back button is pressed
     //finish
     @Override
     public void onBackPressed() {
-        Intent myIntent = new Intent(ListOfStudentsActivity.this,
+        Intent myIntent = new Intent(ListOfTeachersActivity.this,
                 MainActivity.class);
         startActivity(myIntent);
         finish();

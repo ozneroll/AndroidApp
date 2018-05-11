@@ -62,19 +62,19 @@ public class MainActivity extends AppCompatActivity {
                         break;
                     case R.id.cardview2:
                     case R.id.imageButton2:
-                        myIntent = new Intent(MainActivity.this, AddClassActivity.class);
+                        myIntent = new Intent(MainActivity.this, ListOfClassesActivity.class);
                         startActivity(myIntent);
                         break;
                    case R.id.cardview3:
                     case R.id.imageButton3:
-                        myIntent = new Intent(MainActivity.this, ListOfStudentsActivity.class);
+                        myIntent = new Intent(MainActivity.this, ListOfCoursesActivity.class);
                         startActivity(myIntent);
                         break;
-                    /*case R.id.cardview4:
+                    case R.id.cardview4:
                     case R.id.imageButton4:
                         myIntent = new Intent(MainActivity.this, ListOfModulesActivity.class);
                         startActivity(myIntent);
-                        break;*/
+                        break;
                     case R.id.cardview5:
                     case R.id.imageButton5:
                         myIntent = new Intent(MainActivity.this, ListOfTeachersActivity.class);

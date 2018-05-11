@@ -13,61 +13,55 @@ import io.reactivex.annotations.NonNull;
  * Created by Célia Ahmad & Lorenzo Lamberti on 17.04.2018.
  */
 
-@Entity(tableName = "Course", foreignKeys =
-@ForeignKey(entity = Module.class, parentColumns = "id", childColumns = "module"))
 public class Course {
 
-    @NonNull
-    @PrimaryKey(autoGenerate = true)
-    @ColumnInfo(name = "id")
-    private int id;
+    private String uid;
 
-    @ColumnInfo(name = "name")
+
     private String name;
 
-    @ColumnInfo(name = "module")
-    private int id_module;
 
-    //Constructors
-    public Course() {
 
+
+    //required by firebase
+    public Course()
+    {
 
     }
 
-    @Ignore
-    public Course(String name, int id_module) {
+    public Course( String uid, String name ) {
+
+        this.uid = uid;
         this.name = name;
-        this.id_module = id_module;
-    }
 
+
+    }
 
     // Getters and setters
-    public int getId() {
-        return id;
+
+    public String getUid() {
+        return uid;
+    }
+
+    public void setUid(String uid) {
+        this.uid = uid;
     }
 
     public String getName() {
         return name;
     }
 
-    public void setId(int id) {
-        this.id = id;
-    }
-
     public void setName(String name) {
         this.name = name;
     }
 
-    public int getId_module() {
-        return id_module;
-    }
 
-    public void setId_module(int id_module) {
-        this.id_module = id_module;
-    }
+
+
 
     @Override
     public String toString() {
-        return getName();
+        return name ;
     }
+
 }

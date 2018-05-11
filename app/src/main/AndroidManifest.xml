@@ -37,11 +37,28 @@
             android:label="@string/teachers"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
+            android:name=".ListOfClassesActivity"
+            android:label="@string/classes"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".ListOfModulesActivity"
+            android:label="@string/teachers"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".ListOfCoursesActivity"
+            android:label="@string/course"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
             android:name=".DetailStudentActivity"
             android:label="@string/details"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".DetailTeacherActivity"
+            android:label="@string/details"
+            android:theme="@style/AppTheme.NoActionBar" />
+
+        <activity
+            android:name=".DetailClassActivity"
             android:label="@string/details"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity

@@ -90,7 +90,8 @@ public class AddClassActivity extends AppCompatActivity {
         return true;
     }
     private void createClass(){
-        Class classe = new Class(txtClassName.getText().toString());
+        String randomID= UUID.randomUUID().toString();
+        Class classe = new Class(randomID,txtClassName.getText().toString());
         MainActivity.mDatabaseReference.child("Classes").child(UUID.randomUUID().toString()).setValue(classe);
 
     }

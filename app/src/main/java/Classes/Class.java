@@ -15,15 +15,37 @@ import io.reactivex.annotations.NonNull;
 public class Class {
 
 
+    private String uid;
+
+
     private String name;
 
-    //Constructor
-    public Class(){};
-    public Class(String name) {
+
+
+
+    //required by firebase
+    public Class()
+    {
+
+    }
+
+    public Class( String uid, String name ) {
+
+        this.uid = uid;
         this.name = name;
+
+
     }
 
     // Getters and setters
+
+    public String getUid() {
+        return uid;
+    }
+
+    public void setUid(String uid) {
+        this.uid = uid;
+    }
 
     public String getName() {
         return name;
@@ -33,10 +55,15 @@ public class Class {
         this.name = name;
     }
 
+
+
+
+
     @Override
     public String toString() {
-        return this.getName();
+        return name ;
     }
+
 
 
 }

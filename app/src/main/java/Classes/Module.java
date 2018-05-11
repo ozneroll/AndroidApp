@@ -12,49 +12,56 @@ import io.reactivex.annotations.NonNull;
  * Created by Célia Ahmad & Lorenzo Lamberti on 17.04.2018.
  */
 
-@Entity(tableName = "Module")
-
 public class Module {
 
-    @NonNull
-    @PrimaryKey(autoGenerate = true)
-    @ColumnInfo(name = "id")
-    private int id;
-    @ColumnInfo(name = "name")
+
+    private String uid;
+
+
     private String name;
 
 
-    //Constructors
-    public Module() {
 
+
+    //required by firebase
+    public Module()
+    {
 
     }
 
-    @Ignore
-    public Module(String name) {
+    public Module( String uid, String name ) {
+
+        this.uid = uid;
         this.name = name;
-    }
 
+
+    }
 
     // Getters and setters
-    public int getId() {
-        return id;
+
+    public String getUid() {
+        return uid;
+    }
+
+    public void setUid(String uid) {
+        this.uid = uid;
     }
 
     public String getName() {
         return name;
     }
 
-    public void setId(int id) {
-        this.id = id;
-    }
-
     public void setName(String name) {
         this.name = name;
     }
 
+
+
+
+
     @Override
     public String toString() {
-        return name;
+        return name ;
     }
+
 }

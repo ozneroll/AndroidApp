@@ -7,21 +7,21 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.widget.EditText;
 import android.widget.TextView;
-
-import java.util.List;
 
 import Classes.Class;
 
-public class DetailStudentActivity extends AppCompatActivity {
+/**
+ * Created by loren on 11.05.2018.
+ */
 
+public class DetailStudentActivity extends AppCompatActivity {
     private TextView txtFirstName;
     private TextView txtLastName;
     private TextView txtAddress;
     private TextView txtClass;
-    private int id;
-    private int idClass;
+    private String id;
+    private String classe;
     private Toolbar toolbar;
 
     @Override
@@ -39,13 +39,13 @@ public class DetailStudentActivity extends AppCompatActivity {
         txtAddress = (TextView) findViewById(R.id.txtAddress);
         txtClass = (TextView) findViewById(R.id.txtClass);
 
-        txtLastName.setText(getIntent().getStringExtra(getResources().getString(R.string.lastName)));
-        txtFirstName.setText(getIntent().getStringExtra(getResources().getString(R.string.firstName)));
-        txtAddress.setText(getIntent().getStringExtra(getResources().getString(R.string.address)));
-        id = getIntent().getIntExtra("id", 1);
-        idClass = getIntent().getIntExtra("idClasse", -1);
-        Class c = MainActivity.studentDB.classDAO().loadClassById(idClass);
-        txtClass.setText(c.getName());
+        txtLastName.setText(getIntent().getStringExtra("lastName"));
+        txtFirstName.setText(getIntent().getStringExtra("firstName"));
+        txtAddress.setText(getIntent().getStringExtra("address"));
+        txtClass.setText(getIntent().getStringExtra("classe"));
+        id = getIntent().getStringExtra("id");
+
+
     }
 
     //creating the menu
@@ -71,10 +71,10 @@ public class DetailStudentActivity extends AppCompatActivity {
 
             case R.id.btnEdit:
                 Intent intent3 = new Intent(this, EditStudentActivity.class);
-                intent3.putExtra(getResources().getString(R.string.lastName), txtLastName.getText());
-                intent3.putExtra(getResources().getString(R.string.firstName), txtFirstName.getText());
-                intent3.putExtra(getResources().getString(R.string.address), txtAddress.getText());
-                intent3.putExtra("idClass", idClass);
+                intent3.putExtra("lastName", txtLastName.getText());
+                intent3.putExtra("firstName", txtFirstName.getText());
+                intent3.putExtra("address", txtAddress.getText());
+                intent3.putExtra("classe", classe);
                 intent3.putExtra("id", id);
                 startActivity(intent3);
 
@@ -92,5 +92,4 @@ public class DetailStudentActivity extends AppCompatActivity {
         startActivity(myIntent);
         finish();
     }
-
 }

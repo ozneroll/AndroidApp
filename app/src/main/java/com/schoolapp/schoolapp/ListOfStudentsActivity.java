@@ -11,22 +11,30 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.EditText;
+import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import com.google.firebase.FirebaseApp;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.miguelcatalan.materialsearchview.MaterialSearchView;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import Classes.Class;
 import Classes.Student;
-import ObjectDB.Student.StudentDataSource;
-import ObjectDB.Student.StudentRepository;
-import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.CompositeDisposable;
-import io.reactivex.disposables.Disposable;
-import io.reactivex.functions.Consumer;
-import io.reactivex.schedulers.Schedulers;
+
+
+/**
+ * Created by loren on 11.05.2018.
+ */
 
 public class ListOfStudentsActivity extends AppCompatActivity {
     private ListView listStudents;
@@ -35,7 +43,9 @@ public class ListOfStudentsActivity extends AppCompatActivity {
     private List<Student> studentList = new ArrayList<>();
     private ArrayAdapter<Student> adapter;
     private CompositeDisposable compositeDisposable;
-    private StudentRepository studentRepository;
+    private FirebaseDatabase mFirebaseDatabase;
+    private DatabaseReference mDatabaseReference;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,15 +60,16 @@ public class ListOfStudentsActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
         getSupportActionBar().setTitle(getResources().getString(R.string.students));
 
+        initFirebase();
+        addEventFirebaseListener();
+
         listStudents = (ListView) findViewById(R.id.listitem);
 
-        adapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, studentList);
-        registerForContextMenu(listStudents);
-        listStudents.setAdapter(adapter);
 
-        studentRepository = StudentRepository.getInstance(StudentDataSource.getInstance(MainActivity.studentDB.sdtDao()));
 
-        loadData();
+        //studentRepository = StudentRepository.getInstance(StudentDataSource.getInstance(MainActivity.studentDB.sdtDao()));
+
+        //loadData();
 
 
         listStudents.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -66,18 +77,14 @@ public class ListOfStudentsActivity extends AppCompatActivity {
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
 
                 Student _temp = (Student) adapterView.getItemAtPosition(i);
-                int id = _temp.getUid();
-
-
-                List<Student> etudiant = MainActivity.studentDB.sdtDao().loadAllByIds(new int[]{id});
 
                 Intent myIntent = new Intent(ListOfStudentsActivity.this,
                         DetailStudentActivity.class);
-                myIntent.putExtra(getResources().getString(R.string.firstName), etudiant.get(0).getFirstName());
-                myIntent.putExtra(getResources().getString(R.string.lastName), etudiant.get(0).getLastName());
-                myIntent.putExtra(getResources().getString(R.string.address), etudiant.get(0).getAddress());
-                myIntent.putExtra("id", etudiant.get(0).getUid());
-                myIntent.putExtra("idClasse", etudiant.get(0).getIdclass());
+                myIntent.putExtra("firstName",_temp.getFirstName());
+                myIntent.putExtra("lastName", _temp.getLastName());
+                myIntent.putExtra("address", _temp.getAddress());
+                myIntent.putExtra("id", _temp.getUid());
+                myIntent.putExtra("classe", _temp.getClasse());
 
                 startActivity(myIntent);
 
@@ -142,7 +149,7 @@ public class ListOfStudentsActivity extends AppCompatActivity {
 
                 // Start NewActivity.class
                 Intent myIntent = new Intent(ListOfStudentsActivity.this,
-                        AddStudentActivity.class);
+                        AddStudentsActivity.class);
                 startActivity(myIntent)
                 ;
             }
@@ -160,6 +167,42 @@ public class ListOfStudentsActivity extends AppCompatActivity {
         MenuItem item = menu.findItem(R.id.action_search);
         searchView.setMenuItem(item);
         return true;
+    }
+    private void addEventFirebaseListener() {
+        mDatabaseReference.child("Students").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+
+                if(studentList.size()>0 )
+                    studentList.clear();
+                for(DataSnapshot postSchnapshot : dataSnapshot.getChildren()){
+                    Student student = postSchnapshot.getValue(Student.class);
+                    studentList.add(student);
+
+                    registerForContextMenu(listStudents);
+
+
+
+                }
+                ArrayAdapter adapter = new ArrayAdapter(ListOfStudentsActivity.this, android.R.layout.simple_list_item_1, studentList);
+                listStudents.setAdapter(adapter);
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+
+
+        });
+    }
+
+    private void initFirebase() {
+
+        FirebaseApp.initializeApp(this);
+        mFirebaseDatabase = FirebaseDatabase.getInstance();
+        mDatabaseReference = mFirebaseDatabase.getReference();
+
     }
 
 
@@ -185,7 +228,7 @@ public class ListOfStudentsActivity extends AppCompatActivity {
 
 
     private void loadData() {
-        Disposable disposable = studentRepository.getAll()
+    /*    Disposable disposable = studentRepository.getAll()
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeOn(Schedulers.io())
                 .subscribe(new Consumer<List<Student>>() {
@@ -200,13 +243,13 @@ public class ListOfStudentsActivity extends AppCompatActivity {
                                 Toast.makeText(ListOfStudentsActivity.this, "" + throwable.getMessage(), Toast.LENGTH_SHORT).show();
                             }
                         });
-        compositeDisposable.add(disposable);
+        compositeDisposable.add(disposable);*/
     }
 
     private void onGetAllStudentsSuccess(List<Student> students) {
-        studentList.clear();
+       /* studentList.clear();
         studentList.addAll(students);
-        adapter.notifyDataSetChanged();
+        adapter.notifyDataSetChanged();*/
     }
 
     //redirect to MainActivity when back button is pressed

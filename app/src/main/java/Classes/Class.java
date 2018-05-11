@@ -12,40 +12,21 @@ import io.reactivex.annotations.NonNull;
  * Created by Célia Ahmad & Lorenzo Lamberti on 17.04.2018.
  */
 
-@Entity(tableName = "Class")
 public class Class {
 
-    @NonNull
-    @PrimaryKey(autoGenerate = true)
-    @ColumnInfo(name = "idclass")
-    private int idclass;
 
-    @ColumnInfo(name = "name")
     private String name;
 
-    //Constructors
-    public Class() {
-
-
-    }
-
-    @Ignore
+    //Constructor
+    public Class(){};
     public Class(String name) {
         this.name = name;
     }
 
-
     // Getters and setters
-    public int getIdclass() {
-        return idclass;
-    }
 
     public String getName() {
         return name;
-    }
-
-    public void setIdclass(int id) {
-        this.idclass = id;
     }
 
     public void setName(String name) {

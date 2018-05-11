@@ -17,33 +17,17 @@
             </intent-filter>
         </activity>
         <activity
+            android:name=".AddStudentsActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".AddClassActivity"
+            android:label="@string/add"
+            android:theme="@style/AppTheme.NoActionBar" />
+
+        <activity
             android:name=".ListOfStudentsActivity"
             android:label="@string/students"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity
-            android:name=".ListOfClassesActivity"
-            android:label="@string/classes"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity
-            android:name=".ListOfCoursesActivity"
-            android:label="@string/course"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity
-            android:name=".ListOfTeachersActivity"
-            android:label="@string/teachers"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity
-            android:name=".ListOfModulesActivity"
-            android:label="@string/modules"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity
-            android:name=".AddStudentActivity"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity
-            android:name=".LanguageActivity"
-            android:label="@string/lang"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".AboutActivity" />
         <activity
             android:name=".DetailStudentActivity"
             android:label="@string/details"
@@ -52,47 +36,6 @@
             android:name=".EditStudentActivity"
             android:label="@string/edit"
             android:theme="@style/AppTheme.NoActionBar" />
-
-        <activity
-            android:name=".AddTeacherActivity"
-            android:label="@string/teachers"
-            android:theme="@style/AppTheme.NoActionBar" />
-
-        <activity
-            android:name=".DetailClassActivity"
-            android:label="@string/details"
-            android:theme="@style/AppTheme.NoActionBar" />
-
-        <activity
-            android:name=".DetailCourseActivity"
-            android:label="@string/details"
-            android:theme="@style/AppTheme.NoActionBar" />
-
-        <activity
-            android:name=".DetailTeacherActivity"
-            android:label="@string/details"
-            android:theme="@style/AppTheme.NoActionBar" />
-
-        <activity
-            android:name=".EditTeacherActivity"
-            android:label="@string/details"
-            android:theme="@style/AppTheme.NoActionBar" />
-
-        <activity
-            android:name=".DetailModuleActivity"
-            android:label="@string/details"
-            android:theme="@style/AppTheme.NoActionBar" />
-
-        <activity
-            android:name=".EditClassActivity"
-            android:label="@string/details"
-            android:theme="@style/AppTheme.NoActionBar" />
-
-        <activity
-            android:name=".AddClassActivity"
-            android:label="@string/add"
-            android:theme="@style/AppTheme.NoActionBar" />
-
     </application>
 
 </manifest>

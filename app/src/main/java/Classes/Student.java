@@ -19,43 +19,47 @@ import static android.arch.persistence.room.ForeignKey.CASCADE;
 @Entity(tableName = "Student", foreignKeys = @ForeignKey(entity = Class.class, parentColumns = "idclass", childColumns = "idclass", onDelete = CASCADE))
 public class Student {
 
-    @NonNull
-    @PrimaryKey(autoGenerate = true)
-    @ColumnInfo(name = "uid")
-    private int uid;
+    private String uid;
 
-    @ColumnInfo(name = "lastName")
     private String lastName;
 
-    @ColumnInfo(name = "firstName")
     private String firstName;
 
-    @ColumnInfo(name = "address")
     private String address;
 
-    @ColumnInfo(name = "idclass")
-    private int idclass;
+    private String classe;
 
-    //Constructors
-    public Student() {
+    //required by firebase
+    public Student()
+    {
 
     }
 
-    @Ignore
-    public Student(String lastName, String firstName, String address, int idclass) {
+    public Student( String uid, String lastName, String firstName, String address,String classe) {
+
+        this.uid = uid;
         this.lastName = lastName;
         this.firstName = firstName;
         this.address = address;
-        this.idclass = idclass;
+        this.classe = classe;
     }
 
     // Getters and setters
-    public int getUid() {
+
+    public String getUid() {
         return uid;
     }
 
-    public void setUid(int uid) {
+    public void setUid(String uid) {
         this.uid = uid;
+    }
+
+    public String getClasse() {
+        return classe;
+    }
+
+    public void setClasse(String classe) {
+        this.classe = classe;
     }
 
     public String getLastName() {
@@ -82,13 +86,6 @@ public class Student {
         this.address = address;
     }
 
-    public int getIdclass() {
-        return idclass;
-    }
-
-    public void setIdclass(int idclass) {
-        this.idclass = idclass;
-    }
 
 
     @Override

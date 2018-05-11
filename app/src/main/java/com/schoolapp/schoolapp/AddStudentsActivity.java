@@ -1,8 +1,8 @@
 package com.schoolapp.schoolapp;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -12,14 +12,14 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
-import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 import Classes.Class;
 import Classes.Student;
 
-public class AddStudentActivity extends AppCompatActivity {
 
+public class AddStudentsActivity extends AppCompatActivity {
     private EditText txtFirstName;
     private EditText txtLastName;
     private EditText txtAddress;
@@ -28,6 +28,8 @@ public class AddStudentActivity extends AppCompatActivity {
     private ArrayAdapter<Class> adapter;
     private Class c;
     private Toolbar toolbar;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,7 +42,7 @@ public class AddStudentActivity extends AppCompatActivity {
 
         getSupportActionBar().setTitle(getResources().getString(R.string.add));
 
-        classes = MainActivity.studentDB.classDAO().getAllAsList();
+      //  classes = MainActivity.studentDB.classDAO().getAllAsList();
 
         txtFirstName = (EditText) findViewById(R.id.txtaddFirstName);
         txtLastName = (EditText) findViewById(R.id.txtaddLastName);
@@ -48,12 +50,12 @@ public class AddStudentActivity extends AppCompatActivity {
 
         spinner = (Spinner) findViewById(R.id.all_classes);
 
-        // Create an ArrayAdapter using the string array and a default spinner layout
-        adapter = new ArrayAdapter<Class>(this, android.R.layout.simple_spinner_item, classes);
-        // Specify the layout to use when the list of choices appears
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        // Apply the adapter to the spinner
-        spinner.setAdapter(adapter);
+//        // Create an ArrayAdapter using the string array and a default spinner layout
+//        adapter = new ArrayAdapter<Class>(this, android.R.layout.simple_spinner_item, classes);
+//        // Specify the layout to use when the list of choices appears
+//        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+//        // Apply the adapter to the spinner
+//        spinner.setAdapter(adapter);
 
     }
 
@@ -95,13 +97,10 @@ public class AddStudentActivity extends AppCompatActivity {
                     error = 1;
                 }
                 if (error == 0) {
-                    //get selected class
-                    c = (Class) spinner.getSelectedItem();
-                    //insert
-                    MainActivity.studentDB.sdtDao().insertAll(new Student(txtLastName.getText().toString(), txtFirstName.getText().toString(), txtAddress.getText().toString(), c.getIdclass()));
-                    //confirmation for the user
+                   //confirmation for the user
+                    createStudent();
                     Toast.makeText(getApplicationContext(), getResources().getString(R.string.ajout), Toast.LENGTH_LONG).show();
-                    Intent myIntent = new Intent(AddStudentActivity.this,
+                    Intent myIntent = new Intent(AddStudentsActivity.this,
                             ListOfStudentsActivity.class);
                     startActivity(myIntent);
                 }
@@ -114,11 +113,17 @@ public class AddStudentActivity extends AppCompatActivity {
         return true;
     }
 
+    private void createStudent(){
+        String randomID= UUID.randomUUID().toString();
+        Student student = new Student (randomID, txtLastName.getText().toString(), txtFirstName.getText().toString(),txtAddress.getText().toString(), "604-F");
+        MainActivity.mDatabaseReference.child("Students").child(randomID).setValue(student);
+    }
     //finish the activity
     @Override
     protected void onStop() {
         super.onStop();
         finish();
     }
-
 }
+
+

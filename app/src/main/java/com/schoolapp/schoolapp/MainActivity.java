@@ -7,10 +7,14 @@ import android.support.v7.widget.CardView;
 import android.view.View;
 import android.widget.ImageButton;
 
-import ObjectDB.AppDatabase;
+import com.google.firebase.FirebaseApp;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
 
 public class MainActivity extends AppCompatActivity {
-    public static AppDatabase studentDB;
+    public static FirebaseDatabase mFirebaseDatabase;
+    public static DatabaseReference mDatabaseReference;
     private CardView cv1;
     private CardView cv2;
     private CardView cv3;
@@ -27,7 +31,7 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
-        studentDB = AppDatabase.getInstance(this);
+        initFirebase();
         super.onCreate(savedInstanceState);
         // Get the view from activity_main.xml
         setContentView(R.layout.activity_main);
@@ -58,15 +62,15 @@ public class MainActivity extends AppCompatActivity {
                         break;
                     case R.id.cardview2:
                     case R.id.imageButton2:
-                        myIntent = new Intent(MainActivity.this, ListOfClassesActivity.class);
+                        myIntent = new Intent(MainActivity.this, AddClassActivity.class);
                         startActivity(myIntent);
                         break;
-                    case R.id.cardview3:
+                   case R.id.cardview3:
                     case R.id.imageButton3:
-                        myIntent = new Intent(MainActivity.this, ListOfCoursesActivity.class);
+                        myIntent = new Intent(MainActivity.this, ListOfStudentsActivity.class);
                         startActivity(myIntent);
                         break;
-                    case R.id.cardview4:
+                    /*case R.id.cardview4:
                     case R.id.imageButton4:
                         myIntent = new Intent(MainActivity.this, ListOfModulesActivity.class);
                         startActivity(myIntent);
@@ -75,7 +79,7 @@ public class MainActivity extends AppCompatActivity {
                     case R.id.imageButton5:
                         myIntent = new Intent(MainActivity.this, ListOfTeachersActivity.class);
                         startActivity(myIntent);
-                        break;
+                        break;*/
                     default:
                         break;
                 }
@@ -126,6 +130,11 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
         finish();
     }
+    private void initFirebase() {
 
+        FirebaseApp.initializeApp(this);
+        mFirebaseDatabase = FirebaseDatabase.getInstance();
+        mDatabaseReference = mFirebaseDatabase.getReference();
+    }
 
 }

@@ -10,11 +10,19 @@ import android.view.MenuItem;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.ValueEventListener;
+
+import java.util.UUID;
+
 import Classes.Class;
-import Classes.Teacher;
+
+/**
+ * Created by loren on 10.05.2018.
+ */
 
 public class AddClassActivity extends AppCompatActivity {
-
 
     private EditText txtClassName;
     private Toolbar toolbar;
@@ -64,11 +72,12 @@ public class AddClassActivity extends AppCompatActivity {
                 }
 
                 if (error == 0) {
-                    MainActivity.studentDB.classDAO().insertAll(new Class(txtClassName.getText().toString()));
+                    createClass();
                     //confirmation for the user
+
                     Toast.makeText(getApplicationContext(), getResources().getString(R.string.ajout), Toast.LENGTH_LONG).show();
                     Intent myIntent = new Intent(AddClassActivity.this,
-                            ListOfClassesActivity.class);
+                            MainActivity.class);
                     startActivity(myIntent);
                 }
                 break;
@@ -80,7 +89,11 @@ public class AddClassActivity extends AppCompatActivity {
 
         return true;
     }
+    private void createClass(){
+        Class classe = new Class(txtClassName.getText().toString());
+        MainActivity.mDatabaseReference.child("Classes").child(UUID.randomUUID().toString()).setValue(classe);
 
+    }
     //finish the activity
     @Override
     protected void onStop() {

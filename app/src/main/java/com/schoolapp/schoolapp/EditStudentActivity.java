@@ -1,8 +1,8 @@
 package com.schoolapp.schoolapp;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -10,7 +10,6 @@ import android.view.MenuItem;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Spinner;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.List;
@@ -18,8 +17,11 @@ import java.util.List;
 import Classes.Class;
 import Classes.Student;
 
-public class EditStudentActivity extends AppCompatActivity {
+/**
+ * Created by loren on 11.05.2018.
+ */
 
+public class EditStudentActivity extends AppCompatActivity{
     private EditText txtFirstName;
     private EditText txtLastName;
     private EditText txtAddress;
@@ -46,17 +48,17 @@ public class EditStudentActivity extends AppCompatActivity {
         txtAddress = (EditText) findViewById(R.id.txtEditAddress);
 
 
-        txtLastName.setText(getIntent().getStringExtra(getResources().getString(R.string.lastName)));
-        txtFirstName.setText(getIntent().getStringExtra(getResources().getString(R.string.firstName)));
-        txtAddress.setText(getIntent().getStringExtra(getResources().getString(R.string.address)));
+        txtLastName.setText(getIntent().getStringExtra("lastName"));
+        txtFirstName.setText(getIntent().getStringExtra("firstName"));
+        txtAddress.setText(getIntent().getStringExtra("address"));
 
         id = getIntent().getIntExtra("id", -1);
-        etudiant = MainActivity.studentDB.sdtDao().loadStudentById(id);
+
 
         idClass = getIntent().getIntExtra("idClass", -1);
 
 
-        classes = MainActivity.studentDB.classDAO().getAllAsList();
+
         spinner = (Spinner) findViewById(R.id.all_classes);
 
         // Create an ArrayAdapter using the string array and a default spinner layout
@@ -67,10 +69,11 @@ public class EditStudentActivity extends AppCompatActivity {
         // Apply the adapter to the spinner
         spinner.setAdapter(adapter);
 
+        /*
         c = MainActivity.studentDB.classDAO().loadClassById(idClass);
         int index = getIndex(spinner, c.getName());
         spinner.setSelection(index);
-
+        */
     }
 
     //getting the index of the correct class name
@@ -109,7 +112,7 @@ public class EditStudentActivity extends AppCompatActivity {
                 startActivity(intent2);
                 break;
             case R.id.action_delete:
-                MainActivity.studentDB.sdtDao().delete(etudiant);
+                MainActivity.mDatabaseReference.child("Students").child(getIntent().getStringExtra("id")).removeValue();
                 //confirmation for the user
                 Toast.makeText(getApplicationContext(), getResources().getString(R.string.deletesuccess), Toast.LENGTH_LONG).show();
                 Intent intent3 = new Intent(EditStudentActivity.this,
@@ -137,8 +140,8 @@ public class EditStudentActivity extends AppCompatActivity {
                     etudiant.setLastName(txtLastName.getText().toString());
                     etudiant.setFirstName(txtFirstName.getText().toString());
                     etudiant.setAddress(txtAddress.getText().toString());
-                    etudiant.setIdclass(c.getIdclass());
-                    MainActivity.studentDB.sdtDao().update(etudiant);
+                    //etudiant.setIdclass(c.getIdclass());
+
                     //confirmation for the user
                     Toast.makeText(getApplicationContext(), getResources().getString(R.string.saved), Toast.LENGTH_LONG).show();
                     Intent myIntent = new Intent(EditStudentActivity.this,
@@ -147,7 +150,7 @@ public class EditStudentActivity extends AppCompatActivity {
                     myIntent.putExtra(getResources().getString(R.string.firstName), txtFirstName.getText().toString());
                     myIntent.putExtra(getResources().getString(R.string.address), txtAddress.getText().toString());
                     myIntent.putExtra("id", etudiant.getUid());
-                    myIntent.putExtra("idClasse", c.getIdclass());
+                    //myIntent.putExtra("idClasse", c.getIdclass());
                     startActivity(myIntent);
                 }
                 break;

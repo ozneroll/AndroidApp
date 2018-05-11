@@ -41,20 +41,14 @@ public class ListOfStudentsActivity extends AppCompatActivity {
     private MaterialSearchView searchView;
     private FloatingActionButton fab;
     private List<Student> studentList = new ArrayList<>();
-    private ArrayAdapter<Student> adapter;
-    private CompositeDisposable compositeDisposable;
     private FirebaseDatabase mFirebaseDatabase;
     private DatabaseReference mDatabaseReference;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
-
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list_of_students);
-
-        compositeDisposable = new CompositeDisposable();
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -64,20 +58,11 @@ public class ListOfStudentsActivity extends AppCompatActivity {
         addEventFirebaseListener();
 
         listStudents = (ListView) findViewById(R.id.listitem);
-
-
-
-        //studentRepository = StudentRepository.getInstance(StudentDataSource.getInstance(MainActivity.studentDB.sdtDao()));
-
-        //loadData();
-
-
         listStudents.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
 
                 Student _temp = (Student) adapterView.getItemAtPosition(i);
-
                 Intent myIntent = new Intent(ListOfStudentsActivity.this,
                         DetailStudentActivity.class);
                 myIntent.putExtra("firstName",_temp.getFirstName());
@@ -87,10 +72,8 @@ public class ListOfStudentsActivity extends AppCompatActivity {
                 myIntent.putExtra("classe", _temp.getClasse());
 
                 startActivity(myIntent);
-
             }
         });
-
 
         searchView = (MaterialSearchView) findViewById(R.id.search_view);
         searchView.setOnSearchViewListener(new MaterialSearchView.SearchViewListener() {
@@ -180,17 +163,14 @@ public class ListOfStudentsActivity extends AppCompatActivity {
                     studentList.add(student);
 
                     registerForContextMenu(listStudents);
-
                 }
                 ArrayAdapter adapter = new ArrayAdapter(ListOfStudentsActivity.this, android.R.layout.simple_list_item_1, studentList);
                 listStudents.setAdapter(adapter);
             }
-
             @Override
             public void onCancelled(DatabaseError databaseError) {
 
             }
-
 
         });
     }
@@ -202,7 +182,6 @@ public class ListOfStudentsActivity extends AppCompatActivity {
         mDatabaseReference = mFirebaseDatabase.getReference();
 
     }
-
 
     //actions on the menu
     @Override
@@ -224,32 +203,6 @@ public class ListOfStudentsActivity extends AppCompatActivity {
         return true;
     }
 
-
-    private void loadData() {
-    /*    Disposable disposable = studentRepository.getAll()
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribeOn(Schedulers.io())
-                .subscribe(new Consumer<List<Student>>() {
-                               @Override
-                               public void accept(List<Student> students) throws Exception {
-                                   onGetAllStudentsSuccess(students);
-                               }
-                           },
-                        new Consumer<Throwable>() {
-                            @Override
-                            public void accept(Throwable throwable) throws Exception {
-                                Toast.makeText(ListOfStudentsActivity.this, "" + throwable.getMessage(), Toast.LENGTH_SHORT).show();
-                            }
-                        });
-        compositeDisposable.add(disposable);*/
-    }
-
-    private void onGetAllStudentsSuccess(List<Student> students) {
-       /* studentList.clear();
-        studentList.addAll(students);
-        adapter.notifyDataSetChanged();*/
-    }
-
     //redirect to MainActivity when back button is pressed
     //finish
     @Override
@@ -259,6 +212,5 @@ public class ListOfStudentsActivity extends AppCompatActivity {
         startActivity(myIntent);
         finish();
     }
-
 
 }

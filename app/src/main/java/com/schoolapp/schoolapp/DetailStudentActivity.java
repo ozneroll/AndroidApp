@@ -21,7 +21,6 @@ public class DetailStudentActivity extends AppCompatActivity {
     private TextView txtAddress;
     private TextView txtClass;
     private String id;
-    private String classe;
     private Toolbar toolbar;
 
     @Override
@@ -44,8 +43,6 @@ public class DetailStudentActivity extends AppCompatActivity {
         txtAddress.setText(getIntent().getStringExtra("address"));
         txtClass.setText(getIntent().getStringExtra("classe"));
         id = getIntent().getStringExtra("id");
-
-
     }
 
     //creating the menu
@@ -74,10 +71,9 @@ public class DetailStudentActivity extends AppCompatActivity {
                 intent3.putExtra("lastName", txtLastName.getText());
                 intent3.putExtra("firstName", txtFirstName.getText());
                 intent3.putExtra("address", txtAddress.getText());
-                intent3.putExtra("classe", classe);
+                intent3.putExtra("classe", txtClass.getText());
                 intent3.putExtra("id", id);
                 startActivity(intent3);
-
             default:
                 break;
         }

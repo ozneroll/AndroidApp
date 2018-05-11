@@ -29,7 +29,7 @@ import static com.schoolapp.schoolapp.MainActivity.mDatabaseReference;
  * on 11.05.2018.
  */
 
-public class DetailClassActivity extends AppCompatActivity {
+public class DetailModuleActivity extends AppCompatActivity {
     private ListView listStudent;
     private TextView txtClass;
     private String id;
@@ -93,7 +93,7 @@ public class DetailClassActivity extends AppCompatActivity {
     //back to the list, finish the activity
     @Override
     public void onBackPressed() {
-        Intent myIntent = new Intent(DetailClassActivity.this,
+        Intent myIntent = new Intent(DetailModuleActivity.this,
                 ListOfClassesActivity.class);
         startActivity(myIntent);
         finish();
@@ -114,7 +114,7 @@ public class DetailClassActivity extends AppCompatActivity {
 
                 }
 
-                ArrayAdapter<Student> adapter = new ArrayAdapter<Student>(DetailClassActivity.this,
+                ArrayAdapter<Student> adapter = new ArrayAdapter<Student>(DetailModuleActivity.this,
                         R.layout.textview, listOfStudents);
                 listStudent.setAdapter(adapter);
                 listStudent.setAdapter(adapter);

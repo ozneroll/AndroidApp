@@ -65,6 +65,7 @@ public class EditStudentActivity extends AppCompatActivity {
 
         spinner = (Spinner) findViewById(R.id.all_classes);
 
+        //get all the classes
         mDatabaseReference.child("Classes").addValueEventListener(new ValueEventListener() {
 
             @Override
@@ -99,11 +100,9 @@ public class EditStudentActivity extends AppCompatActivity {
         });
 
 
-
-
     }
 
-   //getting the index of the correct class name
+    //getting the index of the correct class name
     public int getIndex(Spinner spinner, String myString) {
 
         int index = 0;
@@ -140,9 +139,12 @@ public class EditStudentActivity extends AppCompatActivity {
                 startActivity(intent2);
                 break;
             case R.id.action_delete:
+                //delete student
                 mDatabaseReference.child("Students").child(id).removeValue();
+                //get the class in which the student was in
                 Class exClass = (Class) spinner.getItemAtPosition(index);
                 String exId = exClass.getUid();
+                //remove it from the list
                 mDatabaseReference.child("Classes").child(exId).child("listOfStudents").child(id).removeValue();
                 //confirmation for the user
                 Toast.makeText(getApplicationContext(), getResources().getString(R.string.deletesuccess), Toast.LENGTH_LONG).show();
@@ -169,25 +171,30 @@ public class EditStudentActivity extends AppCompatActivity {
                 if (error == 0) {
 
                     Student etu = new Student(id, txtLastName.getText().toString(), txtFirstName.getText().toString(), txtAddress.getText().toString(), spinner.getSelectedItem().toString());
-
+                    //set the values
                     mDatabaseReference.child("Students").child(id).child("lastName").setValue(etu.getLastName());
                     mDatabaseReference.child("Students").child(id).child("firstName").setValue(etu.getFirstName());
                     mDatabaseReference.child("Students").child(id).child("address").setValue(etu.getAddress());
                     mDatabaseReference.child("Students").child(id).child("classe").setValue(etu.getClasse());
 
+                    //get the new and old class
                     Class c = (Class) spinner.getSelectedItem();
                     Class exC = (Class) spinner.getItemAtPosition(index);
 
+                    //get the ids
                     String classID = c.getUid();
                     String exClassID = exC.getUid();
 
+                    //remove it from the old class
                     mDatabaseReference.child("Classes").child(exClassID).child("listOfStudents").child(id).removeValue();
+                    //insert it in the new class
                     mDatabaseReference.child("Classes").child(classID).child("listOfStudents").child(id).setValue(etu.toString());
 
                     //confirmation for the user
                     Toast.makeText(getApplicationContext(), getResources().getString(R.string.saved), Toast.LENGTH_LONG).show();
                     Intent myIntent = new Intent(EditStudentActivity.this,
                             DetailStudentActivity.class);
+                    //give the infos to the DetailStudentActivity
                     myIntent.putExtra("lastName", txtLastName.getText().toString());
                     myIntent.putExtra("firstName", txtFirstName.getText().toString());
                     myIntent.putExtra("address", txtAddress.getText().toString());

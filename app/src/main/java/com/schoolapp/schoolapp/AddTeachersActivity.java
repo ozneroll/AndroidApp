@@ -23,7 +23,6 @@ public class AddTeachersActivity extends AppCompatActivity {
     private Toolbar toolbar;
 
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -75,8 +74,9 @@ public class AddTeachersActivity extends AppCompatActivity {
                 }
 
                 if (error == 0) {
-                   //confirmation for the user
+                    //call createTeacher() method
                     createTeacher();
+                    //confirmation for the user
                     Toast.makeText(getApplicationContext(), getResources().getString(R.string.ajout), Toast.LENGTH_LONG).show();
                     Intent myIntent = new Intent(AddTeachersActivity.this,
                             ListOfTeachersActivity.class);
@@ -91,11 +91,15 @@ public class AddTeachersActivity extends AppCompatActivity {
         return true;
     }
 
-    private void createTeacher(){
-        String randomID= UUID.randomUUID().toString();
-        Teacher teacher = new Teacher (randomID, txtLastName.getText().toString(), txtFirstName.getText().toString());
+    private void createTeacher() {
+        //random id
+        String randomID = UUID.randomUUID().toString();
+        //new teacher
+        Teacher teacher = new Teacher(randomID, txtLastName.getText().toString(), txtFirstName.getText().toString());
+        //add values of teacher in DB
         MainActivity.mDatabaseReference.child("Teachers").child(randomID).setValue(teacher);
     }
+
     //finish the activity
     @Override
     protected void onStop() {

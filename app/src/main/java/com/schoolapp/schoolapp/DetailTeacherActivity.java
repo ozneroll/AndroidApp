@@ -32,7 +32,7 @@ public class DetailTeacherActivity extends AppCompatActivity {
         txtFirstName = (TextView) findViewById(R.id.txtFirstName);
         txtLastName = (TextView) findViewById(R.id.txtLastName);
 
-
+        //get the infos
         txtLastName.setText(getIntent().getStringExtra("lastName"));
         txtFirstName.setText(getIntent().getStringExtra("firstName"));
         id = getIntent().getStringExtra("id");
@@ -61,6 +61,7 @@ public class DetailTeacherActivity extends AppCompatActivity {
                 break;
 
             case R.id.btnEdit:
+                //give the infos to next activity
                 Intent intent3 = new Intent(this, EditTeacherActivity.class);
                 intent3.putExtra("lastName", txtLastName.getText());
                 intent3.putExtra("firstName", txtFirstName.getText());

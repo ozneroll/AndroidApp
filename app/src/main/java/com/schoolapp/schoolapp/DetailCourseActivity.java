@@ -10,24 +10,29 @@ import android.view.MenuItem;
 import android.widget.TextView;
 
 /**
- * Project : AndroidAppFirebase
- * Created by Célia Ahmad & Lorenzo Lamberti
- * on 11.05.2018.
+ * Created by loren on 11.05.2018.
  */
 
-public class AboutActivity extends AppCompatActivity {
-
+public class DetailCourseActivity extends AppCompatActivity {
+    private TextView txtName;
+    private TextView txtModule;
     private Toolbar toolbar;
-    private TextView textView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_about);
+        setContentView(R.layout.activity_detail_course);
 
         toolbar = (Toolbar) findViewById(R.id.toolbar);
-        textView = (TextView) findViewById(R.id.about);
         setSupportActionBar(toolbar);
+
+        getSupportActionBar().setTitle(getResources().getString(R.string.details));
+
+        txtName = (TextView) findViewById(R.id.txtName);
+        txtModule = (TextView) findViewById(R.id.txtModule);
+
+        txtName.setText(getIntent().getStringExtra("name"));
+        txtModule.setText(getIntent().getStringExtra("module"));
     }
 
     //creating the menu
@@ -36,7 +41,6 @@ public class AboutActivity extends AppCompatActivity {
         inflater.inflate(R.menu.menu_settings, menu);
         return true;
     }
-
 
     //actions on the menu
     @Override
@@ -54,20 +58,15 @@ public class AboutActivity extends AppCompatActivity {
             default:
                 break;
         }
-
         return true;
     }
 
-    //finish this activity
-    @Override
-    public void onStop() {
-        super.onStop();
-        finish();
-    }
-
-    //redirect to MainActivity when back button is pressed
+    //back to the list, finish the activity
     @Override
     public void onBackPressed() {
+        Intent myIntent = new Intent(DetailCourseActivity.this,
+                ListOfCoursesActivity.class);
+        startActivity(myIntent);
         finish();
     }
 }

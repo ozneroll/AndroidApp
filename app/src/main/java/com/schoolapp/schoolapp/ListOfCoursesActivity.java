@@ -8,6 +8,7 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
@@ -44,7 +45,7 @@ public class ListOfCoursesActivity extends AppCompatActivity {
 
 
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_list_of_modules);
+        setContentView(R.layout.activity_list_of_courses);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -55,6 +56,20 @@ public class ListOfCoursesActivity extends AppCompatActivity {
 
         listCourses = (ListView) findViewById(R.id.listitem);
 
+        listCourses.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+
+                Course _temp = (Course) adapterView.getItemAtPosition(i);
+                Intent myIntent = new Intent(ListOfCoursesActivity.this,
+                        DetailCourseActivity.class);
+                myIntent.putExtra("name", _temp.getName());
+                myIntent.putExtra("module", _temp.getModule());
+
+
+                startActivity(myIntent);
+            }
+        });
 
 
         searchView = (MaterialSearchView) findViewById(R.id.search_view);
@@ -85,7 +100,7 @@ public class ListOfCoursesActivity extends AppCompatActivity {
                 if (newText != null && !newText.isEmpty()) {
                     List<Course> lstFound = new ArrayList<Course>();
                     for (Course item : courseList) {
-                        if ((item.getName().toLowerCase().contains(newText) ))
+                        if ((item.getName().toLowerCase().contains(newText)))
                             lstFound.add(item);
                     }
                     ArrayAdapter adapter = new ArrayAdapter(ListOfCoursesActivity.this, android.R.layout.simple_list_item_1, lstFound);
@@ -102,19 +117,17 @@ public class ListOfCoursesActivity extends AppCompatActivity {
         });
 
 
-
     }
 
     //creating the menu
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.menu_settings, menu);
-        inflater.inflate(R.menu.menu_search,menu );
+        inflater.inflate(R.menu.menu_search, menu);
         MenuItem item = menu.findItem(R.id.action_search);
         searchView.setMenuItem(item);
         return true;
     }
-
 
 
     //actions on the menu
@@ -139,13 +152,13 @@ public class ListOfCoursesActivity extends AppCompatActivity {
 
 
     private void addEventFirebaseListener() {
-        mDatabaseReference.child("Modules").addValueEventListener(new ValueEventListener() {
+        mDatabaseReference.child("Courses").orderByChild("name").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
 
-                if(courseList.size()>0 )
+                if (courseList.size() > 0)
                     courseList.clear();
-                for(DataSnapshot postSchnapshot : dataSnapshot.getChildren()){
+                for (DataSnapshot postSchnapshot : dataSnapshot.getChildren()) {
                     Course course = postSchnapshot.getValue(Course.class);
                     courseList.add(course);
 
@@ -172,7 +185,6 @@ public class ListOfCoursesActivity extends AppCompatActivity {
         mDatabaseReference = mFirebaseDatabase.getReference();
 
     }
-
 
 
     //redirect to MainActivity when back button is pressed

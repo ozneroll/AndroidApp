@@ -9,6 +9,7 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
@@ -55,7 +56,21 @@ public class ListOfModulesActivity extends AppCompatActivity {
 
         listModules = (ListView) findViewById(R.id.listitem);
 
+        listModules.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
 
+                Module _temp = (Module) adapterView.getItemAtPosition(i);
+
+                Intent myIntent = new Intent(ListOfModulesActivity.this,
+                        DetailModuleActivity.class);
+                myIntent.putExtra("name", _temp.getName());
+                myIntent.putExtra("id", _temp.getUid());
+
+                startActivity(myIntent);
+
+            }
+        });
 
         searchView = (MaterialSearchView) findViewById(R.id.search_view);
         searchView.setOnSearchViewListener(new MaterialSearchView.SearchViewListener() {
@@ -85,7 +100,7 @@ public class ListOfModulesActivity extends AppCompatActivity {
                 if (newText != null && !newText.isEmpty()) {
                     List<Module> lstFound = new ArrayList<Module>();
                     for (Module item : moduleList) {
-                        if ((item.getName().toLowerCase().contains(newText) ))
+                        if ((item.getName().toLowerCase().contains(newText)))
                             lstFound.add(item);
                     }
                     ArrayAdapter adapter = new ArrayAdapter(ListOfModulesActivity.this, android.R.layout.simple_list_item_1, lstFound);
@@ -102,19 +117,17 @@ public class ListOfModulesActivity extends AppCompatActivity {
         });
 
 
-
     }
 
     //creating the menu
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.menu_settings, menu);
-        inflater.inflate(R.menu.menu_search,menu );
+        inflater.inflate(R.menu.menu_search, menu);
         MenuItem item = menu.findItem(R.id.action_search);
         searchView.setMenuItem(item);
         return true;
     }
-
 
 
     //actions on the menu
@@ -139,13 +152,13 @@ public class ListOfModulesActivity extends AppCompatActivity {
 
 
     private void addEventFirebaseListener() {
-        mDatabaseReference.child("Modules").addValueEventListener(new ValueEventListener() {
+        mDatabaseReference.child("Modules").orderByChild("name").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
 
-                if(moduleList.size()>0 )
+                if (moduleList.size() > 0)
                     moduleList.clear();
-                for(DataSnapshot postSchnapshot : dataSnapshot.getChildren()){
+                for (DataSnapshot postSchnapshot : dataSnapshot.getChildren()) {
                     Module module = postSchnapshot.getValue(Module.class);
                     moduleList.add(module);
 
@@ -172,7 +185,6 @@ public class ListOfModulesActivity extends AppCompatActivity {
         mDatabaseReference = mFirebaseDatabase.getReference();
 
     }
-
 
 
     //redirect to MainActivity when back button is pressed

@@ -22,6 +22,7 @@ import com.google.firebase.database.ValueEventListener;
 import com.miguelcatalan.materialsearchview.MaterialSearchView;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import Classes.Teacher;
@@ -67,7 +68,7 @@ public class ListOfTeachersActivity extends AppCompatActivity {
 
                 Intent myIntent = new Intent(ListOfTeachersActivity.this,
                         DetailTeacherActivity.class);
-                myIntent.putExtra("firstName",_temp.getFirstName());
+                myIntent.putExtra("firstName", _temp.getFirstName());
                 myIntent.putExtra("lastName", _temp.getLastName());
                 myIntent.putExtra("id", _temp.getUid());
 
@@ -149,19 +150,20 @@ public class ListOfTeachersActivity extends AppCompatActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.menu_settings, menu);
-        inflater.inflate(R.menu.menu_search,menu );
+        inflater.inflate(R.menu.menu_search, menu);
         MenuItem item = menu.findItem(R.id.action_search);
         searchView.setMenuItem(item);
         return true;
     }
+
     private void addEventFirebaseListener() {
-        mDatabaseReference.child("Teachers").addValueEventListener(new ValueEventListener() {
+        mDatabaseReference.child("Teachers").orderByChild("lastname").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
 
-                if(teacherList.size()>0 )
+                if (teacherList.size() > 0)
                     teacherList.clear();
-                for(DataSnapshot postSchnapshot : dataSnapshot.getChildren()){
+                for (DataSnapshot postSchnapshot : dataSnapshot.getChildren()) {
                     Teacher teacher = postSchnapshot.getValue(Teacher.class);
                     teacherList.add(teacher);
 
@@ -169,6 +171,7 @@ public class ListOfTeachersActivity extends AppCompatActivity {
 
                 }
                 ArrayAdapter adapter = new ArrayAdapter(ListOfTeachersActivity.this, android.R.layout.simple_list_item_1, teacherList);
+                Collections.sort(teacherList);
                 listTeachers.setAdapter(adapter);
             }
 

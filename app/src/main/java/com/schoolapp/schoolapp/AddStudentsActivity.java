@@ -27,7 +27,9 @@ import Classes.Student;
 import static com.schoolapp.schoolapp.MainActivity.mDatabaseReference;
 
 /**
- * Created by loren on 10.05.2018.
+ * Project : AndroidAppFirebase
+ * Created by Célia Ahmad & Lorenzo Lamberti
+ * on 11.05.2018.
  */
 
 public class AddStudentsActivity extends AppCompatActivity {
@@ -53,6 +55,7 @@ public class AddStudentsActivity extends AppCompatActivity {
 
         spinner = (Spinner) findViewById(R.id.all_classes);
 
+        //list of all classes
         mDatabaseReference.child("Classes").addValueEventListener(new ValueEventListener() {
 
             @Override
@@ -62,6 +65,7 @@ public class AddStudentsActivity extends AppCompatActivity {
                     listOfClasses.clear();
                 for (DataSnapshot postSchnapshot : dataSnapshot.getChildren()) {
                     Class classe = postSchnapshot.getValue(Class.class);
+                    //store it in a list of strings
                     listOfClasses.add(classe.toString());
                 }
 
@@ -121,8 +125,9 @@ public class AddStudentsActivity extends AppCompatActivity {
                     error = 1;
                 }
                 if (error == 0) {
-                   //confirmation for the user
+                    //call createStudent() method
                     createStudent();
+                    //confirmation for the user
                     Toast.makeText(getApplicationContext(), getResources().getString(R.string.ajout), Toast.LENGTH_LONG).show();
                     Intent myIntent = new Intent(AddStudentsActivity.this,
                             ListOfStudentsActivity.class);
@@ -137,20 +142,19 @@ public class AddStudentsActivity extends AppCompatActivity {
         return true;
     }
 
-    private void createStudent(){
-        final String randomID= UUID.randomUUID().toString();
-        final Student student = new Student (randomID, txtLastName.getText().toString(), txtFirstName.getText().toString(),txtAddress.getText().toString(), spinner.getSelectedItem().toString());
+    private void createStudent() {
+        //random id
+        final String randomID = UUID.randomUUID().toString();
+        //create Student
+        final Student student = new Student(randomID, txtLastName.getText().toString(), txtFirstName.getText().toString(), txtAddress.getText().toString(), spinner.getSelectedItem().toString());
         MainActivity.mDatabaseReference.child("Students").child(randomID).setValue(student);
-        HashMap<String, String> studentInClass = new HashMap<String, String>();
 
-
+        //get the id of the class with the name, then add the student in the list of student of said class
         MainActivity.mDatabaseReference.child("ClassNameToId").addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 String idClass = dataSnapshot.child(spinner.getSelectedItem().toString()).getValue(String.class);
                 MainActivity.mDatabaseReference.child("Classes").child(idClass).child("listOfStudents").child(randomID).setValue(student.toString());
-                // A DECOMMENTER !!!!!!!
-                //String idClass = MainActivity.mDatabaseReference.child("ClassNameToId").child(spinner.getSelectedItem().toString());
             }
 
             @Override
@@ -161,6 +165,7 @@ public class AddStudentsActivity extends AppCompatActivity {
 
 
     }
+
     //finish the activity
     @Override
     protected void onStop() {

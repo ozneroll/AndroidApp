@@ -38,6 +38,7 @@ public class EditTeacherActivity extends AppCompatActivity {
         txtFirstName = (EditText) findViewById(R.id.txtEditFirstName);
         txtLastName = (EditText) findViewById(R.id.txtEditLastName);
 
+        //set the infos
         txtLastName.setText(getIntent().getStringExtra("lastName"));
         txtFirstName.setText(getIntent().getStringExtra("firstName"));
         id = getIntent().getStringExtra("id");
@@ -68,6 +69,7 @@ public class EditTeacherActivity extends AppCompatActivity {
                 startActivity(intent2);
                 break;
             case R.id.action_delete:
+                //delete the teacher
                 mDatabaseReference.child("Teachers").child(getIntent().getStringExtra("id")).removeValue();
                 //confirmation for the user
                 Toast.makeText(getApplicationContext(), getResources().getString(R.string.deletesuccess), Toast.LENGTH_LONG).show();
@@ -97,6 +99,8 @@ public class EditTeacherActivity extends AppCompatActivity {
                     Toast.makeText(getApplicationContext(), getResources().getString(R.string.saved), Toast.LENGTH_LONG).show();
                     Intent myIntent = new Intent(EditTeacherActivity.this,
                             DetailTeacherActivity.class);
+
+                    //give infos to DetailTeacherActivity
                     myIntent.putExtra("lastName", txtLastName.getText().toString());
                     myIntent.putExtra("firstName", txtFirstName.getText().toString());
                     myIntent.putExtra("id", id);

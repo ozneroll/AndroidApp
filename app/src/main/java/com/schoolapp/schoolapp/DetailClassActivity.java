@@ -99,15 +99,16 @@ public class DetailClassActivity extends AppCompatActivity {
         finish();
     }
 
+    //get all the students on the class
     protected void getAllStudents() {
 
-   //     db.restaurants.find( { "borough" : "Brooklyn" } );
         mDatabaseReference.child("Classes").child(id).child("listOfStudents").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
 
                 if (listOfStudents.size() > 0)
                     listOfStudents.clear();
+                //get the value and store it in list of Strings
                 for (DataSnapshot postSchnapshot : dataSnapshot.getChildren()) {
                     String str = postSchnapshot.getValue(String.class);
                     listOfStudents.add(str);
@@ -128,11 +129,6 @@ public class DetailClassActivity extends AppCompatActivity {
 
 
         });
-
-
-
-
-
 
 
     }

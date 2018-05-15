@@ -1,31 +1,29 @@
 package Classes;
 
 
+import android.support.annotation.NonNull;
 
 /**
  * Project : AndroidApp
  * Created by Célia Ahmad & Lorenzo Lamberti on 17.04.2018.
  */
 
-public class Teacher {
+public class Teacher implements Comparable<Teacher> {
 
     private String uid;
 
     private String lastName;
 
 
-
     private String firstName;
 
 
-
     //required by firebase
-    public Teacher()
-    {
+    public Teacher() {
 
     }
 
-    public Teacher( String uid, String lastName, String firstName ) {
+    public Teacher(String uid, String lastName, String firstName) {
 
         this.uid = uid;
         this.lastName = lastName;
@@ -60,11 +58,19 @@ public class Teacher {
     }
 
 
-
-
     @Override
     public String toString() {
         return lastName + " " + firstName;
     }
 
+    @Override
+    public int compareTo(@NonNull Teacher teacher) {
+        Teacher e = (Teacher) teacher;
+
+        if (this.firstName.equals(e.getFirstName())) {
+            return this.lastName.compareTo(e.getLastName());
+        } else {
+            return this.firstName.compareTo(e.getFirstName());
+        }
+    }
 }

@@ -25,6 +25,9 @@ import com.google.firebase.database.ValueEventListener;
 import com.miguelcatalan.materialsearchview.MaterialSearchView;
 
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 import Classes.Class;
@@ -65,7 +68,7 @@ public class ListOfStudentsActivity extends AppCompatActivity {
                 Student _temp = (Student) adapterView.getItemAtPosition(i);
                 Intent myIntent = new Intent(ListOfStudentsActivity.this,
                         DetailStudentActivity.class);
-                myIntent.putExtra("firstName",_temp.getFirstName());
+                myIntent.putExtra("firstName", _temp.getFirstName());
                 myIntent.putExtra("lastName", _temp.getLastName());
                 myIntent.putExtra("address", _temp.getAddress());
                 myIntent.putExtra("id", _temp.getUid());
@@ -146,27 +149,31 @@ public class ListOfStudentsActivity extends AppCompatActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.menu_settings, menu);
-        inflater.inflate(R.menu.menu_search,menu );
+        inflater.inflate(R.menu.menu_search, menu);
         MenuItem item = menu.findItem(R.id.action_search);
         searchView.setMenuItem(item);
         return true;
     }
+
     private void addEventFirebaseListener() {
-        mDatabaseReference.child("Students").addValueEventListener(new ValueEventListener() {
+        mDatabaseReference.child("Students").orderByChild("lastname").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
 
-                if(studentList.size()>0 )
+                if (studentList.size() > 0)
                     studentList.clear();
-                for(DataSnapshot postSchnapshot : dataSnapshot.getChildren()){
+                for (DataSnapshot postSchnapshot : dataSnapshot.getChildren()) {
                     Student student = postSchnapshot.getValue(Student.class);
                     studentList.add(student);
 
                     registerForContextMenu(listStudents);
                 }
+
                 ArrayAdapter adapter = new ArrayAdapter(ListOfStudentsActivity.this, android.R.layout.simple_list_item_1, studentList);
+                Collections.sort(studentList);
                 listStudents.setAdapter(adapter);
             }
+
             @Override
             public void onCancelled(DatabaseError databaseError) {
 

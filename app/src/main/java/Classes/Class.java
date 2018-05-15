@@ -19,12 +19,11 @@ public class Class {
     private HashMap<String, String> listOfStudents;
 
     //required by firebase
-    public Class()
-    {
+    public Class() {
 
     }
 
-    public Class( String uid, String name) {
+    public Class(String uid, String name) {
 
         this.uid = uid;
         this.name = name;
@@ -57,9 +56,8 @@ public class Class {
 
     @Override
     public String toString() {
-        return name ;
+        return name;
     }
-
 
 
 }

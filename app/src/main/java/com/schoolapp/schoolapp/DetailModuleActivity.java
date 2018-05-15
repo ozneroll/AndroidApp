@@ -18,8 +18,6 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 import java.util.List;
 
-import Classes.Student;
-
 import static com.schoolapp.schoolapp.MainActivity.mDatabaseReference;
 
 
@@ -30,22 +28,22 @@ import static com.schoolapp.schoolapp.MainActivity.mDatabaseReference;
  */
 
 public class DetailModuleActivity extends AppCompatActivity {
-    private ListView listStudent;
+    private ListView listCourses;
     private TextView txtClass;
     private String id;
     private Toolbar toolbar;
-    List<Student> listOfStudents = new ArrayList<>();
+    List<String> listOfCourses = new ArrayList<>();
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_detail_class);
+        setContentView(R.layout.activity_detail_module);
 
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        listStudent = (ListView) findViewById(R.id.listStudent);
+        listCourses = (ListView) findViewById(R.id.listCourses);
         getSupportActionBar().setTitle(getResources().getString(R.string.details));
 
         txtClass = (TextView) findViewById(R.id.txtName);
@@ -53,7 +51,7 @@ public class DetailModuleActivity extends AppCompatActivity {
         txtClass.setText(getIntent().getStringExtra("name"));
         id = getIntent().getStringExtra("id");
 
-        getAllStudents();
+        getAllCourses();
 
     }
 
@@ -61,7 +59,7 @@ public class DetailModuleActivity extends AppCompatActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.menu_settings, menu);
-        inflater.inflate(R.menu.menu_edit, menu);
+
         return true;
     }
 
@@ -78,12 +76,6 @@ public class DetailModuleActivity extends AppCompatActivity {
                 startActivity(intent2);
                 break;
 
-            case R.id.btnEdit:
-                Intent intent3 = new Intent(this, EditStudentActivity.class);
-                intent3.putExtra("name", txtClass.getText());
-                intent3.putExtra("id", id);
-                startActivity(intent3);
-
             default:
                 break;
         }
@@ -94,30 +86,31 @@ public class DetailModuleActivity extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         Intent myIntent = new Intent(DetailModuleActivity.this,
-                ListOfClassesActivity.class);
+                ListOfModulesActivity.class);
         startActivity(myIntent);
         finish();
     }
 
-    protected void getAllStudents() {
 
-   //     db.restaurants.find( { "borough" : "Brooklyn" } );
-        mDatabaseReference.child("Students").addValueEventListener(new ValueEventListener() {
+    //get all the courses on the class
+    protected void getAllCourses() {
+
+
+        mDatabaseReference.child("Modules").child(id).child("listOfCourses").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
 
-                if (listOfStudents.size() > 0)
-                    listOfStudents.clear();
+                if (listOfCourses.size() > 0)
+                    listOfCourses.clear();
                 for (DataSnapshot postSchnapshot : dataSnapshot.getChildren()) {
-                    Student student = postSchnapshot.getValue(Student.class);
-                    listOfStudents.add(student);
+                    String str = postSchnapshot.getValue(String.class);
+                    listOfCourses.add(str);
 
                 }
 
-                ArrayAdapter<Student> adapter = new ArrayAdapter<Student>(DetailModuleActivity.this,
-                        R.layout.textview, listOfStudents);
-                listStudent.setAdapter(adapter);
-                listStudent.setAdapter(adapter);
+                ArrayAdapter<String> adapter = new ArrayAdapter<String>(DetailModuleActivity.this,
+                        R.layout.textview, listOfCourses);
+                listCourses.setAdapter(adapter);
 
 
             }
@@ -129,11 +122,6 @@ public class DetailModuleActivity extends AppCompatActivity {
 
 
         });
-        // Create an ArrayAdapter using the string array and a default spinner layout
-
-
-
-
 
 
     }

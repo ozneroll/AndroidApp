@@ -66,7 +66,7 @@ public class ListOfClassesActivity extends AppCompatActivity {
 
                 Intent myIntent = new Intent(ListOfClassesActivity.this,
                         DetailClassActivity.class);
-                myIntent.putExtra("name",_temp.getName());
+                myIntent.putExtra("name", _temp.getName());
                 myIntent.putExtra("id", _temp.getUid());
 
                 startActivity(myIntent);
@@ -146,19 +146,20 @@ public class ListOfClassesActivity extends AppCompatActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.menu_settings, menu);
-        inflater.inflate(R.menu.menu_search,menu );
+        inflater.inflate(R.menu.menu_search, menu);
         MenuItem item = menu.findItem(R.id.action_search);
         searchView.setMenuItem(item);
         return true;
     }
+
     private void addEventFirebaseListener() {
-        mDatabaseReference.child("Classes").addValueEventListener(new ValueEventListener() {
+        mDatabaseReference.child("Classes").orderByChild("name").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
 
-                if(classeList.size()>0 )
+                if (classeList.size() > 0)
                     classeList.clear();
-                for(DataSnapshot postSchnapshot : dataSnapshot.getChildren()){
+                for (DataSnapshot postSchnapshot : dataSnapshot.getChildren()) {
                     Class classe = postSchnapshot.getValue(Class.class);
                     classeList.add(classe);
 

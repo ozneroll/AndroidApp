@@ -22,7 +22,9 @@ import java.util.UUID;
 import Classes.Class;
 
 /**
- * Created by loren on 10.05.2018.
+ * Project : AndroidAppFirebase
+ * Created by Célia Ahmad & Lorenzo Lamberti
+ * on 11.05.2018.
  */
 
 public class AddClassActivity extends AppCompatActivity {
@@ -75,12 +77,14 @@ public class AddClassActivity extends AppCompatActivity {
                 }
 
                 if (error == 0) {
+
+                    //call createClass() method
                     createClass();
                     //confirmation for the user
 
                     Toast.makeText(getApplicationContext(), getResources().getString(R.string.ajout), Toast.LENGTH_LONG).show();
                     Intent myIntent = new Intent(AddClassActivity.this,
-                            MainActivity.class);
+                            ListOfClassesActivity.class);
                     startActivity(myIntent);
                 }
                 break;
@@ -92,14 +96,19 @@ public class AddClassActivity extends AppCompatActivity {
 
         return true;
     }
-    private void createClass(){
 
-        String randomID= UUID.randomUUID().toString();
+    private void createClass() {
+        //generate randomID
+        String randomID = UUID.randomUUID().toString();
+        //create new class
         Class classe = new Class(randomID, txtClassName.getText().toString());
 
+        //add value in "Classes"
         MainActivity.mDatabaseReference.child("Classes").child(randomID).setValue(classe);
+        //add value in conversion node
         MainActivity.mDatabaseReference.child("ClassNameToId").child(txtClassName.getText().toString()).setValue(randomID);
     }
+
     //finish the activity
     @Override
     protected void onStop() {

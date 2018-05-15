@@ -16,8 +16,7 @@ import static android.arch.persistence.room.ForeignKey.CASCADE;
  * Created by Célia Ahmad & Lorenzo Lamberti on 17.04.2018.
  */
 
-@Entity(tableName = "Student", foreignKeys = @ForeignKey(entity = Class.class, parentColumns = "idclass", childColumns = "idclass", onDelete = CASCADE))
-public class Student {
+public class Student implements Comparable<Student> {
 
     private String uid;
 
@@ -30,12 +29,11 @@ public class Student {
     private String classe;
 
     //required by firebase
-    public Student()
-    {
+    public Student() {
 
     }
 
-    public Student( String uid, String lastName, String firstName, String address, String classe) {
+    public Student(String uid, String lastName, String firstName, String address, String classe) {
 
         this.uid = uid;
         this.lastName = lastName;
@@ -87,10 +85,22 @@ public class Student {
     }
 
 
-
     @Override
     public String toString() {
         return lastName + " " + firstName;
     }
 
+    @Override
+    public int compareTo(@android.support.annotation.NonNull Student st) {
+
+        Student e = (Student) st;
+
+        if (this.firstName.equals(e.getFirstName())) {
+            return this.lastName.compareTo(e.getLastName());
+        } else {
+            return this.firstName.compareTo(e.getFirstName());
+        }
+
+
+    }
 }

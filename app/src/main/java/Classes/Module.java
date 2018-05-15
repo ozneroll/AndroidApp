@@ -5,6 +5,8 @@ import android.arch.persistence.room.Entity;
 import android.arch.persistence.room.Ignore;
 import android.arch.persistence.room.PrimaryKey;
 
+import java.util.HashMap;
+
 import io.reactivex.annotations.NonNull;
 
 /**
@@ -21,15 +23,14 @@ public class Module {
     private String name;
 
 
-
+    private HashMap<String, String> listOfCourses;
 
     //required by firebase
-    public Module()
-    {
+    public Module() {
 
     }
 
-    public Module( String uid, String name ) {
+    public Module(String uid, String name) {
 
         this.uid = uid;
         this.name = name;
@@ -55,13 +56,18 @@ public class Module {
         this.name = name;
     }
 
+    public HashMap<String, String> getListOfCourses() {
+        return listOfCourses;
+    }
 
-
+    public void setListOfCourses(HashMap<String, String> listOfCourses) {
+        this.listOfCourses = listOfCourses;
+    }
 
 
     @Override
     public String toString() {
-        return name ;
+        return name;
     }
 
 }

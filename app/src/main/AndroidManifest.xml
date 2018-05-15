@@ -60,6 +60,10 @@
             android:name=".DetailModuleActivity"
             android:label="@string/details"
             android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".DetailCourseActivity"
+            android:label="@string/details"
+            android:theme="@style/AppTheme.NoActionBar" />
 
         <activity
             android:name=".DetailClassActivity"

@@ -51,8 +51,6 @@ public class EditClassActivity extends AppCompatActivity {
 
         txtClassName.setText(name);
 
-        //idClass = getIntent().getIntExtra("idClass", -1);
-        //classe = MainActivity.studentDB.classDAO().loadClassById(idClass);
 
     }
 
@@ -79,7 +77,7 @@ public class EditClassActivity extends AppCompatActivity {
                 startActivity(intent2);
                 break;
             case R.id.action_delete:
-          //      MainActivity.studentDB.classDAO().delete(classe);
+                //deleting the class also deletes the students in it
                 mDatabaseReference.child("Classes").child(id).child("listOfStudents").addListenerForSingleValueEvent(new ValueEventListener() {
 
                     @Override
@@ -93,8 +91,8 @@ public class EditClassActivity extends AppCompatActivity {
                             idsOfStudents.add(str);
                         }
 
-                        for (String idOfStudent : idsOfStudents)
-                        {
+                        //remove each student in list of class
+                        for (String idOfStudent : idsOfStudents) {
                             mDatabaseReference.child("Students").child(idOfStudent).removeValue();
                         }
 
@@ -106,7 +104,9 @@ public class EditClassActivity extends AppCompatActivity {
                     }
 
                 });
+                //remove the class
                 MainActivity.mDatabaseReference.child("Classes").child(id).removeValue();
+                //remove reference
                 MainActivity.mDatabaseReference.child("ClassNameToId").child(name).removeValue();
 
                 //confirmation for the user
@@ -125,25 +125,27 @@ public class EditClassActivity extends AppCompatActivity {
                 }
 
                 if (error == 0) {
+                    //change name of the class
                     mDatabaseReference.child("Classes").child(id).child("name").setValue(txtClassName.getText().toString());
+                    //change name of the reference by removing node and adding new one
                     mDatabaseReference.child("ClassNameToId").child(name).removeValue();
                     mDatabaseReference.child("ClassNameToId").child(txtClassName.getText().toString()).setValue(id);
 
+                    //for each student, change name of the class
                     mDatabaseReference.child("Classes").child(id).child("listOfStudents").addListenerForSingleValueEvent(new ValueEventListener() {
 
                         @Override
                         public void onDataChange(DataSnapshot dataSnapshot) {
 
-                            //if (listOfClasses.size() > 0)
-                             //   listOfClasses.clear();
                             List<String> idsOfStudents = new ArrayList<>();
                             for (DataSnapshot postSchnapshot : dataSnapshot.getChildren()) {
+                                //get the id of the student
                                 String str = postSchnapshot.getKey();
                                 idsOfStudents.add(str);
                             }
 
-                            for (String idOfStudent : idsOfStudents)
-                            {
+                            //change value of the class for each student
+                            for (String idOfStudent : idsOfStudents) {
                                 mDatabaseReference.child("Students").child(idOfStudent).child("classe").setValue(txtClassName.getText().toString());
                             }
 
@@ -156,11 +158,13 @@ public class EditClassActivity extends AppCompatActivity {
 
                     });
 
-            //        MainActivity.studentDB.classDAO().update(classe);
+
                     //confirmation for the user
                     Toast.makeText(getApplicationContext(), getResources().getString(R.string.saved), Toast.LENGTH_LONG).show();
                     Intent myIntent = new Intent(EditClassActivity.this,
                             DetailClassActivity.class);
+
+                    //give infos to DetailClassActivity
                     myIntent.putExtra("name", txtClassName.getText().toString());
                     myIntent.putExtra("id", id);
                     startActivity(myIntent);

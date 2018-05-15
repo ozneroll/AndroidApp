@@ -18,7 +18,7 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 import java.util.List;
 
-import Classes.Course;
+import Classes.Student;
 
 import static com.schoolapp.schoolapp.MainActivity.mDatabaseReference;
 
@@ -30,10 +30,11 @@ import static com.schoolapp.schoolapp.MainActivity.mDatabaseReference;
  */
 
 public class DetailModuleActivity extends AppCompatActivity {
-    private ListView listCourses;
-    private TextView txtModule;
+    private ListView listStudent;
+    private TextView txtClass;
+    private String id;
     private Toolbar toolbar;
-    List<Course> listOfCourses = new ArrayList<>();
+    List<Student> listOfStudents = new ArrayList<>();
 
 
     @Override
@@ -44,14 +45,15 @@ public class DetailModuleActivity extends AppCompatActivity {
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        listCourses = (ListView) findViewById(R.id.listStudent);
+        listStudent = (ListView) findViewById(R.id.listStudent);
         getSupportActionBar().setTitle(getResources().getString(R.string.details));
 
-        txtModule = (TextView) findViewById(R.id.txtName);
+        txtClass = (TextView) findViewById(R.id.txtName);
 
-        txtModule.setText(getIntent().getStringExtra("name"));
+        txtClass.setText(getIntent().getStringExtra("name"));
+        id = getIntent().getStringExtra("id");
 
-        getAllCourses();
+        getAllStudents();
 
     }
 
@@ -59,6 +61,7 @@ public class DetailModuleActivity extends AppCompatActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.menu_settings, menu);
+        inflater.inflate(R.menu.menu_edit, menu);
         return true;
     }
 
@@ -75,6 +78,12 @@ public class DetailModuleActivity extends AppCompatActivity {
                 startActivity(intent2);
                 break;
 
+            case R.id.btnEdit:
+                Intent intent3 = new Intent(this, EditStudentActivity.class);
+                intent3.putExtra("name", txtClass.getText());
+                intent3.putExtra("id", id);
+                startActivity(intent3);
+
             default:
                 break;
         }
@@ -90,25 +99,25 @@ public class DetailModuleActivity extends AppCompatActivity {
         finish();
     }
 
-    protected void getAllCourses() {
+    protected void getAllStudents() {
 
    //     db.restaurants.find( { "borough" : "Brooklyn" } );
-        mDatabaseReference.child("Courses").addValueEventListener(new ValueEventListener() {
+        mDatabaseReference.child("Students").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
 
-                if (listOfCourses.size() > 0)
-                    listOfCourses.clear();
+                if (listOfStudents.size() > 0)
+                    listOfStudents.clear();
                 for (DataSnapshot postSchnapshot : dataSnapshot.getChildren()) {
-                    Course course = postSchnapshot.getValue(Course.class);
-                    listOfCourses.add(course);
+                    Student student = postSchnapshot.getValue(Student.class);
+                    listOfStudents.add(student);
 
                 }
 
-                ArrayAdapter<Course> adapter = new ArrayAdapter<Course>(DetailModuleActivity.this,
-                        R.layout.textview, listOfCourses);
-                listCourses.setAdapter(adapter);
-                listCourses.setAdapter(adapter);
+                ArrayAdapter<Student> adapter = new ArrayAdapter<Student>(DetailModuleActivity.this,
+                        R.layout.textview, listOfStudents);
+                listStudent.setAdapter(adapter);
+                listStudent.setAdapter(adapter);
 
 
             }
@@ -120,6 +129,11 @@ public class DetailModuleActivity extends AppCompatActivity {
 
 
         });
+        // Create an ArrayAdapter using the string array and a default spinner layout
+
+
+
+
 
 
     }

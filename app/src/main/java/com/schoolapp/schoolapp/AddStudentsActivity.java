@@ -17,6 +17,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.UUID;
 
@@ -137,9 +138,28 @@ public class AddStudentsActivity extends AppCompatActivity {
     }
 
     private void createStudent(){
-        String randomID= UUID.randomUUID().toString();
-        Student student = new Student (randomID, txtLastName.getText().toString(), txtFirstName.getText().toString(),txtAddress.getText().toString(), spinner.getSelectedItem().toString());
+        final String randomID= UUID.randomUUID().toString();
+        final Student student = new Student (randomID, txtLastName.getText().toString(), txtFirstName.getText().toString(),txtAddress.getText().toString(), spinner.getSelectedItem().toString());
         MainActivity.mDatabaseReference.child("Students").child(randomID).setValue(student);
+        HashMap<String, String> studentInClass = new HashMap<String, String>();
+
+
+        MainActivity.mDatabaseReference.child("ClassNameToId").addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                String idClass = dataSnapshot.child(spinner.getSelectedItem().toString()).getValue(String.class);
+                MainActivity.mDatabaseReference.child("Classes").child(idClass).child("listOfStudents").child(randomID).setValue(student.toString());
+                // A DECOMMENTER !!!!!!!
+                //String idClass = MainActivity.mDatabaseReference.child("ClassNameToId").child(spinner.getSelectedItem().toString());
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+
+
     }
     //finish the activity
     @Override

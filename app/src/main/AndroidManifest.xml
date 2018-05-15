@@ -69,6 +69,14 @@
             android:name=".EditStudentActivity"
             android:label="@string/edit"
             android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".EditTeacherActivity"
+            android:label="@string/edit"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".EditClassActivity"
+            android:label="@string/edit"
+            android:theme="@style/AppTheme.NoActionBar" />
     </application>
 
 </manifest>

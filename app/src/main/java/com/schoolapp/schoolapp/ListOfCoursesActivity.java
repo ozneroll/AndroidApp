@@ -8,7 +8,6 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
@@ -23,7 +22,6 @@ import com.miguelcatalan.materialsearchview.MaterialSearchView;
 import java.util.ArrayList;
 import java.util.List;
 
-import Classes.Class;
 import Classes.Course;
 import Classes.Module;
 
@@ -56,23 +54,6 @@ public class ListOfCoursesActivity extends AppCompatActivity {
         addEventFirebaseListener();
 
         listCourses = (ListView) findViewById(R.id.listitem);
-        listCourses.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-
-                Course _temp = (Course) adapterView.getItemAtPosition(i);
-
-                Intent myIntent = new Intent(ListOfCoursesActivity.this,
-                        DetailClassActivity.class);
-                myIntent.putExtra("name",_temp.getName());
-                myIntent.putExtra("id", _temp.getUid());
-                myIntent.putExtra("module", _temp.getModule());
-
-                startActivity(myIntent);
-
-            }
-        });
-
 
 
 

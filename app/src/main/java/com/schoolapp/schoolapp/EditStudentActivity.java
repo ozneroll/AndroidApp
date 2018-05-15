@@ -33,12 +33,13 @@ public class EditStudentActivity extends AppCompatActivity {
     private EditText txtFirstName;
     private EditText txtLastName;
     private EditText txtAddress;
-    private int id;
-    ArrayAdapter<String> adapter;
+    private String id;
+    ArrayAdapter<Class> adapter;
     private Spinner spinner;
-    private int idClass;
+    private String classe;
     private Toolbar toolbar;
-    List<String> listOfClasses = new ArrayList<>();
+    List<Class> listOfClasses = new ArrayList<>();
+    int index;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,7 +59,9 @@ public class EditStudentActivity extends AppCompatActivity {
         txtFirstName.setText(getIntent().getStringExtra("firstName"));
         txtAddress.setText(getIntent().getStringExtra("address"));
 
-        idClass = getIntent().getIntExtra("idClass", -1);
+        id = getIntent().getStringExtra("id");
+
+        classe = getIntent().getStringExtra("classe");
 
         spinner = (Spinner) findViewById(R.id.all_classes);
 
@@ -71,18 +74,18 @@ public class EditStudentActivity extends AppCompatActivity {
                     listOfClasses.clear();
                 for (DataSnapshot postSchnapshot : dataSnapshot.getChildren()) {
                     Class classe = postSchnapshot.getValue(Class.class);
-                    listOfClasses.add(classe.toString());
+                    listOfClasses.add(classe);
                 }
 
                 // Create an ArrayAdapter using the string array and a default spinner layout
-                adapter = new ArrayAdapter<String>(EditStudentActivity.this, android.R.layout.simple_spinner_item, listOfClasses);
+                adapter = new ArrayAdapter<Class>(EditStudentActivity.this, android.R.layout.simple_spinner_item, listOfClasses);
 
                 // Specify the layout to use when the list of choices appears
                 adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 
                 spinner.setAdapter(adapter);
 
-                int index = getIndex(spinner, getIntent().getStringExtra("classe"));
+                index = getIndex(spinner, classe);
 
                 spinner.setSelection(index);
 
@@ -95,6 +98,9 @@ public class EditStudentActivity extends AppCompatActivity {
 
         });
 
+
+
+
     }
 
    //getting the index of the correct class name
@@ -104,7 +110,7 @@ public class EditStudentActivity extends AppCompatActivity {
 
         for (int i = 0; i < spinner.getCount(); i++) {
 
-            if (spinner.getItemAtPosition(i).equals(myString)) {
+            if (spinner.getItemAtPosition(i).toString().equals(myString)) {
                 index = i;
             }
         }
@@ -134,7 +140,10 @@ public class EditStudentActivity extends AppCompatActivity {
                 startActivity(intent2);
                 break;
             case R.id.action_delete:
-                mDatabaseReference.child("Students").child(getIntent().getStringExtra("id")).removeValue();
+                mDatabaseReference.child("Students").child(id).removeValue();
+                Class exClass = (Class) spinner.getItemAtPosition(index);
+                String exId = exClass.getUid();
+                mDatabaseReference.child("Classes").child(exId).child("listOfStudents").child(id).removeValue();
                 //confirmation for the user
                 Toast.makeText(getApplicationContext(), getResources().getString(R.string.deletesuccess), Toast.LENGTH_LONG).show();
                 Intent intent3 = new Intent(EditStudentActivity.this,
@@ -159,10 +168,21 @@ public class EditStudentActivity extends AppCompatActivity {
                 }
                 if (error == 0) {
 
-                    mDatabaseReference.child("Students").child(getIntent().getStringExtra("id")).child("lastName").setValue(txtLastName.getText().toString());
-                    mDatabaseReference.child("Students").child(getIntent().getStringExtra("id")).child("firstName").setValue(txtFirstName.getText().toString());
-                    mDatabaseReference.child("Students").child(getIntent().getStringExtra("id")).child("address").setValue(txtAddress.getText().toString());
-                    mDatabaseReference.child("Students").child(getIntent().getStringExtra("id")).child("classe").setValue(spinner.getSelectedItem().toString());
+                    Student etu = new Student(id, txtLastName.getText().toString(), txtFirstName.getText().toString(), txtAddress.getText().toString(), spinner.getSelectedItem().toString());
+
+                    mDatabaseReference.child("Students").child(id).child("lastName").setValue(etu.getLastName());
+                    mDatabaseReference.child("Students").child(id).child("firstName").setValue(etu.getFirstName());
+                    mDatabaseReference.child("Students").child(id).child("address").setValue(etu.getAddress());
+                    mDatabaseReference.child("Students").child(id).child("classe").setValue(etu.getClasse());
+
+                    Class c = (Class) spinner.getSelectedItem();
+                    Class exC = (Class) spinner.getItemAtPosition(index);
+
+                    String classID = c.getUid();
+                    String exClassID = exC.getUid();
+
+                    mDatabaseReference.child("Classes").child(exClassID).child("listOfStudents").child(id).removeValue();
+                    mDatabaseReference.child("Classes").child(classID).child("listOfStudents").child(id).setValue(etu.toString());
 
                     //confirmation for the user
                     Toast.makeText(getApplicationContext(), getResources().getString(R.string.saved), Toast.LENGTH_LONG).show();
@@ -172,6 +192,7 @@ public class EditStudentActivity extends AppCompatActivity {
                     myIntent.putExtra("firstName", txtFirstName.getText().toString());
                     myIntent.putExtra("address", txtAddress.getText().toString());
                     myIntent.putExtra("classe", spinner.getSelectedItem().toString());
+                    myIntent.putExtra("id", id);
                     startActivity(myIntent);
                 }
                 break;

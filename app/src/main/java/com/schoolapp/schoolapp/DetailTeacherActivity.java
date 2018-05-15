@@ -61,7 +61,7 @@ public class DetailTeacherActivity extends AppCompatActivity {
                 break;
 
             case R.id.btnEdit:
-                Intent intent3 = new Intent(this, EditStudentActivity.class);
+                Intent intent3 = new Intent(this, EditTeacherActivity.class);
                 intent3.putExtra("lastName", txtLastName.getText());
                 intent3.putExtra("firstName", txtFirstName.getText());
                 intent3.putExtra("id", id);

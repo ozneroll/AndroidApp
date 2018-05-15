@@ -14,6 +14,9 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.ValueEventListener;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
 import java.util.UUID;
 
 import Classes.Class;
@@ -90,10 +93,12 @@ public class AddClassActivity extends AppCompatActivity {
         return true;
     }
     private void createClass(){
-        String randomID= UUID.randomUUID().toString();
-        Class classe = new Class(randomID,txtClassName.getText().toString());
-        MainActivity.mDatabaseReference.child("Classes").child(UUID.randomUUID().toString()).setValue(classe);
 
+        String randomID= UUID.randomUUID().toString();
+        Class classe = new Class(randomID, txtClassName.getText().toString());
+
+        MainActivity.mDatabaseReference.child("Classes").child(randomID).setValue(classe);
+        MainActivity.mDatabaseReference.child("ClassNameToId").child(txtClassName.getText().toString()).setValue(randomID);
     }
     //finish the activity
     @Override

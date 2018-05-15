@@ -34,7 +34,7 @@ public class DetailClassActivity extends AppCompatActivity {
     private TextView txtClass;
     private String id;
     private Toolbar toolbar;
-    List<Student> listOfStudents = new ArrayList<>();
+    List<String> listOfStudents = new ArrayList<>();
 
 
     @Override
@@ -79,7 +79,7 @@ public class DetailClassActivity extends AppCompatActivity {
                 break;
 
             case R.id.btnEdit:
-                Intent intent3 = new Intent(this, EditStudentActivity.class);
+                Intent intent3 = new Intent(this, EditClassActivity.class);
                 intent3.putExtra("name", txtClass.getText());
                 intent3.putExtra("id", id);
                 startActivity(intent3);
@@ -102,21 +102,20 @@ public class DetailClassActivity extends AppCompatActivity {
     protected void getAllStudents() {
 
    //     db.restaurants.find( { "borough" : "Brooklyn" } );
-        mDatabaseReference.child("Students").addValueEventListener(new ValueEventListener() {
+        mDatabaseReference.child("Classes").child(id).child("listOfStudents").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
 
                 if (listOfStudents.size() > 0)
                     listOfStudents.clear();
                 for (DataSnapshot postSchnapshot : dataSnapshot.getChildren()) {
-                    Student student = postSchnapshot.getValue(Student.class);
-                    listOfStudents.add(student);
+                    String str = postSchnapshot.getValue(String.class);
+                    listOfStudents.add(str);
 
                 }
 
-                ArrayAdapter<Student> adapter = new ArrayAdapter<Student>(DetailClassActivity.this,
+                ArrayAdapter<String> adapter = new ArrayAdapter<String>(DetailClassActivity.this,
                         R.layout.textview, listOfStudents);
-                listStudent.setAdapter(adapter);
                 listStudent.setAdapter(adapter);
 
 
@@ -129,7 +128,7 @@ public class DetailClassActivity extends AppCompatActivity {
 
 
         });
-        // Create an ArrayAdapter using the string array and a default spinner layout
+
 
 
 

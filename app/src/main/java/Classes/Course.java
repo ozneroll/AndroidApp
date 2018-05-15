@@ -17,10 +17,10 @@ public class Course {
 
     private String uid;
 
+
     private String name;
 
 
-    private String module;
 
 
     //required by firebase
@@ -29,11 +29,11 @@ public class Course {
 
     }
 
-    public Course( String uid, String name, String module ) {
+    public Course( String uid, String name ) {
 
         this.uid = uid;
         this.name = name;
-        this.module =module;
+
 
     }
 
@@ -55,13 +55,6 @@ public class Course {
         this.name = name;
     }
 
-    public String getModule() {
-        return module;
-    }
-
-    public void setModule(String module) {
-        this.module = module;
-    }
 
 
 

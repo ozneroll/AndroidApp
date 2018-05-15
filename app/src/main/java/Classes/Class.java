@@ -1,9 +1,7 @@
 package Classes;
 
-import android.arch.persistence.room.ColumnInfo;
-import android.arch.persistence.room.Entity;
-import android.arch.persistence.room.Ignore;
-import android.arch.persistence.room.PrimaryKey;
+import java.util.HashMap;
+import java.util.List;
 
 import io.reactivex.annotations.NonNull;
 
@@ -14,14 +12,11 @@ import io.reactivex.annotations.NonNull;
 
 public class Class {
 
-
     private String uid;
-
 
     private String name;
 
-
-
+    private HashMap<String, String> listOfStudents;
 
     //required by firebase
     public Class()
@@ -29,16 +24,13 @@ public class Class {
 
     }
 
-    public Class( String uid, String name ) {
+    public Class( String uid, String name) {
 
         this.uid = uid;
         this.name = name;
-
-
     }
 
     // Getters and setters
-
     public String getUid() {
         return uid;
     }
@@ -55,9 +47,13 @@ public class Class {
         this.name = name;
     }
 
+    public HashMap<String, String> getListOfStudents() {
+        return listOfStudents;
+    }
 
-
-
+    public void setListOfStudents(HashMap<String, String> listOfStudents) {
+        this.listOfStudents = listOfStudents;
+    }
 
     @Override
     public String toString() {

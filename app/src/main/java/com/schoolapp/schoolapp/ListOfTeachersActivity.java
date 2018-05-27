@@ -170,8 +170,9 @@ public class ListOfTeachersActivity extends AppCompatActivity {
                     registerForContextMenu(listTeachers);
 
                 }
+
+                Collections.sort(teacherList, new ComparatorNames());
                 ArrayAdapter adapter = new ArrayAdapter(ListOfTeachersActivity.this, android.R.layout.simple_list_item_1, teacherList);
-                Collections.sort(teacherList);
                 listTeachers.setAdapter(adapter);
             }
 

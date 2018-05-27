@@ -66,7 +66,7 @@ public class EditStudentActivity extends AppCompatActivity {
         spinner = (Spinner) findViewById(R.id.all_classes);
 
         //get all the classes
-        mDatabaseReference.child("Classes").addValueEventListener(new ValueEventListener() {
+        mDatabaseReference.child("Classes").addListenerForSingleValueEvent(new ValueEventListener() {
 
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {

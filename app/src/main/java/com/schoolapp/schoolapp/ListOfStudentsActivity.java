@@ -11,10 +11,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.EditText;
-import android.widget.ListAdapter;
 import android.widget.ListView;
-import android.widget.Toast;
 
 import com.google.firebase.FirebaseApp;
 import com.google.firebase.database.DataSnapshot;
@@ -25,14 +22,10 @@ import com.google.firebase.database.ValueEventListener;
 import com.miguelcatalan.materialsearchview.MaterialSearchView;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Collections;
-import java.util.Comparator;
 import java.util.List;
 
-import Classes.Class;
 import Classes.Student;
-import io.reactivex.disposables.CompositeDisposable;
 
 
 /**
@@ -170,7 +163,8 @@ public class ListOfStudentsActivity extends AppCompatActivity {
                 }
 
                 ArrayAdapter adapter = new ArrayAdapter(ListOfStudentsActivity.this, android.R.layout.simple_list_item_1, studentList);
-                Collections.sort(studentList);
+                Collections.sort(studentList, new ComparatorNames());
+
                 listStudents.setAdapter(adapter);
             }
 

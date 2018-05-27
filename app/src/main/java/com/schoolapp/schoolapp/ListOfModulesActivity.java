@@ -22,6 +22,7 @@ import com.google.firebase.database.ValueEventListener;
 import com.miguelcatalan.materialsearchview.MaterialSearchView;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import Classes.Module;
@@ -165,7 +166,10 @@ public class ListOfModulesActivity extends AppCompatActivity {
                     registerForContextMenu(listModules);
 
                 }
+
+                Collections.sort(moduleList, new ComparatorNames());
                 ArrayAdapter adapter = new ArrayAdapter(ListOfModulesActivity.this, android.R.layout.simple_list_item_1, moduleList);
+
                 listModules.setAdapter(adapter);
             }
 

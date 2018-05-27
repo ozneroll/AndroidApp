@@ -21,6 +21,7 @@ import com.google.firebase.database.ValueEventListener;
 import com.miguelcatalan.materialsearchview.MaterialSearchView;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import Classes.Course;
@@ -165,6 +166,8 @@ public class ListOfCoursesActivity extends AppCompatActivity {
                     registerForContextMenu(listCourses);
 
                 }
+
+                Collections.sort(courseList, new ComparatorNames());
                 ArrayAdapter adapter = new ArrayAdapter(ListOfCoursesActivity.this, android.R.layout.simple_list_item_1, courseList);
                 listCourses.setAdapter(adapter);
             }

@@ -19,7 +19,6 @@ import Classes.Teacher;
 public class AddTeachersActivity extends AppCompatActivity {
     private EditText txtFirstName;
     private EditText txtLastName;
-    private EditText txtAddress;
     private Toolbar toolbar;
 
 

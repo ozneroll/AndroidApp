@@ -7,7 +7,6 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -17,8 +16,6 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import Classes.Class;
 
 import static com.schoolapp.schoolapp.MainActivity.mDatabaseReference;
 
@@ -31,7 +28,6 @@ public class EditClassActivity extends AppCompatActivity {
     private EditText txtClassName;
     private String id;
     private String name;
-    //public Class classe = new Class();
     private Toolbar toolbar;
 
     @Override
@@ -83,8 +79,6 @@ public class EditClassActivity extends AppCompatActivity {
                     @Override
                     public void onDataChange(DataSnapshot dataSnapshot) {
 
-                        //if (listOfClasses.size() > 0)
-                        //   listOfClasses.clear();
                         List<String> idsOfStudents = new ArrayList<>();
                         for (DataSnapshot postSchnapshot : dataSnapshot.getChildren()) {
                             String str = postSchnapshot.getKey();

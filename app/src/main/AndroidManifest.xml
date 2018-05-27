@@ -81,6 +81,14 @@
             android:name=".EditClassActivity"
             android:label="@string/edit"
             android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".AboutActivity"
+            android:label="@string/about"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".LanguageActivity"
+            android:label="@string/language"
+            android:theme="@style/AppTheme.NoActionBar" />
     </application>
 
 </manifest>

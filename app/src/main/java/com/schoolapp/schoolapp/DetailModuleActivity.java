@@ -16,6 +16,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import static com.schoolapp.schoolapp.MainActivity.mDatabaseReference;
@@ -96,7 +97,7 @@ public class DetailModuleActivity extends AppCompatActivity {
     protected void getAllCourses() {
 
 
-        mDatabaseReference.child("Modules").child(id).child("listOfCourses").addValueEventListener(new ValueEventListener() {
+        mDatabaseReference.child("Modules").child(id).child("listOfCourses").addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
 
@@ -108,6 +109,7 @@ public class DetailModuleActivity extends AppCompatActivity {
 
                 }
 
+                Collections.sort(listOfCourses, new ComparatorNames());
                 ArrayAdapter<String> adapter = new ArrayAdapter<String>(DetailModuleActivity.this,
                         R.layout.textview, listOfCourses);
                 listCourses.setAdapter(adapter);
